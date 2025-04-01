@@ -1,0 +1,129 @@
+{
+  "header": {
+    "logo": "NordicPro",
+    "navigation": [
+      { "label": "Our mission", "href": "#mission" },
+      { "label": "Features", "href": "#features" },
+      { "label": "FAQ", "href": "#faq" }
+    ],
+    "cta": "Join Waitlist"
+  },
+  "hero": {
+    "title": "Where performance meets well-being",
+    "description": "A platform for youth teams that puts mental health, motivation, and team management in one place.",
+    "cta": "Join Waitlist"
+  },
+  "mission": {
+    "title": "Why are we building NordicPro?",
+    "subtitle": "Talent isn't the problem. Feeling unsupported is. NordicPro is the solution.",
+    "features": [
+      {
+        "title": "Drive motivation",
+        "description": "Gamified goals, team challenges, and feedback that keeps players engaged and driven.",
+        "image": "/images/motivation.webp"
+      },
+      {
+        "title": "Mental health",
+        "description": "Quick check-ins, reflection prompts, and access to help — because well-being fuels long-term success.",
+        "image": "/images/mental-health.webp"
+      },
+      {
+        "title": "Team Management",
+        "description": "Scheduling, communication, and team management shouldn't be complicated. Now it's not.",
+        "image": "/images/team-management.webp"
+      },
+      {
+        "title": "Built for retention",
+        "description": "When players feel connected, they stay. We help clubs keep their talent season after season.",
+        "image": "/images/growth.webp"
+      }
+    ]
+  },
+  "features": {
+    "title": "Everything you're already doing — just better.",
+    "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
+    "list": [
+      {
+        "title": "Mental Health Support",
+        "items": ["Quick mood tracking", "Weekly wellness reflections", "Private alerts for coaches"]
+      },
+      {
+        "title": "Motivation and engagement",
+        "items": ["Set personal and team goals", "Gamified rewards system", "Challenges and events"]
+      },
+      {
+        "title": "Built-in support system",
+        "items": [
+          "Access to mental health resources",
+          "Coaches get guidance to support athletes",
+          "Integrated chat with certified support staff"
+        ]
+      },
+      {
+        "title": "Admin tools",
+        "items": [
+          "Schedule practices and matches",
+          "Send individual, group and team messages",
+          "Track payments and attendance"
+        ]
+      }
+    ]
+  },
+  "partnership": {
+    "title": "Are you a coach, club, or organization that shares our vision?",
+    "subtitle": "Let's team up.",
+    "cta": "Become a Partner"
+  },
+  "platform": {
+    "title": "All-in-one platform for athlete well-being",
+    "description": [
+      "NordicPro combines mental health support, motivation tools, and team management features in one seamless platform designed specifically for youth sports.",
+      "Our approach focuses on the whole athlete - supporting their mental well-being while providing the tools coaches need to build stronger, more resilient teams."
+    ],
+    "stats": [
+      { "value": "85%", "label": "Increase in player retention" },
+      { "value": "92%", "label": "Of coaches report improved team dynamics" },
+      { "value": "3.5x", "label": "Increase in player engagement" },
+      { "value": "78%", "label": "Reduction in administrative time" }
+    ]
+  },
+  "cta": {
+    "title": "Ready to transform your team's experience?",
+    "description": "Join the waitlist today and be among the first to experience NordicPro when we launch.",
+    "button": "Join Waitlist"
+  },
+  "faq": {
+    "title": "Frequently asked questions.",
+    "questions": [
+      {
+        "question": "What is NordicPro?",
+        "answer": "NordicPro is an all-in-one platform designed specifically for youth sports teams that combines mental health support, motivation tools, and team management features. We help coaches build stronger, more resilient teams while supporting the well-being of young athletes."
+      },
+      {
+        "question": "Who should use NordicPro?",
+        "answer": "NordicPro is ideal for youth sports clubs, coaches, and organizations that want to improve player retention, team dynamics, and overall athlete well-being. Our platform is designed for soccer teams but can be adapted for various youth sports."
+      },
+      {
+        "question": "Can it replace our current team tools?",
+        "answer": "Yes! NordicPro is designed to be a comprehensive solution that can replace multiple tools you might currently be using. It includes scheduling, communication, payment tracking, and attendance features, along with our unique mental health and motivation tools."
+      },
+      {
+        "question": "When will NordicPro be available?",
+        "answer": "We're currently onboarding early partners. Join the waitlist to be the first to know when we launch in your region."
+      }
+    ],
+    "contact": {
+      "text": "If you have more questions, please call us or get in touch with us!",
+      "cta": "Contact Us"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 NordicPro",
+    "links": [
+      { "label": "Terms", "href": "#" },
+      { "label": "Privacy", "href": "#" },
+      { "label": "Cookies", "href": "#" }
+    ]
+  }
+}
+
