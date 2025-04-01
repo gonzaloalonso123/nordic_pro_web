@@ -203,16 +203,14 @@ export default function WaitlistForm() {
             className="flex flex-wrap gap-4"
             required
           >
-            {["Coach", "Club Administrator", "Parent", "Player", "Other"].map(
-              (role) => (
-                <div key={role} className="flex items-center space-x-2">
-                  <RadioGroupItem value={role} id={`role-${role}`} />
-                  <Label htmlFor={`role-${role}`} className="cursor-pointer">
-                    {role}
-                  </Label>
-                </div>
-              )
-            )}
+            {["Coach", "Club Administrator"].map((role) => (
+              <div key={role} className="flex items-center space-x-2">
+                <RadioGroupItem value={role} id={`role-${role}`} />
+                <Label htmlFor={`role-${role}`} className="cursor-pointer">
+                  {role}
+                </Label>
+              </div>
+            ))}
           </RadioGroup>
         </div>
 

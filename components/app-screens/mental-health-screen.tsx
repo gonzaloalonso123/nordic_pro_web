@@ -66,7 +66,7 @@ export default function MentalHealthScreen() {
         </div>
 
         <div className="bg-white rounded-lg p-4 shadow-sm">
-          <div className="flex justify-between items-end h-32 mb-2">
+          <div className="flex justify-between items-end gap-4 h-32 mb-2">
             {[
               { day: "Mon", height: "40%", mood: "😐" },
               { day: "Tue", height: "60%", mood: "🙂" },

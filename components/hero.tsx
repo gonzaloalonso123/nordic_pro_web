@@ -19,9 +19,15 @@ export default function Hero() {
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           <div className="flex flex-col justify-center space-y-8 max-w-2xl">
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-montserrat tracking-tight leading-tight text-foreground">
-                Where <span className="text-primary">performance</span> meets{" "}
-                <span className="text-primary">well-being</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-montserrat tracking-tight leading-tight ">
+                Where{" "}
+                <span className="bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
+                  performance
+                </span>{" "}
+                meets{" "}
+                <span className="bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
+                  well-being
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-foreground/70">
                 {description}
@@ -31,16 +37,9 @@ export default function Hero() {
               <Button
                 asChild
                 size="lg"
-                className="bg-accent hover:bg-accent/90 text-white font-medium rounded-full px-10 py-7 text-lg"
+                className="bg-accent hover:bg-accent/90 text-white font-medium rounded-full px-12 py-7 text-lg"
               >
                 <Link href="/join-waitlist">{cta}</Link>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-primary/20 hover:border-primary/40 text-foreground font-medium rounded-full px-8 py-6 text-lg"
-              >
-                Learn More
               </Button>
             </div>
           </div>
@@ -57,18 +56,23 @@ export default function Hero() {
               />
             </div>
 
-            {/* Floating elements */}
             <div className="absolute -top-6 -left-6 glass rounded-2xl p-4">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-green"></div>
-                <span className="font-medium">Mental Health Focus</span>
+                <div className="w-3 h-3 rounded-full bg-secondary"></div>
+                <span className="font-medium">Mental Health</span>
               </div>
             </div>
 
             <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-4">
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-accent"></div>
-                <span className="font-medium">Team Performance</span>
+                <span className="font-medium">Team Management</span>
+              </div>
+            </div>
+            <div className="absolute bottom-8 -left-20 glass rounded-2xl p-4">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+                <span className="font-medium">Athlete retention</span>
               </div>
             </div>
           </div>

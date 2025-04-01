@@ -7,7 +7,7 @@ export default function Partnership() {
 
   return (
     <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-accent opacity-90"></div>
+      <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary to-[#005BBD]  opacity-90"></div>
       <div className="absolute inset-0 -z-10 bg-[url('/images/pattern.png')] opacity-10 mix-blend-overlay"></div>
 
       <div className="container px-4 md:px-6">
@@ -19,7 +19,7 @@ export default function Partnership() {
           <Button
             asChild
             size="lg"
-            className="bg-white text-accent hover:bg-white/90 font-medium rounded-full px-10 py-7 text-lg"
+            className="bg-white text-primary hover:bg-white/90 font-medium rounded-full px-10 py-7 text-lg"
           >
             <Link href="/become-partner">{cta}</Link>
           </Button>

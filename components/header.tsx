@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import content from "@/data/content.json";
+import Image from "next/image";
 
 export default function Header() {
   const { logo, navigation, cta } = content.header;
@@ -12,7 +13,12 @@ export default function Header() {
           href="/"
           className="font-montserrat font-bold text-2xl text-primary"
         >
-          {logo}
+          <Image
+            src="/images/nordic-pro-logo.png"
+            alt="Logo"
+            width={190}
+            height={90}
+          />
         </Link>
         <nav className="hidden md:flex items-center gap-8">
           {navigation.map((item, index) => (

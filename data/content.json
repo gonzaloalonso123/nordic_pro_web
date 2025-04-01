@@ -35,7 +35,7 @@
       {
         "title": "Built for retention",
         "description": "When players feel connected, they stay. We help clubs keep their talent season after season.",
-        "image": "/images/growth.webp"
+        "image": "/images/retention.webp"
       }
     ]
   },
@@ -70,7 +70,7 @@
     ]
   },
   "partnership": {
-    "title": "Are you a coach, club, or organization that shares our vision?",
+    "title": "Are you an organization that shares our vision?",
     "subtitle": "Let's team up.",
     "cta": "Become a Partner"
   },

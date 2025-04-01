@@ -1,90 +1,377 @@
-import { CheckCircle } from "lucide-react"
-import content from "@/data/content.json"
-import { Card } from "./ui/card"
+"use client";
+
+import type React from "react";
+
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  CheckCircle,
+  ChevronRight,
+  ChevronLeft,
+  LineChart,
+  Trophy,
+  Heart,
+  Users,
+} from "lucide-react";
+import { useMobile } from "@/hooks/use-mobile";
+import content from "@/data/content.json";
 
 export default function Features() {
-  const { title, subtitle, list } = content.features
+  const { title, subtitle, list } = content.features;
+  const [activeFeature, setActiveFeature] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMobile();
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+
+  const handleNext = () => {
+    setActiveFeature((prev) => (prev === list.length - 1 ? 0 : prev + 1));
+  };
+
+  const handlePrev = () => {
+    setActiveFeature((prev) => (prev === 0 ? list.length - 1 : prev - 1));
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      handleNext();
+    }
+
+    if (touchEnd - touchStart > 75) {
+      handlePrev();
+    }
+  };
+
+  // Feature icons mapping - using Lucide icons
+  const featureIcons = [
+    // Analytics icon for tracking performance
+    "LineChart",
+    // Trophy icon for motivation and achievements
+    "Trophy",
+    // Heart icon for mental health and wellbeing
+    "Heart",
+    // Users icon for team management
+    "Users",
+  ];
+
+  // Function to render the appropriate icon
+  const renderIcon = (iconName: string, className = "h-6 w-6") => {
+    switch (iconName) {
+      case "LineChart":
+        return <LineChart className={className} />;
+      case "Trophy":
+        return <Trophy className={className} />;
+      case "Heart":
+        return <Heart className={className} />;
+      case "Users":
+        return <Users className={className} />;
+      default:
+        return <LineChart className={className} />;
+    }
+  };
 
   return (
-    <section id="features" className="py-24 relative overflow-hidden bg-muted/30 max-w-6xl mx-auto">
-      {/* Background elements */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute bottom-0 right-0 translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"></div>
-      </div>
-
+    <section
+      id="features"
+      className="py-10 lg:py-24 relative overflow-hidden max-w-6xl mx-auto"
+    >
       <div className="container px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">{title}</h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">{subtitle}</p>
+          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+            {title.split("—")[0]}
+          </h2>
+          <h2 className="text-2xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+            {title.split("—")[1].replace(".", "")}
+          </h2>
+          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+            {subtitle}
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-16">
-          {list.map((feature, index) => (
-            <Card key={index} className="relative p-10 hover:shadow-xl transition-all hover:-translate-y-1"> 
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+        {/* Mobile View */}
+        {isMobile && (
+          <div className="mb-12">
+            <div className="relative">
+              {/* Mobile Carousel */}
+              <div
+                className="relative overflow-hidden rounded-2xl pb-4"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeFeature}
+                    initial={{ opacity: 0, x: 100 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -100 }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-white rounded-3xl shadow-lg p-6 border border-primary/10 h-[300px]"
                   >
-                    {index === 0 && (
-                      <>
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                        <></>
-                        <path d="M8 9h8"></path>
-                        <path d="M8 13h6"></path>
-                      </>
-                    )}
-                    {index === 1 && (
-                      <>
-                        <path d="M12 2v4"></path>
-                        <path d="M12 18v4"></path>
-                        <path d="m4.93 4.93 2.83 2.83"></path>
-                        <path d="m16.24 16.24 2.83 2.83"></path>
-                        <path d="M2 12h4"></path>
-                        <path d="M18 12h4"></path>
-                        <path d="m4.93 19.07 2.83-2.83"></path>
-                        <path d="m16.24 7.76 2.83-2.83"></path>
-                      </>
-                    )}
-                    {index === 2 && (
-                      <>
-                        <path d="M18 8a6 6 0 0 0-6-6 6 6 0 0 0-6 6c0 7 6 13 6 13s6-6 6-13z"></path>
-                        <circle cx="12" cy="8" r="2"></circle>
-                      </>
-                    )}
-                    {index === 3 && (
-                      <>
-                        <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
-                        <line x1="3" x2="21" y1="9" y2="9"></line>
-                        <line x1="9" x2="9" y1="21" y2="9"></line>
-                      </>
-                    )}
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold font-montserrat text-primary">{feature.title}</h3>
+                    <div className="flex items-center gap-4 mb-6">
+                      <motion.div
+                        className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-primary to-[#005BBD] text-white shadow-md"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{
+                          type: "spring",
+                          stiffness: 400,
+                          damping: 10,
+                        }}
+                      >
+                        {renderIcon(featureIcons[activeFeature])}
+                      </motion.div>
+                      <h3 className="text-xl font-bold font-montserrat">
+                        {list[activeFeature].title}
+                      </h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      {list[activeFeature].items.map((item, itemIndex) => (
+                        <motion.div
+                          key={itemIndex}
+                          className="flex items-start gap-3"
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: itemIndex * 0.1 }}
+                        >
+                          <CheckCircle className="h-5 w-5 text-secondary/70 flex-shrink-0 mt-0.5" />
+                          <span className="text-foreground/80">{item}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
 
-              <ul className="space-y-4 pl-4">
-                {feature.items.map((item, itemIndex) => (
-                  <li key={itemIndex} className="flex items-start gap-3">
-                    <CheckCircle className="h-5 w-5 text-green flex-shrink-0 mt-0.5" />
-                    <span className="text-foreground/80">{item}</span>
-                  </li>
+              <div className="flex gap-6 justify-center items-center mt-2">
+                <button
+                  onClick={handlePrev}
+                  className="z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
+                  aria-label="Previous feature"
+                >
+                  <ChevronLeft className="h-5 w-5 text-primary" />
+                </button>
+                {list.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      activeFeature === index
+                        ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
+                        : "w-2 bg-gray-300"
+                    }`}
+                    onClick={() => setActiveFeature(index)}
+                    aria-label={`Go to feature ${index + 1}`}
+                  />
                 ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
+                <button
+                  onClick={handleNext}
+                  className="z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
+                  aria-label="Next feature"
+                >
+                  <ChevronRight className="h-5 w-5 text-primary" />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Desktop View */}
+        {!isMobile && (
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Feature navigation */}
+            <div className="order-2 lg:order-1">
+              <div className="space-y-4">
+                {list.map((feature, index) => {
+                  const isActive = activeFeature === index;
+
+                  return (
+                    <motion.div
+                      key={index}
+                      className={`relative rounded-xl p-6 cursor-pointer transition-all ${
+                        isActive
+                          ? "bg-white shadow-lg border border-primary/10"
+                          : "hover:bg-white/50 hover:shadow-md"
+                      }`}
+                      onClick={() => setActiveFeature(index)}
+                      whileHover={{ scale: isActive ? 1 : 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                    >
+                      <div className="flex items-start gap-4">
+                        <motion.div
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                            isActive
+                              ? "bg-gradient-to-br from-primary to-[#005BBD] text-white shadow-md"
+                              : "bg-gradient-to-br from-primary/10 to-[#005BBD10] text-primary"
+                          }`}
+                          whileHover={{ rotate: isActive ? 0 : 5 }}
+                        >
+                          {renderIcon(featureIcons[index])}
+                        </motion.div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold font-montserrat mb-2">
+                            {feature.title}
+                          </h3>
+                          <ul className="space-y-2">
+                            {feature.items
+                              .slice(0, isActive ? 3 : 1)
+                              .map((item, itemIndex) => (
+                                <motion.li
+                                  key={itemIndex}
+                                  className="flex items-start gap-2"
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: 0.1 + itemIndex * 0.1 }}
+                                >
+                                  <CheckCircle className="h-5 w-5 text-secondary/70 flex-shrink-0 mt-0.5" />
+                                  <span className="text-foreground/80">
+                                    {item}
+                                  </span>
+                                </motion.li>
+                              ))}
+                          </ul>
+                          {!isActive && feature.items.length > 1 && (
+                            <motion.button
+                              className="mt-2 text-primary flex items-center text-sm font-medium"
+                              whileHover={{ x: 5 }}
+                            >
+                              See more <ChevronRight className="h-4 w-4 ml-1" />
+                            </motion.button>
+                          )}
+                        </div>
+                      </div>
+
+                      {/* Fixed indicator animation */}
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.div
+                            key={`indicator-${index}`}
+                            className="absolute -left-1 top-1/2 -translate-y-1/2 w-2 h-16 bg-gradient-to-b from-primary to-[#005BBD] rounded-r-full"
+                            initial={{ opacity: 0, scaleY: 0 }}
+                            animate={{ opacity: 1, scaleY: 1 }}
+                            exit={{ opacity: 0, scaleY: 0 }}
+                            transition={{ duration: 0.2 }}
+                          />
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Feature visualization */}
+            <div className="order-1 lg:order-2">
+              <div className="relative">
+                <AnimatePresence mode="wait">
+                  {list.map(
+                    (feature, index) =>
+                      activeFeature === index && (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, scale: 0.9, x: 20 }}
+                          animate={{ opacity: 1, scale: 1, x: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, x: -20 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <div className="relative bg-white rounded-3xl shadow-xl p-6 md:p-8 border border-primary/10 overflow-hidden">
+                            {/* Decorative elements */}
+                            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-x-10 -translate-y-10"></div>
+                            <div className="absolute bottom-0 left-0 w-24 h-24 bg-accent/5 rounded-full translate-x-6 translate-y-6"></div>
+
+                            <div className="relative">
+                              <div className="flex items-center gap-3 mb-4">
+                                <motion.div
+                                  className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-[#005BBD] flex items-center justify-center text-white flex-shrink-0 shadow-md"
+                                  whileHover={{ scale: 1.1 }}
+                                  transition={{
+                                    type: "spring",
+                                    stiffness: 400,
+                                    damping: 10,
+                                  }}
+                                >
+                                  {renderIcon(featureIcons[index], "h-5 w-5")}
+                                </motion.div>
+                                <h3 className="text-2xl font-bold font-montserrat text-primary">
+                                  {feature.title}
+                                </h3>
+                              </div>
+
+                              <div className="space-y-6">
+                                {feature.items.map((item, itemIndex) => (
+                                  <motion.div
+                                    key={itemIndex}
+                                    className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: itemIndex * 0.1 }}
+                                  >
+                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-[#005BBD20] flex items-center justify-center text-primary flex-shrink-0">
+                                      {itemIndex + 1}
+                                    </div>
+                                    <div>
+                                      <p className="font-medium">{item}</p>
+                                      <p className="text-sm text-foreground/60 mt-1">
+                                        {
+                                          [
+                                            "Track progress and celebrate achievements",
+                                            "Build stronger connections within your team",
+                                            "Improve performance through positive reinforcement",
+                                          ][itemIndex % 3]
+                                        }
+                                      </p>
+                                    </div>
+                                  </motion.div>
+                                ))}
+                              </div>
+
+                              <div className="mt-6 flex justify-end">
+                                <motion.div
+                                  className="flex items-center gap-1 text-sm text-primary font-medium"
+                                  whileHover={{ x: 5 }}
+                                >
+                                  <span>
+                                    Learn more about{" "}
+                                    {feature.title.toLowerCase()}
+                                  </span>
+                                  <ChevronRight className="h-4 w-4" />
+                                </motion.div>
+                              </div>
+                            </div>
+                          </div>
+                        </motion.div>
+                      )
+                  )}
+                </AnimatePresence>
+                <div className="flex justify-center mt-6 gap-2">
+                  {list.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`h-2 rounded-full transition-all duration-300 ${
+                        activeFeature === index
+                          ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
+                          : "w-2 bg-gray-300"
+                      }`}
+                      onClick={() => setActiveFeature(index)}
+                      aria-label={`Go to feature ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
-  )
+  );
 }
-

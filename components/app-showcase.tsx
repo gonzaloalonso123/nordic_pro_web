@@ -134,7 +134,7 @@ export default function AppShowcase() {
   const ScreenComponent = activeScreen.component;
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-10 lg:py-24 relative overflow-hidden">
       <div className="container px-4 md:px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
@@ -184,8 +184,8 @@ export default function AppShowcase() {
 
                 <div className="w-full md:w-1/2 order-1 md:order-2 relative">
                   {/* Phone mockup with screen */}
-                  <div className="relative mx-auto w-[280px] h-[580px] rounded-[40px] border-[14px] border-foreground/10 shadow-lg overflow-hidden bg-white transform rotate-y-5 rotate-z-2 perspective-1000">
-                    <div className="absolute top-0 w-[120px] h-[30px] left-1/2 -translate-x-1/2 bg-foreground/10 rounded-b-[14px]"></div>
+                  <div className="relative mx-auto w-[280px] h-[580px] rounded-[40px] border-[14px] border-foreground/80 shadow-lg overflow-hidden bg-white transform rotate-y-5 rotate-z-2 perspective-1000">
+                    <div className="absolute top-0 w-[120px] h-[30px] left-1/2 -translate-x-1/2 bg-foreground/80 rounded-b-[14px]"></div>
                     <div className="h-full w-full overflow-hidden rounded-[30px]">
                       <ScreenComponent />
                     </div>
@@ -374,7 +374,6 @@ export default function AppShowcase() {
             </motion.div>
           </div>
 
-          {/* Navigation buttons */}
           <button
             onClick={handlePrev}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-primary/5 transition-colors"
