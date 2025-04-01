@@ -32,6 +32,7 @@ export default function EmailTemplatesDisplay() {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
+  
 
   return (
     <div className="min-h-screen bg-background py-16 pt-24">
