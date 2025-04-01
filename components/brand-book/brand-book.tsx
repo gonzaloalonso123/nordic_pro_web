@@ -10,6 +10,7 @@ import LogoGuidelines from "./logo-guidelines";
 import UIComponents from "./ui-components";
 import ImageryGuidelines from "./imagery-guidelines";
 import VoiceTone from "./voice-tone";
+import Link from "next/link";
 
 const sections = [
   { id: "intro", title: "Introduction" },
@@ -77,6 +78,12 @@ export default function BrandBook() {
                     {section.title}
                   </button>
                 ))}
+                <Link
+                  href="/email-templates"
+                  className="block w-full text-left px-4 py-2 rounded-lg transition-colors hover:bg-primary/10 text-foreground/70"
+                >
+                  Email Templates
+                </Link>
               </nav>
             </div>
           </div>
