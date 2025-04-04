@@ -1,25 +1,70 @@
+"use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import content from "@/data/content.json";
 import CTA from "./cta";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const { title, description, cta } = content.hero;
+
+  // Animation Variants
+  const fadeIn = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const fadeInImage = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: "easeOut" },
+    },
+  };
+
+  const tagVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"></div>
+        <motion.div
+          className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-3xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
+        <motion.div
+          className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.5 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        />
       </div>
 
       <div className="container px-4 md:px-6 relative">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
-          <div className="flex flex-col justify-center space-y-8 max-w-2xl">
+          {/* Text Section */}
+          <motion.div
+            className="flex flex-col justify-center space-y-8 max-w-2xl"
+            variants={fadeIn}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="space-y-4">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-montserrat tracking-tight leading-tight ">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-montserrat tracking-tight leading-tight">
                 Where{" "}
                 <span className="bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                   performance
@@ -42,9 +87,15 @@ export default function Hero() {
                 <Link href="/join-waitlist">{cta}</Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="relative lg:ml-auto w-full">
+          {/* Image Section */}
+          <motion.div
+            className="relative lg:ml-auto w-full"
+            variants={fadeInImage}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="relative h-[500px] w-full lg:h-[600px] rounded-3xl overflow-hidden">
               <Image
                 src="/images/hero-image.webp"
@@ -56,26 +107,46 @@ export default function Hero() {
               />
             </div>
 
-            <div className="absolute -top-6 -left-6 glass rounded-2xl p-4">
+            {/* Floating Tags */}
+            <motion.div
+              className="absolute -top-6 -left-6 glass rounded-2xl p-4"
+              variants={tagVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.6 }}
+            >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-secondary"></div>
                 <span className="font-medium">Mental Health</span>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-4">
+            <motion.div
+              className="absolute -bottom-6 -right-6 glass rounded-2xl p-4"
+              variants={tagVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 0.8 }}
+            >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-accent"></div>
                 <span className="font-medium">Team Management</span>
               </div>
-            </div>
-            <div className="absolute bottom-8 -left-20 glass rounded-2xl p-4">
+            </motion.div>
+
+            <motion.div
+              className="absolute bottom-8 -left-20 glass rounded-2xl p-4"
+              variants={tagVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: 1 }}
+            >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-blue-400"></div>
                 <span className="font-medium">Athlete retention</span>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

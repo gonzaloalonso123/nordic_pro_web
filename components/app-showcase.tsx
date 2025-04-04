@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Stars } from "lucide-react";
 
 // Import app screen components
 import CalendarScreen from "./app-screens/calendar-screen";
@@ -134,9 +134,29 @@ export default function AppShowcase() {
   const ScreenComponent = activeScreen.component;
 
   return (
-    <section className="py-10 lg:py-24 relative overflow-hidden">
+    <section
+      id="app-showcase"
+      className="py-10 lg:py-24 relative overflow-hidden"
+    >
       <div className="container px-4 md:px-6">
         <div className="text-center mb-16">
+          <div className="flex items-center space-x-2 justify-center mb-4 px-5 py-2 bg-primary/10 rounded-full w-fit mx-auto">
+            <motion.div
+              animate={{
+                rotate: [0, 10, -10, 0],
+                scale: [1, 1.1, 1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "reverse",
+                ease: "easeInOut",
+              }}
+            >
+              <Stars className="text-primary h-5 w-5" />
+            </motion.div>{" "}
+            <span className="text-sm font-bold text-primary">Platform</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
             Experience NordicPro
           </h2>

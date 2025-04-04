@@ -4,7 +4,9 @@
     "navigation": [
       { "label": "Our mission", "href": "#mission" },
       { "label": "Features", "href": "#features" },
+      { "label": "Platform", "href": "#app-showcase" },
       { "label": "FAQ", "href": "#faq" }
+
     ],
     "cta": "Join Waitlist"
   },

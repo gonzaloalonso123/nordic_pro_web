@@ -12,6 +12,7 @@ import {
   Trophy,
   Heart,
   Users,
+  Stars,
 } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
 import content from "@/data/content.json";
@@ -79,23 +80,36 @@ export default function Features() {
   };
 
   return (
-    <section
-      id="features"
-      className="py-10 lg:py-24 relative overflow-hidden max-w-6xl mx-auto"
-    >
-      <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+    <section id="features" className="py-10 lg:py-24 relative overflow-hidden ">
+      <div className="container px-4 md:px-6 max-w-6xl mx-auto">
+        <div className="flex items-center space-x-2 justify-center mb-4 px-5 py-2 bg-primary/10 rounded-full w-fit mx-auto">
+          <motion.div
+            animate={{
+              rotate: [0, 10, -10, 0],
+              scale: [1, 1.1, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Number.POSITIVE_INFINITY,
+              repeatType: "reverse",
+              ease: "easeInOut",
+            }}
+          >
+            <Stars className="text-primary h-5 w-5" />
+          </motion.div>{" "}
+          <span className="text-sm font-semibold text-primary">FEATURES</span>
+        </div>
+        <div className="text-center mb-16 ">
+          <h2 className="text-4xl md:text-5xl font-bold font-montserrat pb-3  bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
             {title.split("—")[0]}
           </h2>
-          <h2 className="text-2xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+          <h2 className="text-2xl md:text-5xl font-bold font-montserrat pb-6  bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
             {title.split("—")[1].replace(".", "")}
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             {subtitle}
           </p>
         </div>
-
         {/* Mobile View */}
         {isMobile && (
           <div className="mb-12">
@@ -182,7 +196,6 @@ export default function Features() {
             </div>
           </div>
         )}
-
         {/* Desktop View */}
         {!isMobile && (
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -334,19 +347,6 @@ export default function Features() {
                                   </motion.div>
                                 ))}
                               </div>
-
-                              <div className="mt-6 flex justify-end">
-                                <motion.div
-                                  className="flex items-center gap-1 text-sm text-primary font-medium"
-                                  whileHover={{ x: 5 }}
-                                >
-                                  <span>
-                                    Learn more about{" "}
-                                    {feature.title.toLowerCase()}
-                                  </span>
-                                  <ChevronRight className="h-4 w-4" />
-                                </motion.div>
-                              </div>
                             </div>
                           </div>
                         </motion.div>
@@ -371,6 +371,20 @@ export default function Features() {
             </div>
           </div>
         )}
+      </div>
+      {/* Enhanced animated background gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-transparent via-primary to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+        />
       </div>
     </section>
   );
