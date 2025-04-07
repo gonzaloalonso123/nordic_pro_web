@@ -19,6 +19,7 @@ export default function Mission() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Handle navigation
   const nextSlide = () => {
@@ -28,6 +29,16 @@ export default function Mission() {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + features.length) % features.length);
   };
+
+  // Scroll to selected card on mobile
+  useEffect(() => {
+    if (mobileCardRefs.current[currentIndex]) {
+      mobileCardRefs.current[currentIndex]?.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest",
+      });
+    }
+  }, [currentIndex]);
 
   // Auto-advance slides with pause on hover
   const [isPaused, setIsPaused] = useState(false);
@@ -58,11 +69,6 @@ export default function Mission() {
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-  };
-
-  const slideIn = {
-    hidden: { opacity: 0, x: 20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
   };
 
   const scaleIn = {
@@ -132,7 +138,7 @@ export default function Mission() {
 
           <motion.h2
             variants={fadeIn}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
+            className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
           >
             {title}
           </motion.h2>
@@ -149,7 +155,7 @@ export default function Mission() {
         <div className="max-w-6xl mx-auto mb-12 md:mb-16">
           {/* Text navigation tabs - centered above carousel with improved responsive design */}
           <motion.div
-            className="flex flex-wrap justify-center gap-2 mb-6 md:mb-8 px-2 sticky top-4 z-20"
+            className="hidden md:flex flex-wrap justify-center gap-2 mb-6 md:mb-8 px-2 sticky top-4 z-20"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -171,15 +177,14 @@ export default function Mission() {
             ))}
           </motion.div>
 
-          {/* Carousel container with progress indicator - SMALLER SIZE */}
-          <motion.div
-            className="relative overflow-hidden rounded-3xl shadow-xl shadow-primary/10 max-w-4xl mx-auto"
-            variants={scaleIn}
-            initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-          >
-            {/* Main carousel */}
-            <div className="relative">
+          {/* NEW APPROACH: Split view with image and description side by side */}
+          <div className="hidden md:block">
+            <motion.div
+              className="relative overflow-hidden rounded-3xl shadow-xl max-w-4xl mx-auto"
+              variants={scaleIn}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentIndex}
@@ -187,69 +192,132 @@ export default function Mission() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
+                  className="relative"
                 >
-                  <div className="aspect-[16/9] w-full relative">
-                    <Image
-                      src={features[currentIndex].image || "/placeholder.svg"}
-                      alt={features[currentIndex].title}
-                      fill
-                      className="object-contain object-center"
-                      priority
-                    />
+                  {/* Modern split layout with image and content */}
+                  <div className="grid grid-cols-5 min-h-[400px]">
+                    {/* Image section - takes 3/5 of the space */}
+                    <div className="col-span-3 relative">
+                      <Image
+                        src={features[currentIndex].image || "/placeholder.svg"}
+                        alt={features[currentIndex].title}
+                        fill
+                        className="object-contain object-center"
+                        priority
+                      />
 
-                    {/* Enhanced overlay for better text visibility */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10"></div>
-                  </div>
+                      {/* Slide counter */}
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">
+                        {currentIndex + 1}/{features.length}
+                      </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 md:p-10">
-                    <div className="max-w-3xl mx-auto text-center">
-                      <span className="inline-block px-3 py-1 bg-primary/20 text-white text-xs sm:text-sm font-medium rounded-full mb-3 sm:mb-4">
-                        Mission {currentIndex + 1}/{features.length}
-                      </span>
-                      <div>
-                        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3">
+                      {/* Navigation controls */}
+                      {/* Navigation controls - Overlayed on Image */}
+                      <div className="absolute inset-y-0 left-4 flex items-center z-10">
+                        <button
+                          onClick={prevSlide}
+                          className="w-10 h-10 rounded-full bg-primary/50 backdrop-blur-sm shadow-lg hover:bg-primary/90 flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                          aria-label="Previous slide"
+                        >
+                          <ChevronLeft className="h-5 w-5 text-white" />
+                        </button>
+                      </div>
+                      <div className="absolute inset-y-0 right-4 flex items-center z-10">
+                        <button
+                          onClick={nextSlide}
+                          className="w-10 h-10 rounded-full bg-primary/50 backdrop-blur-sm shadow-lg hover:bg-primary/90 flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                          aria-label="Next slide"
+                        >
+                          <ChevronRight className="h-5 w-5 text-white" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Content section - takes 2/5 of the space */}
+                    <div className="col-span-2 bg-white dark:bg-gray-900 p-6 flex flex-col">
+                      <div className="mb-4">
+                        <h3 className="text-xl font-bold text-primary mb-2">
                           {features[currentIndex].title}
                         </h3>
-                        <p className="text-white/90 text-sm sm:text-base md:text-lg leading-relaxed">
-                          {features[currentIndex].description}
-                        </p>
+                        <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full"></div>
+                      </div>
+
+                      <p className="text-foreground/80 text-sm leading-relaxed flex-grow">
+                        {features[currentIndex].description}
+                      </p>
+
+                      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                            <Star className="w-4 h-4 text-primary" />
+                          </div>
+                          <span className="text-xs text-foreground/60">
+                            Key mission initiative
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
+            </motion.div>
+
+            {/* Pagination indicators */}
+            <div className="flex justify-center items-center mt-6 gap-3">
+              {features.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentIndex(index)}
+                  className={`h-3 rounded-full transition-all duration-300 ${
+                    currentIndex === index
+                      ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
+                      : "w-3 bg-gray-300 hover:bg-gray-400"
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Pagination indicators - centered with improved animation */}
-          <div className="flex justify-center items-center mt-6 gap-3">
-            <button
-              onClick={prevSlide}
-              className="  w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-white/50 transition-colors"
-              aria-label="Previous screen"
-            >
-              <ChevronLeft className="h-6 w-6 text-primary" />
-            </button>
-
-            {features.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-3 rounded-full transition-all duration-300 ${
-                  currentIndex === index
-                    ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
-                    : "w-3 bg-gray-300 hover:bg-gray-400"
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-            <button
-              onClick={nextSlide}
-              className="   w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-white/50 transition-colors"
-              aria-label="Next screen"
-            >
-              <ChevronRight className="h-6 w-6 text-primary" />
-            </button>
+          {/* Mobile card view - all cards visible stacked vertically */}
+          <div className="md:hidden mt-8">
+            {/* All mobile cards visible */}
+            <div className="space-y-6">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  id={`mission-card-${index}`}
+                  className={`bg-white rounded-xl shadow-md overflow-hidden border `}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{
+                    opacity: 1,
+                    y: 0,
+                    scale: currentIndex === index ? 1 : 0.98,
+                  }}
+                  transition={{ delay: index * 0.05 }}
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={feature.image || "/placeholder.svg"}
+                      alt={feature.title}
+                      fill
+                      className="object-contain"
+                    />
+                    <div className="absolute top-2 right-2 bg-primary text-white text-xs font-medium px-2 py-1 rounded-full">
+                      {index + 1}/{features.length}
+                    </div>
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-lg font-bold text-primary mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-foreground/70">
+                      {feature.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -325,6 +393,17 @@ export default function Mission() {
           }}
         />
       </div>
+
+      {/* Add custom style for hiding scrollbar on mobile tabs */}
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
     </section>
   );
 }

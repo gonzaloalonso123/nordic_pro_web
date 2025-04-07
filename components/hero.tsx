@@ -37,7 +37,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+    <section className="relative pt-32 pb-28 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div
@@ -47,7 +47,7 @@ export default function Hero() {
           transition={{ duration: 1.5, ease: "easeOut" }}
         />
         <motion.div
-          className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
+          className="absolute bottom-50 left-0 translate-y-1/4 -translate-x-1/4 w-[600px] h-[600px] rounded-full bg-accent/5 blur-3xl"
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.5 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
@@ -63,7 +63,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <div className="space-y-4">
+            <div className="space-y-4 drop-shadow-md">
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold font-montserrat tracking-tight leading-tight">
                 Where{" "}
                 <span className="bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
@@ -96,7 +96,7 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <div className="relative h-[500px] w-full lg:h-[600px] rounded-3xl overflow-hidden">
+            <div className="relative h-[300px] w-full lg:h-[600px] rounded-3xl overflow-hidden">
               <Image
                 src="/images/hero-image.webp"
                 alt="Young soccer player kicking a ball"
@@ -109,7 +109,7 @@ export default function Hero() {
 
             {/* Floating Tags */}
             <motion.div
-              className="absolute -top-6 -left-6 glass rounded-2xl p-4"
+              className="absolute -top-2 md:-top-6 left-10 md:-left-6 glass rounded-2xl p-2 md:p-4"
               variants={tagVariants}
               initial="hidden"
               animate="visible"
@@ -117,12 +117,14 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-secondary"></div>
-                <span className="font-medium">Mental Health</span>
+                <span className="font-normal text-sm md:text-base text-foreground/80">
+                  Mental Health
+                </span>
               </div>
             </motion.div>
 
             <motion.div
-              className="absolute -bottom-6 -right-6 glass rounded-2xl p-4"
+              className="absolute -bottom-2 md:-bottom-6 -right-2 glass rounded-2xl p-2 md:p-4"
               variants={tagVariants}
               initial="hidden"
               animate="visible"
@@ -130,12 +132,14 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-accent"></div>
-                <span className="font-medium">Team Management</span>
+                <span className="font-normal text-sm md:text-base text-foreground/80">
+                  Team Management
+                </span>
               </div>
             </motion.div>
 
             <motion.div
-              className="absolute bottom-8 -left-20 glass rounded-2xl p-4"
+              className="absolute bottom-24 md:-left-20 glass rounded-2xl p-2 md:p-4"
               variants={tagVariants}
               initial="hidden"
               animate="visible"
@@ -143,7 +147,9 @@ export default function Hero() {
             >
               <div className="flex items-center gap-2">
                 <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                <span className="font-medium">Athlete retention</span>
+                <span className="font-normal text-sm md:text-base text-foreground/80">
+                  Athlete retention
+                </span>
               </div>
             </motion.div>
           </motion.div>

@@ -157,7 +157,7 @@ export default function AppShowcase() {
             </motion.div>{" "}
             <span className="text-sm font-bold text-primary">Platform</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+          <h2 className="drop-shadow-sm text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
             Experience NordicPro
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">

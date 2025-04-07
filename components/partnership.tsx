@@ -12,7 +12,7 @@ export default function Partnership() {
 
       <div className="container px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center text-white">
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6">
+          <h2 className="drop-shadow-sm text-4xl md:text-5xl font-bold font-montserrat mb-6">
             {title}
           </h2>
           <p className="text-2xl mb-10 text-white/90">{subtitle}</p>

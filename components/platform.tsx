@@ -41,7 +41,7 @@ export default function Platform() {
           </div>
 
           <div className="order-1 md:order-2 space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-primary">
+            <h2 className="text-4xl md:text-5xl font-bold font-montserrat text-primary drop-shadow-sm">
               {title}
             </h2>
 
