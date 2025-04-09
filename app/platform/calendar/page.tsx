@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -10,6 +13,9 @@ export default function CalendarPage() {
   const currentDate = new Date()
   const currentMonth = currentDate.toLocaleString("default", { month: "long" })
   const currentYear = currentDate.getFullYear()
+
+  // Add state for the calendar view
+  const [view, setView] = useState("month")
 
   return (
     <div className="max-w-7xl mx-auto">
@@ -55,7 +61,7 @@ export default function CalendarPage() {
                     Today
                   </Button>
                 </div>
-                <Tabs defaultValue="month">
+                <Tabs value={view} onValueChange={setView}>
                   <TabsList>
                     <TabsTrigger value="month">Month</TabsTrigger>
                     <TabsTrigger value="week">Week</TabsTrigger>
@@ -66,7 +72,7 @@ export default function CalendarPage() {
               </div>
             </CardHeader>
             <CardContent>
-              <CalendarView />
+              <CalendarView view={view} />
             </CardContent>
           </Card>
         </div>

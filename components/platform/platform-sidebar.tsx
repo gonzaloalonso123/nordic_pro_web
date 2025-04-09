@@ -13,7 +13,7 @@ const menuItems = [
   { name: "Mental Health", href: "/platform/mental-health", icon: Heart },
   { name: "Motivation", href: "/platform/motivation", icon: Trophy },
   { name: "Calendar", href: "/platform/calendar", icon: Calendar },
-  { name: "Messages", href: "/platform/messages", icon: MessageSquare },
+  { name: "Messages", href: "/platform/chat", icon: MessageSquare },
   { name: "Analytics", href: "/platform/analytics", icon: BarChart3 },
   { name: "Settings", href: "/platform/settings", icon: Settings },
 ]

@@ -22,8 +22,7 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: "NordicPro - Where Performance Meets Well-being",
-  description:
-    "A platform for youth teams that puts mental health, motivation, and team management in one place.",
+  description: "A platform for youth teams that puts mental health, motivation, and team management in one place.",
 };
 
 export default async function RootLayout({
@@ -34,23 +33,19 @@ export default async function RootLayout({
   params: { locale: string }; // Required if using [locale] segment
 }) {
   const locale = await getLocale();
-
-  // Load translations
-  const messages = (await import(`../../messages/${locale}.json`)).default;
+  // const messages = (await import(`../../messages/${locale}.json`)).default;
 
   return (
     <html lang={locale}>
-      <body
-        className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}
-      >
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <CookieConsent />
-            <Footer />
-          </div>
-        </NextIntlClientProvider>
+      <body className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}>
+        {/* <NextIntlClientProvider locale={locale} messages={messages}> */}
+        <div className="flex flex-col min-h-screen">
+          <Header />
+          <main className="flex-1">{children}</main>
+          {/* <CookieConsent /> */}
+          <Footer />
+        </div>
+        {/* </NextIntlClientProvider> */}
       </body>
     </html>
   );
