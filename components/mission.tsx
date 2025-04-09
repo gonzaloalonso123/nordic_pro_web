@@ -3,16 +3,7 @@ import Image from "next/image";
 import content from "@/data/content.json";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  CheckCircle,
-  Star,
-  Users,
-  Award,
-  Clock,
-  Stars,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle, Star, Users, Award, Clock, Stars } from "lucide-react";
 
 export default function Mission() {
   const { title, subtitle, features } = content.mission;
@@ -29,8 +20,6 @@ export default function Mission() {
   const prevSlide = () => {
     setCurrentIndex((prev) => (prev - 1 + features.length) % features.length);
   };
-
-  // Scroll to selected card on mobile
   useEffect(() => {
     if (mobileCardRefs.current[currentIndex]) {
       mobileCardRefs.current[currentIndex]?.scrollIntoView({
@@ -39,11 +28,7 @@ export default function Mission() {
       });
     }
   }, [currentIndex]);
-
-  // Auto-advance slides with pause on hover
   const [isPaused, setIsPaused] = useState(false);
-
-  // Auto-advance slides
   useEffect(() => {
     if (isPaused) return;
 
@@ -130,9 +115,7 @@ export default function Mission() {
               >
                 <Stars className="text-primary h-5 w-5" />
               </motion.div>
-              <span className="text-sm font-semibold text-primary">
-                OUR MISSION
-              </span>
+              <span className="text-sm font-semibold text-primary">OUR MISSION</span>
             </div>
           </motion.div>
 
@@ -143,17 +126,12 @@ export default function Mission() {
             {title}
           </motion.h2>
 
-          <motion.p
-            variants={fadeIn}
-            className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto"
-          >
+          <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
             {subtitle}
           </motion.p>
         </motion.div>
 
-        {/* Main carousel - centered */}
         <div className="max-w-6xl mx-auto mb-12 md:mb-16">
-          {/* Text navigation tabs - centered above carousel with improved responsive design */}
           <motion.div
             className="hidden md:flex flex-wrap justify-center gap-2 mb-6 md:mb-8 px-2 sticky top-4 z-20"
             initial={{ opacity: 0, y: 20 }}
@@ -177,7 +155,6 @@ export default function Mission() {
             ))}
           </motion.div>
 
-          {/* NEW APPROACH: Split view with image and description side by side */}
           <div className="hidden md:block">
             <motion.div
               className="relative overflow-hidden rounded-3xl shadow-xl max-w-4xl mx-auto"
@@ -194,9 +171,7 @@ export default function Mission() {
                   transition={{ duration: 0.3 }}
                   className="relative"
                 >
-                  {/* Modern split layout with image and content */}
                   <div className="grid grid-cols-5 min-h-[400px]">
-                    {/* Image section - takes 3/5 of the space */}
                     <div className="col-span-3 relative">
                       <Image
                         src={features[currentIndex].image || "/placeholder.svg"}
@@ -206,13 +181,9 @@ export default function Mission() {
                         priority
                       />
 
-                      {/* Slide counter */}
                       <div className="absolute top-4 left-4 px-3 py-1 bg-primary text-white text-xs font-medium rounded-full">
                         {currentIndex + 1}/{features.length}
                       </div>
-
-                      {/* Navigation controls */}
-                      {/* Navigation controls - Overlayed on Image */}
                       <div className="absolute inset-y-0 left-4 flex items-center z-10">
                         <button
                           onClick={prevSlide}
@@ -236,9 +207,7 @@ export default function Mission() {
                     {/* Content section - takes 2/5 of the space */}
                     <div className="col-span-2 bg-white dark:bg-gray-900 p-6 flex flex-col">
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold text-primary mb-2">
-                          {features[currentIndex].title}
-                        </h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">{features[currentIndex].title}</h3>
                         <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full"></div>
                       </div>
 
@@ -251,9 +220,7 @@ export default function Mission() {
                           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                             <Star className="w-4 h-4 text-primary" />
                           </div>
-                          <span className="text-xs text-foreground/60">
-                            Key mission initiative
-                          </span>
+                          <span className="text-xs text-foreground/60">Key mission initiative</span>
                         </div>
                       </div>
                     </div>
@@ -308,12 +275,8 @@ export default function Mission() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-lg font-bold text-primary mb-2">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-foreground/70">
-                      {feature.description}
-                    </p>
+                    <h3 className="text-xl font-bold text-primary mb-2">{feature.title}</h3>
+                    <p className="text-sm text-foreground/70">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -321,9 +284,8 @@ export default function Mission() {
           </div>
         </div>
 
-        {/* Statistics section - enhanced with better responsive design and animations */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
@@ -367,19 +329,13 @@ export default function Mission() {
                 <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                   {stat.value}
                 </div>
-                <div className="text-sm sm:text-base text-foreground/70">
-                  {stat.label}
-                </div>
+                <div className="text-sm sm:text-base text-foreground/70">{stat.label}</div>
               </div>
-
-              {/* Subtle hover effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
             </div>
           ))}
         </motion.div>
       </div>
-
-      {/* Enhanced animated background gradient */}
       <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
         <motion.div
           className="h-full bg-gradient-to-r from-transparent via-primary to-transparent"
@@ -393,8 +349,6 @@ export default function Mission() {
           }}
         />
       </div>
-
-      {/* Add custom style for hiding scrollbar on mobile tabs */}
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar {
           display: none;
