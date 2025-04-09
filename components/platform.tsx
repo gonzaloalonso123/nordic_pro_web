@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import content from "@/data/content.json";
+import { useTranslations } from "next-intl";
 
 export default function Platform() {
-  const { title, description, stats } = content.platform;
+  const t = useTranslations("platform"); // Access 'platform' section
+  const title = t("title");
+  const description = t.raw("description") as string[]; // Type the description array
+  const stats = t.raw("stats") as { value: string; label: string }[];
 
   return (
     <section className="py-10 lg:py-24 relative overflow-hidden">
@@ -20,7 +25,7 @@ export default function Platform() {
                 />
               </div>
 
-              {stats.slice(0, 2).map((stat, index) => (
+              {stats.slice(0, 2).map((stat: any, index: any) => (
                 <div
                   key={index}
                   className="absolute glass rounded-2xl p-4"
@@ -46,7 +51,7 @@ export default function Platform() {
             </h2>
 
             <div className="space-y-4">
-              {description.map((paragraph, index) => (
+              {description.map((paragraph: any, index: any) => (
                 <p key={index} className="text-lg text-foreground/70">
                   {paragraph}
                 </p>
@@ -54,7 +59,7 @@ export default function Platform() {
             </div>
 
             <div className="grid grid-cols-2 gap-4 pt-4">
-              {stats.slice(2, 4).map((stat, index) => (
+              {stats.slice(2, 4).map((stat: any, index: any) => (
                 <div key={index} className="glass rounded-2xl p-6">
                   <div className="font-bold text-primary text-3xl mb-2">
                     {stat.value}

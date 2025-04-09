@@ -1,9 +1,15 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import content from "@/data/content.json";
+import { useTranslations } from "next-intl";
+import { motion } from "framer-motion";
 
 export default function CTA() {
-  const { title, description, button } = content.cta;
+  const t = useTranslations("cta"); // Access 'cta' section
+  const title = t("title");
+  const description = t("description");
+  const button = t("button");
 
   return (
     <section className="py-24 overflow-hidden">
@@ -23,6 +29,20 @@ export default function CTA() {
             <Link href="/join-waitlist">{button}</Link>
           </Button>
         </div>
+      </div>
+      {/* Enhanced animated background gradient - inspired by features component */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
+        <motion.div
+          className="h-full bg-gradient-to-r from-transparent via-primary to-transparent"
+          animate={{
+            x: ["-100%", "100%"],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+        />
       </div>
     </section>
   );

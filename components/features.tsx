@@ -1,9 +1,8 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import {
   CheckCircle,
   ChevronRight,
@@ -15,10 +14,18 @@ import {
   Stars,
 } from "lucide-react";
 import { useMobile } from "@/hooks/use-mobile";
-import content from "@/data/content.json";
+import { useTranslations } from "next-intl";
 
 export default function Features() {
-  const { title, subtitle, list } = content.features;
+  const t = useTranslations("features"); // Access 'features' section
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const label = t("label");
+  const list = t.raw("list") as {
+    title: string;
+    icon: string;
+    items: { text: string; description: string }[];
+  }[];
   const [activeFeature, setActiveFeature] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
@@ -97,7 +104,7 @@ export default function Features() {
           >
             <Stars className="text-primary h-5 w-5" />
           </motion.div>{" "}
-          <span className="text-sm font-semibold text-primary">FEATURES</span>
+          <span className="text-sm font-semibold text-primary">{label}</span>
         </div>
         <div className="text-center mb-16 drop-shadow-sm ">
           <h2 className="text-3xl md:text-5xl font-bold font-montserrat pb-3  bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
@@ -148,32 +155,36 @@ export default function Features() {
                     </div>
 
                     <div className="space-y-4">
-                      {list[activeFeature].items.map((item, itemIndex) => (
-                        <motion.div
-                          key={itemIndex}
-                          className="flex items-start gap-3"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: itemIndex * 0.1 }}
-                        >
-                          <CheckCircle className="h-5 w-5 text-secondary/70 flex-shrink-0 mt-0.5" />
-                          <span className="text-foreground/80">{item}</span>
-                        </motion.div>
-                      ))}
+                      {list[activeFeature].items.map(
+                        (item: any, itemIndex: any) => (
+                          <motion.div
+                            key={itemIndex}
+                            className="flex items-start gap-3"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: itemIndex * 0.1 }}
+                          >
+                            <CheckCircle className="h-5 w-5 text-secondary/70 flex-shrink-0 mt-0.5" />
+                            <span className="text-foreground/80">
+                              {item.text}
+                            </span>
+                          </motion.div>
+                        )
+                      )}
                     </div>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              <div className="flex gap-6 justify-center items-center mt-2">
+              <div className="flex gap-2 justify-center items-center mt-2">
                 <button
                   onClick={handlePrev}
-                  className="z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
+                  className="mr-4 md:mr-0 z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
                   aria-label="Previous feature"
                 >
-                  <ChevronLeft className="h-5 w-5 text-primary" />
+                  <ChevronLeft className="h-5 w-5 text-primary " />
                 </button>
-                {list.map((_, index) => (
+                {list.map((_: any, index: any) => (
                   <button
                     key={index}
                     className={`h-2 rounded-full transition-all duration-300 ${
@@ -187,7 +198,7 @@ export default function Features() {
                 ))}
                 <button
                   onClick={handleNext}
-                  className="z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
+                  className="ml-4 md:ml-0 z-10 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center border border-gray-100"
                   aria-label="Next feature"
                 >
                   <ChevronRight className="h-5 w-5 text-primary" />
@@ -202,7 +213,7 @@ export default function Features() {
             {/* Feature navigation */}
             <div className="order-2 lg:order-1">
               <div className="space-y-4">
-                {list.map((feature, index) => {
+                {list.map((feature: any, index: any) => {
                   const isActive = activeFeature === index;
 
                   return (
@@ -238,7 +249,7 @@ export default function Features() {
                           <ul className="space-y-2">
                             {feature.items
                               .slice(0, isActive ? 3 : 1)
-                              .map((item, itemIndex) => (
+                              .map((item: any, itemIndex: any) => (
                                 <motion.li
                                   key={itemIndex}
                                   className="flex items-start gap-2"
@@ -248,7 +259,7 @@ export default function Features() {
                                 >
                                   <CheckCircle className="h-5 w-5 text-secondary/70 flex-shrink-0 mt-0.5" />
                                   <span className="text-foreground/80">
-                                    {item}
+                                    {item.text}
                                   </span>
                                 </motion.li>
                               ))}
@@ -288,7 +299,7 @@ export default function Features() {
               <div className="relative">
                 <AnimatePresence mode="wait">
                   {list.map(
-                    (feature, index) =>
+                    (feature: any, index: any) =>
                       activeFeature === index && (
                         <motion.div
                           key={index}
@@ -321,31 +332,29 @@ export default function Features() {
                               </div>
 
                               <div className="space-y-6">
-                                {feature.items.map((item, itemIndex) => (
-                                  <motion.div
-                                    key={itemIndex}
-                                    className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: itemIndex * 0.1 }}
-                                  >
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-[#005BBD20] flex items-center justify-center text-primary flex-shrink-0">
-                                      {itemIndex + 1}
-                                    </div>
-                                    <div>
-                                      <p className="font-medium">{item}</p>
-                                      <p className="text-sm text-foreground/60 mt-1">
-                                        {
-                                          [
-                                            "Track progress and celebrate achievements",
-                                            "Build stronger connections within your team",
-                                            "Improve performance through positive reinforcement",
-                                          ][itemIndex % 3]
-                                        }
-                                      </p>
-                                    </div>
-                                  </motion.div>
-                                ))}
+                                {feature.items.map(
+                                  (item: any, itemIndex: any) => (
+                                    <motion.div
+                                      key={itemIndex}
+                                      className="flex items-start gap-3 bg-gray-50 p-4 rounded-xl"
+                                      initial={{ opacity: 0, y: 20 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ delay: itemIndex * 0.1 }}
+                                    >
+                                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-[#005BBD20] flex items-center justify-center text-primary flex-shrink-0">
+                                        {itemIndex + 1}
+                                      </div>
+                                      <div>
+                                        <p className="font-medium">
+                                          {item.text}
+                                        </p>
+                                        <p className="text-sm text-foreground/60 mt-1">
+                                          {item.description}
+                                        </p>
+                                      </div>
+                                    </motion.div>
+                                  )
+                                )}
                               </div>
                             </div>
                           </div>
@@ -354,7 +363,7 @@ export default function Features() {
                   )}
                 </AnimatePresence>
                 <div className="flex justify-center mt-6 gap-2">
-                  {list.map((_, index) => (
+                  {list.map((_: any, index: any) => (
                     <button
                       key={index}
                       className={`h-2 rounded-full transition-all duration-300 ${

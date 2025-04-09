@@ -9,7 +9,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default: [
-          "bg-primary text-primary-foreground",
+          "bg-primary text-white",
           "hover:bg-primary/90 hover:shadow-[0_0_20px_rgba(var(--primary-rgb)/0.5)]",
           "active:scale-[0.97] active:shadow-inner",
           "after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-white/20 after:to-transparent after:opacity-0 after:translate-x-[-100%] hover:after:translate-x-[200%] hover:after:opacity-100 after:transition-all after:duration-700 after:ease-in-out",
@@ -24,7 +24,7 @@ const buttonVariants = cva(
         ],
         outline: [
           "border border-input bg-background text-foreground",
-          "hover:bg-accent hover:text-accent-foreground hover:border-accent/50 hover:shadow-[0_0_15px_rgba(var(--accent-rgb)/0.25)]",
+          "hover:bg-accent hover:text-white hover:border-accent/50 hover:shadow-[0_0_15px_rgba(var(--accent-rgb)/0.25)]",
           "active:scale-[0.97] active:shadow-inner",
           "after:absolute after:inset-0 after:bg-gradient-to-r after:from-transparent after:via-accent/20 after:to-transparent after:opacity-0 after:translate-x-[-100%] hover:after:translate-x-[200%] hover:after:opacity-100 after:transition-all after:duration-700 after:ease-in-out",
         ],

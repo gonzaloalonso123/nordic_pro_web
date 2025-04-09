@@ -1,0 +1,466 @@
+{
+  "header": {
+    "logo": "NordicPro",
+    "navigation": [
+      { "label": "Our mission", "href": "#mission" },
+      { "label": "Features", "href": "#features" },
+      { "label": "Platform", "href": "#app-showcase" },
+      { "label": "FAQ", "href": "#faq" }
+
+    ],
+    "cta": "Join Waitlist"
+  },
+"hero": {
+  "title": "Where performance meets well-being",
+  "description": "A platform for youth teams that puts mental health, motivation, and team management in one place.",
+  "cta": "Join Waitlist",
+  "tags": [
+    {
+      "label": "Mental Health",
+      "delay": 0.6
+    },
+    {
+      "label": "Team Management",
+
+      "delay": 0.8
+    },
+    {
+      "label": "Athlete retention",
+      "delay": 1.0
+    }
+  ]
+},
+  "mission": {
+      "label": "OUR MISSION",
+    "title": "Why are we building NordicPro?",
+    "subtitle": "Talent isn't the problem. Feeling unsupported is. NordicPro is the solution.",
+    "features": [
+      {
+        "title": "Drive motivation",
+        "description": "Gamified goals, team challenges, and feedback that keeps players engaged and driven.",
+        "image": "/images/motivation.webp"
+      },
+      {
+        "title": "Mental health",
+        "description": "Quick check-ins, reflection prompts, and access to help — because well-being fuels long-term success.",
+        "image": "/images/mental-health.webp"
+      },
+      {
+        "title": "Team Management",
+        "description": "Scheduling, communication, and team management shouldn't be complicated. Now it's not.",
+        "image": "/images/team-management.webp"
+      },
+      {
+        "title": "Built for retention",
+        "description": "When players feel connected, they stay. We help clubs keep their talent season after season.",
+        "image": "/images/retention.webp"
+      }
+    ],
+  "stats": [
+    { "icon": "Star", "value": "10+", "label": "Years Experience" },
+    { "icon": "Award", "value": "3+", "label": "Pilot teams" },
+    { "icon": "Users", "value": "5+", "label": "Team Members" },
+    { "icon": "Clock", "value": "100%", "label": "Client Satisfaction" }
+  ]
+  },
+"features": {
+  "label": "FEATURES",
+  "title": "Everything you're already doing — just better.",
+  "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
+  "list": [
+    {
+      "title": "Mental Health Support",
+      "icon": "Heart",
+      "items": [
+        {
+          "text": "Quick mood tracking",
+          "description": "Track progress and celebrate achievements"
+        },
+        {
+          "text": "Weekly wellness reflections",
+          "description": "Build stronger connections within your team"
+        },
+        {
+          "text": "Private alerts for coaches",
+          "description": "Improve performance through positive reinforcement"
+        }
+      ]
+    },
+    {
+      "title": "Motivation and Engagement",
+      "icon": "Trophy",
+      "items": [
+        {
+          "text": "Set personal and team goals",
+          "description": "Track progress and celebrate achievements"
+        },
+        {
+          "text": "Gamified rewards system",
+          "description": "Build stronger connections within your team"
+        },
+        {
+          "text": "Challenges and events",
+          "description": "Improve performance through positive reinforcement"
+        }
+      ]
+    },
+    {
+      "title": "Built-in Support System",
+      "icon": "LineChart",
+      "items": [
+        {
+          "text": "Access to mental health resources",
+          "description": "Track progress and celebrate achievements"
+        },
+        {
+          "text": "Coaches get guidance to support athletes",
+          "description": "Build stronger connections within your team"
+        },
+        {
+          "text": "Integrated chat with certified support staff",
+          "description": "Improve performance through positive reinforcement"
+        }
+      ]
+    },
+    {
+      "title": "Admin Tools",
+      "icon": "Users",
+      "items": [
+        {
+          "text": "Schedule practices and matches",
+          "description": "Track progress and celebrate achievements"
+        },
+        {
+          "text": "Send individual, group and team messages",
+          "description": "Build stronger connections within your team"
+        },
+        {
+          "text": "Track payments and attendance",
+          "description": "Improve performance through positive reinforcement"
+        }
+      ]
+    }
+  ]
+},
+"appShowcase": {
+  "title": "Experience NordicPro",
+  "subtitle": "Get a glimpse of our innovative platform designed to transform youth sports teams.",
+  "label": "Platform",
+  "screens": [
+    {
+      "title": "Team Calendar",
+      "description": "Schedule practices, games, and events with an intuitive team calendar.",
+      "image": "/images/app-screens/screen-1.png"
+    },
+    {
+      "title": "Player Motivation",
+      "description": "Gamified challenges and rewards to keep players engaged and motivated.",
+      "image": "/images/app-screens/screen-2.png"
+    },
+    {
+      "title": "Mental Health Check-in",
+      "description": "Quick mood tracking and wellness tools to support player well-being.",
+      "image": "/images/app-screens/screen-3.png"
+    },
+    {
+      "title": "Team Management",
+      "description": "Streamlined tools for coaches to manage rosters, attendance, and communication.",
+      "image": "/images/app-screens/screen-4.png"
+    }
+  ]
+},
+  "partnership": {
+    "title": "Are you an organization that shares our vision?",
+    "subtitle": "Let's team up.",
+    "cta": "Become a Partner"
+  },
+  "platform": {
+    "title": "All-in-one platform for athlete well-being",
+    "description": [
+      "NordicPro combines mental health support, motivation tools, and team management features in one seamless platform designed specifically for youth sports.",
+      "Our approach focuses on the whole athlete - supporting their mental well-being while providing the tools coaches need to build stronger, more resilient teams."
+    ],
+    "stats": [
+      { "value": "85%", "label": "Increase in player retention" },
+      { "value": "92%", "label": "Of coaches report improved team dynamics" },
+      { "value": "3.5x", "label": "Increase in player engagement" },
+      { "value": "78%", "label": "Reduction in administrative time" }
+    ]
+  },
+  "cta": {
+    "title": "Ready to transform your team's experience?",
+    "description": "Join the waitlist today and be among the first to experience NordicPro when we launch.",
+    "button": "Join Waitlist"
+  },
+  "faq": {
+    "title": "Frequently asked questions.",
+    "questions": [
+      {
+        "question": "What is NordicPro?",
+        "answer": "NordicPro is an all-in-one platform designed specifically for youth sports teams that combines mental health support, motivation tools, and team management features. We help coaches build stronger, more resilient teams while supporting the well-being of young athletes."
+      },
+      {
+        "question": "Who should use NordicPro?",
+        "answer": "NordicPro is ideal for youth sports clubs, coaches, and organizations that want to improve player retention, team dynamics, and overall athlete well-being. Our platform is designed for soccer teams but can be adapted for various youth sports."
+      },
+      {
+        "question": "Can it replace our current team tools?",
+        "answer": "Yes! NordicPro is designed to be a comprehensive solution that can replace multiple tools you might currently be using. It includes scheduling, communication, payment tracking, and attendance features, along with our unique mental health and motivation tools."
+      },
+      {
+        "question": "When will NordicPro be available?",
+        "answer": "We're currently onboarding early partners. Join the waitlist to be the first to know when we launch in your region."
+      }
+    ],
+    "contact": {
+      "text": "If you have more questions, please call us or get in touch with us!",
+      "cta": "Contact Us"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 NordicPro. All rights reserved.",
+    "links": [
+      { "label": "Our mission", "href": "#mission" },
+      { "label": "Features", "href": "#features" },
+      { "label": "Platform", "href": "#app-showcase" },
+      { "label": "FAQ", "href": "#faq" },
+      { "label": "Terms", "href": "/terms" },
+      { "label": "Privacy", "href": "/privacy" },
+      { "label": "Cookies", "href": "/cookies" }
+    ],
+    "ui": {
+      "quickLinks": "Quick Links",
+      "legal": "Legal",
+      "connectWithUs": "Connect With Us",
+      "language": "Language",
+      "madeWith": "Made with ❤️ by NordicPro",
+      "stayUpdated": "Stay Updated",
+      "newsletterText": "Subscribe to our newsletter for the latest updates.",
+      "emailPlaceholder": "Your email",
+      "subscribe": "Subscribe",
+      "aboutShort": "A platform for youth teams that puts mental health, motivation, and team management in one place."
+    }
+  },
+  "cookies": {
+  "title": "We use cookies to improve your experience.",
+  "description": "You can manage your cookie preferences anytime.",
+  "learnMore": "Learn more",
+  "acceptAll": "Accept All",
+  "essentialOnly": "Essential Only",
+  "managePreferences": "Manage Preferences",
+  "savePreferences": "Save Preferences",
+  "manageCookies": "Manage Cookie Preferences",
+  "back": "Back",
+  "close": "Close",
+  "essential": "Essential",
+  "statistics": "Statistics",
+  "marketing": "Marketing",
+  "functional": "Functional",
+  "updatePreferencesTitle": "Update your cookie preferences",
+"reset": "Reset",
+"saved": "Preferences saved!",
+    "metaTitle": "Cookie Policy | NordicPro",
+    "metaDescription": "Learn about how NordicPro uses cookies and how you can manage your preferences.",
+    "pageTitle": "Cookie Policy",
+    "pageDescription": "This Cookie Policy explains how NordicPro uses cookies and similar technologies to recognize you when you visit our website.",
+    "cookieTypes": {
+      "title": "Cookie Types",
+      "essential": {
+        "title": "Essential",
+        "description": "Required for the website to function properly."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Help us improve our website by collecting anonymous data."
+      }
+    },
+    "cookieCategories": [
+      {
+        "name": "Essential Cookies",
+        "description": "These cookies are necessary for the website to function and cannot be switched off in our systems.",
+        "required": true,
+        "cookies": [
+          {
+            "name": "session",
+            "purpose": "Maintains your session while you browse our website",
+            "duration": "Session"
+          },
+          {
+            "name": "cookiesAccepted",
+            "purpose": "Remembers your cookie preferences",
+            "duration": "1 year"
+          }
+        ]
+      },
+      {
+        "name": "Analytics Cookies",
+        "description": "These cookies allow us to count visits and traffic sources so we can measure and improve the performance of our site.",
+        "required": false,
+        "cookies": [
+          {
+            "name": "_ga",
+            "purpose": "Used to distinguish users in Google Analytics",
+            "duration": "2 years"
+          },
+          {
+            "name": "_gid",
+            "purpose": "Used to distinguish users in Google Analytics",
+            "duration": "24 hours"
+          }
+        ]
+      }
+    ],
+    "howToManage": {
+      "title": "How to Manage Cookies",
+      "description": "Most web browsers allow you to control cookies through their settings preferences. However, if you limit the ability of websites to set cookies, you may worsen your overall user experience.",
+      "learnMore": "How to manage cookies"
+    },
+    "browsers": [
+      {
+        "name": "Google Chrome",
+        "link": "https://support.google.com/chrome/answer/95647"
+      },
+      {
+        "name": "Mozilla Firefox",
+        "link": "https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer"
+      },
+      {
+        "name": "Safari",
+        "link": "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+      },
+      {
+        "name": "Microsoft Edge",
+        "link": "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
+      }
+    ],
+    "cookiesUsed": "Cookies used",
+    "duration": "Duration",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "April 1, 2025"
+  },
+  "terms": {
+    "metaTitle": "Terms of Service | NordicPro",
+    "metaDescription": "Read the terms and conditions for using NordicPro's platform and services.",
+    "title": "Terms of Service",
+    "subtitle": "Please read these terms carefully before using our platform.",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "April 1, 2025",
+    "contactInfo": "If you have any questions about these Terms, please contact us at legal@nordicpro.com",
+    "sections": [
+      {
+        "title": "1. Acceptance of Terms",
+        "content": [
+          "By accessing or using NordicPro's platform, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any of these terms, you are prohibited from using or accessing this site.",
+          "We reserve the right to modify these terms at any time, and such modifications shall be effective immediately upon posting of the modified terms. Your continued use of the platform after any modifications indicates your acceptance of the modified terms."
+        ]
+      },
+      {
+        "title": "2. Use License",
+        "content": [
+          "Permission is granted to temporarily use the platform for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:",
+          "- modify or copy the materials;",
+          "- use the materials for any commercial purpose;",
+          "- attempt to decompile or reverse engineer any software contained on NordicPro's platform;",
+          "- remove any copyright or other proprietary notations from the materials; or",
+          "- transfer the materials to another person or 'mirror' the materials on any other server."
+        ]
+      },
+      {
+        "title": "3. User Accounts",
+        "content": [
+          "To access certain features of the platform, you may be required to create an account. You are responsible for maintaining the confidentiality of your account information, including your password, and for all activity that occurs under your account.",
+          "You agree to notify us immediately of any unauthorized use of your account or any other breach of security. We will not be liable for any loss that you may incur as a result of someone else using your password or account, either with or without your knowledge."
+        ]
+      },
+      {
+        "title": "4. Privacy Policy",
+        "content": [
+          "Your use of NordicPro's platform is also governed by our Privacy Policy. Please review our Privacy Policy, which also governs the platform and informs users of our data collection practices.",
+          "By using our platform, you consent to our collection and use of your information as described in the Privacy Policy."
+        ]
+      },
+      {
+        "title": "5. Disclaimer",
+        "content": [
+          "The materials on NordicPro's platform are provided on an 'as is' basis. NordicPro makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
+          "Further, NordicPro does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its platform or otherwise relating to such materials or on any sites linked to this site."
+        ]
+      },
+      {
+        "title": "6. Limitations",
+        "content": [
+          "In no event shall NordicPro or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on NordicPro's platform, even if NordicPro or a NordicPro authorized representative has been notified orally or in writing of the possibility of such damage."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "metaTitle": "Privacy Policy | NordicPro",
+    "metaDescription": "Learn about how NordicPro collects, uses, and protects your personal information.",
+    "title": "Privacy Policy",
+    "subtitle": "Your privacy is important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your information.",
+    "lastUpdated": "Last Updated",
+    "lastUpdatedDate": "April 1, 2025",
+    "contactInfo": "If you have any questions about our Privacy Policy, please contact us at privacy@nordicpro.com",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "content": [
+          "We collect several types of information from and about users of our platform, including:",
+          "- Personal information such as name, email address, and phone number when you register for an account",
+          "- Usage data about how you interact with our platform",
+          "- Device information including your IP address, browser type, and operating system",
+          "- Location data if you grant us permission to access your device's location"
+        ]
+      },
+      {
+        "title": "2. How We Use Your Information",
+        "content": [
+          "We use the information we collect about you for various purposes, including to:",
+          "- Provide, maintain, and improve our platform",
+          "- Process and complete transactions",
+          "- Send you technical notices, updates, and support messages",
+          "- Respond to your comments, questions, and requests",
+          "- Monitor and analyze trends, usage, and activities in connection with our platform",
+          "- Detect, investigate, and prevent fraudulent transactions and other illegal activities"
+        ]
+      },
+      {
+        "title": "3. Sharing of Your Information",
+        "content": [
+          "We may share your personal information with:",
+          "- Service providers who perform services on our behalf",
+          "- Partners with whom we offer co-branded services or products",
+          "- Law enforcement or other governmental officials, if required by law",
+          "We will not sell your personal information to third parties."
+        ]
+      },
+      {
+        "title": "4. Data Security",
+        "content": [
+          "We have implemented measures designed to secure your personal information from accidental loss and from unauthorized access, use, alteration, and disclosure.",
+          "Unfortunately, the transmission of information via the internet is not completely secure. Although we do our best to protect your personal information, we cannot guarantee the security of your personal information transmitted to our platform."
+        ]
+      },
+      {
+        "title": "5. Your Rights",
+        "content": [
+          "Depending on your location, you may have certain rights regarding your personal information, such as:",
+          "- The right to access and receive a copy of your personal information",
+          "- The right to rectify or update your personal information",
+          "- The right to delete your personal information",
+          "- The right to restrict or object to our processing of your personal information",
+          "To exercise these rights, please contact us using the information provided at the end of this policy."
+        ]
+      },
+      {
+        "title": "6. Children's Privacy",
+        "content": [
+          "Our platform is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe we may have collected information about a child, please contact us."
+        ]
+      }
+    ]
+  }
+}
+
+

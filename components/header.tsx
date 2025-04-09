@@ -1,18 +1,92 @@
 "use client";
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import content from "@/data/content.json";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 export default function Header() {
-  const { logo, navigation, cta } = content.header;
+  const t = useTranslations("header"); // Access 'header' section from translations
+  const logo = t("logo");
+  const cta = t("cta");
+  const navigation = t.raw("navigation") as { label: string; href: string }[];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
-  // Animation variants for the entire header
+  // Prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobileMenuOpen]);
+
+  // Handle smooth scrolling to sections
+  const handleNavigation = (e: any, href: any) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    // Check if the user is on mobile or desktop
+    const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+    const headerHeight = isMobile ? 50 : 0; // Set header height based on device type
+
+    // If we're not on the home page and the link is to a section
+    if (pathname !== "/" && href.startsWith("/#")) {
+      // Navigate to home page first
+      router.push("/");
+
+      // Then scroll to the section after a small delay
+      setTimeout(() => {
+        const sectionId = href.split("#")[1];
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+          const yOffset = -headerHeight - 20; // Extra offset for better visibility
+          const y =
+            section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+          window.scrollTo({
+            top: y,
+            behavior: "smooth",
+          });
+        }
+      }, 300);
+    }
+    // If we're already on the home page and it's a section link
+    else if (href.startsWith("#") || href.startsWith("/#")) {
+      const sectionId = href.replace("/#", "").replace("#", "");
+      const section = document.getElementById(sectionId);
+
+      if (section) {
+        const yOffset = -headerHeight;
+        const y =
+          section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+        window.scrollTo({
+          top: y,
+          behavior: "smooth",
+        });
+      }
+    }
+    // Regular navigation
+    else {
+      router.push(href);
+    }
+  };
+
+  // Animation variants for the header
   const headerVariants = {
-    hidden: { opacity: 0, y: -100 },
+    hidden: { opacity: 0, y: -20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -20,20 +94,58 @@ export default function Header() {
     },
   };
 
-  const mobileMenuVariants = {
-    hidden: { opacity: 0, x: "100%" },
-    visible: { opacity: 1, x: "0%", transition: { duration: 0.5 } },
-    exit: { opacity: 0, x: "100%", transition: { duration: 0.5 } },
+  // Animation variants for the mobile menu
+  const backdropVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { duration: 0.3 },
+    },
+    exit: {
+      opacity: 0,
+      transition: { delay: 0.2, duration: 0.3 },
+    },
+  };
+
+  const menuVariants = {
+    hidden: { x: "100%" },
+    visible: {
+      x: 0,
+      transition: {
+        type: "spring",
+        damping: 25,
+        stiffness: 300,
+      },
+    },
+    exit: {
+      x: "100%",
+      transition: {
+        type: "spring",
+        damping: 30,
+        stiffness: 400,
+      },
+    },
+  };
+
+  const menuItemVariants = {
+    hidden: { opacity: 0, x: 20 },
+    visible: (i: any) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.1 + 0.3,
+        duration: 0.4,
+      },
+    }),
   };
 
   return (
-    <AnimatePresence>
+    <>
       <motion.header
         variants={headerVariants}
         initial="hidden"
         animate="visible"
-        exit="hidden"
-        className="fixed top-0 z-50 w-full glass"
+        className="fixed top-0 z-40 w-full backdrop-blur-md bg-white/80 shadow-sm "
       >
         <div className="container flex h-20 items-center justify-between">
           <Link
@@ -51,14 +163,15 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            {navigation.map((item, index) => (
-              <Link
+            {navigation.map((item: any, index: any) => (
+              <a
                 key={index}
                 href={item.href}
                 className="text-foreground/80 hover:text-primary font-medium transition-colors"
+                onClick={(e) => handleNavigation(e, item.href)}
               >
                 {item.label}
-              </Link>
+              </a>
             ))}
             <Button
               asChild
@@ -69,95 +182,104 @@ export default function Header() {
             </Button>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Button - Always visible above the menu */}
           <Button
-            className="md:hidden bg-accent text-white rounded-full p-2"
+            className="md:hidden bg-accent hover:bg-accent/90 text-white rounded-full p-2 relative z-[60]"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="4" x2="20" y1="12" y2="12" />
-              <line x1="4" x2="20" y1="6" y2="6" />
-              <line x1="4" x2="20" y1="18" y2="18" />
-            </svg>
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </Button>
+        </div>
+      </motion.header>
 
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isMobileMenuOpen && (
-              <motion.div
-                className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex justify-end"
-                variants={mobileMenuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              >
-                <motion.div className="w-2/3 bg-white h-full flex flex-col py-8 px-6 shadow-lg">
-                  <div className="flex justify-between items-center mb-8">
-                    <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
-                      <Image
-                        src="/images/nordic-pro-logo.png"
-                        alt="Logo"
-                        width={150}
-                        height={70}
-                        priority
-                      />
-                    </Link>
-                    <Button
-                      className="bg-accent text-white rounded-full p-2"
-                      onClick={() => setIsMobileMenuOpen(false)}
+      {/* Mobile Menu - Separate from header, covers entire viewport */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            {/* Backdrop - covers entire page */}
+            <motion.div
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50"
+              variants={backdropVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Menu panel */}
+            <motion.div
+              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-white z-50 shadow-xl flex flex-col"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            >
+              <div className="flex flex-col h-full overflow-y-auto">
+                <div className="p-6 border-b flex justify-between items-center">
+                  <Image
+                    src="/images/nordic-pro-logo.png"
+                    alt="Logo"
+                    width={150}
+                    height={70}
+                    priority
+                  />
+                  {/* Close button inside the menu panel */}
+                  <Button
+                    className="bg-accent hover:bg-accent/90 text-white rounded-full p-2"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    aria-label="Close menu"
+                  >
+                    <X className="h-6 w-6" />
+                  </Button>
+                </div>
+
+                <nav className="flex-1 flex flex-col p-6">
+                  {navigation.map((item: any, index: any) => (
+                    <motion.div
+                      key={index}
+                      custom={index}
+                      variants={menuItemVariants}
+                      initial="hidden"
+                      animate="visible"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <line x1="18" x2="6" y1="6" y2="18" />
-                        <line x1="6" x2="18" y1="6" y2="18" />
-                      </svg>
-                    </Button>
-                  </div>
-
-                  <nav className="flex flex-col gap-4">
-                    {navigation.map((item, index) => (
-                      <Link
-                        key={index}
+                      <a
                         href={item.href}
-                        className="text-xl text-foreground/80 hover:text-primary font-medium transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="block py-4 text-xl text-center text-foreground/80 hover:text-primary font-medium transition-colors border-b border-gray-100"
+                        onClick={(e) => handleNavigation(e, item.href)}
                       >
                         {item.label}
-                      </Link>
-                    ))}
+                      </a>
+                    </motion.div>
+                  ))}
+                </nav>
+
+                <div className="p-6 mt-auto">
+                  <motion.div
+                    variants={menuItemVariants}
+                    custom={navigation.length}
+                    initial="hidden"
+                    animate="visible"
+                  >
                     <Button
                       asChild
                       size="lg"
-                      className="bg-accent hover:bg-accent/90 text-white font-medium rounded-full px-10 py-3 text-lg mt-6"
+                      className="bg-accent hover:bg-accent/90 text-white font-medium rounded-full py-6 text-lg w-full"
+                      onClick={() => setIsMobileMenuOpen(false)}
                     >
                       <Link href="/join-waitlist">{cta}</Link>
                     </Button>
-                  </nav>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      </motion.header>
-    </AnimatePresence>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

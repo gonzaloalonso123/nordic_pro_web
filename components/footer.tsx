@@ -1,79 +1,196 @@
-import Link from "next/link"
-import content from "@/data/content.json"
+"use client";
+
+import Link from "next/link";
+import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { usePathname, useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { useEffect } from "react";
 
 export default function Footer() {
-  const { copyright, links } = content.footer
+  const t = useTranslations("footer");
+  const links = t.raw("links") as { label: string; href: string }[];
+  const copyright = t("copyright");
+
+  const pathname = usePathname();
+  const router = useRouter();
+  const currentLocale = pathname.split("/")[1] || "en";
+
+  // Handle language switch
+  const handleLanguageChange = (locale: string) => {
+    const newPath = pathname.replace(/^\/[^/]+/, `/${locale}`);
+    router.push(newPath);
+  };
+
+  // Group links for better organization
+  const mainLinks = links.slice(0, 4);
+  const legalLinks = links.slice(4);
+  useEffect(() => {
+    console.log(legalLinks);
+  });
 
   return (
-    <footer className="py-12 relative overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-muted/30"></div>
-
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-6 md:mb-0">
-            <Link href="/" className="font-montserrat font-bold text-2xl text-primary mb-4 inline-block">
-              NordicPro
+    <footer className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 border-t border-gray-100">
+      <div className="container  pt-16 pb-8 relative z-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          {/* Logo and about section */}
+          <div className="flex flex-col space-y-4 md:-mt-4">
+            <Link href={`/${currentLocale}`} className="inline-block">
+              <Image
+                src="/images/nordic-pro-logo.png"
+                alt="NordicPro Logo"
+                width={180}
+                height={80}
+                className="h-auto"
+                priority
+              />
             </Link>
-            <p className="text-sm text-foreground/60">{copyright}</p>
+
+            {/* Contact info */}
+            <div className="pt-4 space-y-2">
+              <div className="flex items-center  gap-2 text-sm text-gray-600">
+                <Mail className="w-4 h-4 text-primary" />
+                <span>info@nordicpro.com</span>
+              </div>
+              <div className="flex items-start gap-2 text-sm text-gray-600">
+                <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                <span>Uppsala, Sweden</span>
+              </div>
+            </div>
+            <div className="flex justify-start pt-4">
+              <div className="inline-flex items-center rounded-full border border-gray-200 bg-white p-1 shadow-sm">
+                <button
+                  onClick={() => handleLanguageChange("en")}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    currentLocale === "en"
+                      ? "bg-primary text-white"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="flex-shrink-0">🇬🇧</span>
+                  <span>English</span>
+                </button>
+                <button
+                  onClick={() => handleLanguageChange("sv")}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    currentLocale === "sv"
+                      ? "bg-primary text-white"
+                      : "text-gray-600 hover:bg-gray-100"
+                  }`}
+                >
+                  <span className="flex-shrink-0">🇸🇪</span>
+                  <span>Svenska</span>
+                </button>
+              </div>
+            </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="flex gap-6">
-              {links.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className="text-sm text-foreground/60 hover:text-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
+          {/* Main links */}
+          <div className="flex flex-col">
+            <h3 className="font-semibold text-gray-900 mb-5 text-lg">
+              {t("ui.quickLinks")}
+            </h3>
+            <ul className="space-y-3">
+              {mainLinks.map((link, index) => (
+                <li key={`main-link-${index}`}>
+                  <Link
+                    href={`/${currentLocale}${link.href}`}
+                    className="text-gray-600 hover:text-primary transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Legal links */}
+          <div className="flex flex-col">
+            <h3 className="font-semibold text-gray-900 mb-5 text-lg">
+              {t("ui.legal") || "Legal"}
+            </h3>
+            <ul className="space-y-3">
+              {legalLinks.map((link, index) => (
+                <li key={`legal-link-${index}`}>
+                  <Link
+                    href={`/${currentLocale}${link.href}`}
+                    className="text-gray-600 hover:text-primary transition-colors inline-block"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Newsletter and social */}
+          <div className="flex flex-col space-y-5">
+            <h3 className="font-semibold text-gray-900 mb-2 text-lg">
+              {t("ui.stayUpdated") || "Stay Updated"}
+            </h3>
+            <p className="text-sm text-gray-600">
+              {t("ui.newsletterText") ||
+                "Subscribe to our newsletter for the latest updates."}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-2">
+              <input
+                type="email"
+                placeholder={t("ui.emailPlaceholder") || "Your email"}
+                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+              />
+              <Button
+                size="sm"
+                className="bg-primary hover:bg-primary/90 text-white"
+              >
+                {t("ui.subscribe") || "Subscribe"}
+              </Button>
             </div>
 
-            <div className="flex gap-4">
-              {/* Social icons */}
-              {["twitter", "facebook", "instagram"].map((social, index) => (
-                <Link
-                  key={index}
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-muted flex items-center justify-center hover:bg-primary/10 transition-colors"
+            <div className="pt-4">
+              <h3 className="font-semibold text-gray-900 mb-3">
+                {t("ui.connectWithUs")}
+              </h3>
+              <div className="flex items-center gap-3">
+                <motion.a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-gray-100"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  aria-label="Instagram"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    {social === "twitter" && (
-                      <>
-                        <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                      </>
-                    )}
-                    {social === "facebook" && (
-                      <>
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                      </>
-                    )}
-                    {social === "instagram" && (
-                      <>
-                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                      </>
-                    )}
-                  </svg>
-                </Link>
-              ))}
+                  <Instagram className="w-5 h-5" />
+                </motion.a>
+
+                <motion.a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-gray-100"
+                  whileHover={{ y: -3, scale: 1.05 }}
+                  aria-label="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </motion.a>
+              </div>
             </div>
+          </div>
+        </div>
+
+        {/* Bottom section */}
+        <div className="pt-8 relative">
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sm text-gray-500">{copyright}</p>
+            <p className="text-sm text-gray-500 flex items-center gap-1">
+              {t("ui.madeWith") || "Made with ❤️ by NordicPro"}
+            </p>
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

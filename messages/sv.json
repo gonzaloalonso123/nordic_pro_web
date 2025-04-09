@@ -1,0 +1,243 @@
+{
+  "header": {
+    "logo": "NordicPro",
+    "navigation": [
+      { "label": "Vårt uppdrag", "href": "#mission" },
+      { "label": "Funktioner", "href": "#features" },
+      { "label": "Plattform", "href": "#app-showcase" },
+      { "label": "Vanliga frågor", "href": "#faq" }
+    ],
+    "cta": "Gå med i väntelistan"
+  },
+  "hero": {
+    "title": "Där prestation möter välbefinnande",
+    "description": "En plattform för ungdomslag som samlar mental hälsa, motivation och laghantering på ett ställe.",
+    "cta": "Gå med i väntelistan",
+    "tags": [
+      {
+        "label": "Mental hälsa",
+        "delay": 0.6
+      },
+      {
+        "label": "Laghantering",
+        "delay": 0.8
+      },
+      {
+        "label": "Behålla idrottare",
+        "delay": 1.0
+      }
+    ]
+  },
+  "mission": {
+    "label": "VÅRT UPPDRAG",
+    "title": "Varför bygger vi NordicPro?",
+    "subtitle": "Talang är inte problemet. Att känna sig osedd är det. NordicPro är lösningen.",
+    "features": [
+      {
+        "title": "Driva motivation",
+        "description": "Spelifierade mål, lagutmaningar och feedback som håller spelare engagerade och motiverade.",
+        "image": "/images/motivation.webp"
+      },
+      {
+        "title": "Mental hälsa",
+        "description": "Snabba check-ins, reflektionsfrågor och tillgång till hjälp — eftersom välbefinnande driver långsiktig framgång.",
+        "image": "/images/mental-health.webp"
+      },
+      {
+        "title": "Laghantering",
+        "description": "Schemaläggning, kommunikation och laghantering behöver inte vara komplicerat. Nu är det inte det.",
+        "image": "/images/team-management.webp"
+      },
+      {
+        "title": "Byggd för att behålla",
+        "description": "När spelare känner sig delaktiga stannar de kvar. Vi hjälper klubbar att behålla sina talanger säsong efter säsong.",
+        "image": "/images/retention.webp"
+      }
+    ],
+    "stats": [
+      { "icon": "Star", "value": "10+", "label": "Års erfarenhet" },
+      { "icon": "Award", "value": "3+", "label": "Pilotlag" },
+      { "icon": "Users", "value": "5+", "label": "Teammedlemmar" },
+      { "icon": "Clock", "value": "100%", "label": "Kundnöjdhet" }
+    ]
+  },
+  "features": {
+    "label": "FUNKTIONER",
+    "title": "Allt du redan gör — fast bättre.",
+    "subtitle": "En komplett plattform för idrottares välbefinnande, motivation och laghantering.",
+    "list": [
+      {
+        "title": "Stöd för mental hälsa",
+        "icon": "Heart",
+        "items": [
+          {
+            "text": "Snabb humörspårning",
+            "description": "Följ framsteg och fira prestationer"
+          },
+          {
+            "text": "Veckovisa välmåendereflektioner",
+            "description": "Bygg starkare band inom ditt lag"
+          },
+          {
+            "text": "Privata varningar för tränare",
+            "description": "Förbättra prestationer genom positiv förstärkning"
+          }
+        ]
+      },
+      {
+        "title": "Motivation och engagemang",
+        "icon": "Trophy",
+        "items": [
+          {
+            "text": "Sätt personliga och lagmål",
+            "description": "Följ framsteg och fira prestationer"
+          },
+          {
+            "text": "Spelifierat belöningssystem",
+            "description": "Bygg starkare band inom ditt lag"
+          },
+          {
+            "text": "Utmaningar och evenemang",
+            "description": "Förbättra prestationer genom positiv förstärkning"
+          }
+        ]
+      },
+      {
+        "title": "Inbyggt stödsystem",
+        "icon": "LineChart",
+        "items": [
+          {
+            "text": "Tillgång till resurser för mental hälsa",
+            "description": "Följ framsteg och fira prestationer"
+          },
+          {
+            "text": "Tränare får vägledning för att stödja idrottare",
+            "description": "Bygg starkare band inom ditt lag"
+          },
+          {
+            "text": "Integrerad chatt med certifierad supportpersonal",
+            "description": "Förbättra prestationer genom positiv förstärkning"
+          }
+        ]
+      },
+      {
+        "title": "Adminverktyg",
+        "icon": "Users",
+        "items": [
+          {
+            "text": "Schemalägg träningar och matcher",
+            "description": "Följ framsteg och fira prestationer"
+          },
+          {
+            "text": "Skicka individuella, grupp- och lagmeddelanden",
+            "description": "Bygg starkare band inom ditt lag"
+          },
+          {
+            "text": "Spåra betalningar och närvaro",
+            "description": "Förbättra prestationer genom positiv förstärkning"
+          }
+        ]
+      }
+    ]
+  },
+  "appShowcase": {
+    "title": "Upplev NordicPro",
+    "subtitle": "Få en inblick i vår innovativa plattform designad för att transformera ungdomsidrottslag.",
+    "label": "Plattform",
+    "screens": [
+      {
+        "title": "Lagkalender",
+        "description": "Schemalägg träningar, matcher och evenemang med en intuitiv lagkalender.",
+        "image": "/images/app-screens/screen-1.png"
+      },
+      {
+        "title": "Spelarmotivation",
+        "description": "Spelifierade utmaningar och belöningar för att hålla spelare engagerade och motiverade.",
+        "image": "/images/app-screens/screen-2.png"
+      },
+      {
+        "title": "Mental hälsa check-in",
+        "description": "Snabb humörspårning och välmåendeverktyg för att stödja spelarnas välbefinnande.",
+        "image": "/images/app-screens/screen-3.png"
+      },
+      {
+        "title": "Laghantering",
+        "description": "Effektiva verktyg för tränare att hantera laguppställningar, närvaro och kommunikation.",
+        "image": "/images/app-screens/screen-4.png"
+      }
+    ]
+  },
+  "partnership": {
+    "title": "Är ni en organisation som delar vår vision?",
+    "subtitle": "Låt oss samarbeta.",
+    "cta": "Bli en partner"
+  },
+  "platform": {
+    "title": "En komplett plattform för idrottares välbefinnande",
+    "description": [
+      "NordicPro kombinerar stöd för mental hälsa, motivationsverktyg och laghanteringsfunktioner i en sömlös plattform speciellt designad för ungdomsidrott.",
+      "Vårt tillvägagångssätt fokuserar på hela idrottaren - stödjer deras mentala välbefinnande samtidigt som vi ger tränare de verktyg de behöver för att bygga starkare, mer motståndskraftiga lag."
+    ],
+    "stats": [
+      { "value": "85%", "label": "Ökning i spelarbevarande" },
+      { "value": "92%", "label": "Av tränare rapporterar förbättrad lagdynamik" },
+      { "value": "3.5x", "label": "Ökning i spelarengagemang" },
+      { "value": "78%", "label": "Minskning i administrativ tid" }
+    ]
+  },
+  "cta": {
+    "title": "Redo att transformera ditt lags upplevelse?",
+    "description": "Gå med i väntelistan idag och var bland de första att uppleva NordicPro när vi lanserar.",
+    "button": "Gå med i väntelistan"
+  },
+  "faq": {
+    "title": "Vanliga frågor.",
+    "questions": [
+      {
+        "question": "Vad är NordicPro?",
+        "answer": "NordicPro är en komplett plattform speciellt designad för ungdomsidrottslag som kombinerar stöd för mental hälsa, motivationsverktyg och laghanteringsfunktioner. Vi hjälper tränare att bygga starkare, mer motståndskraftiga lag samtidigt som vi stödjer unga idrottares välbefinnande."
+      },
+      {
+        "question": "Vem bör använda NordicPro?",
+        "answer": "NordicPro är idealisk för ungdomsidrottsklubbar, tränare och organisationer som vill förbättra spelarbevarande, lagdynamik och idrottares övergripande välbefinnande. Vår plattform är designad för fotbollslag men kan anpassas för olika ungdomsidrotter."
+      },
+      {
+        "question": "Kan den ersätta våra nuvarande lagverktyg?",
+        "answer": "Ja! NordicPro är designad för att vara en omfattande lösning som kan ersätta flera verktyg du kanske använder för närvarande. Den inkluderar schemaläggning, kommunikation, betalningsspårning och närvarofunktioner, tillsammans med våra unika verktyg för mental hälsa och motivation."
+      },
+      {
+        "question": "När kommer NordicPro att vara tillgänglig?",
+        "answer": "Vi tar för närvarande in tidiga partners. Gå med i väntelistan för att vara först med att veta när vi lanserar i din region."
+      }
+    ],
+    "contact": {
+      "text": "Om du har fler frågor, vänligen ring oss eller kontakta oss!",
+      "cta": "Kontakta oss"
+    }
+  },
+  "footer": {
+    "copyright": "© 2025 NordicPro. Alla rättigheter förbehållna.",
+    "links": [
+      { "label": "Vårt uppdrag", "href": "#mission" },
+      { "label": "Funktioner", "href": "#features" },
+      { "label": "Plattform", "href": "#app-showcase" },
+      { "label": "Vanliga frågor", "href": "#faq" },
+      { "label": "Villkor", "href": "#" },
+      { "label": "Integritet", "href": "#" },
+      { "label": "Cookies", "href": "#" }
+    ],
+    "ui": {
+      "quickLinks": "Snabblänkar",
+      "legal": "Juridisk information",
+      "connectWithUs": "Följ oss",
+      "language": "Språk",
+      "madeWith": "Skapad med ❤️ av NordicPro",
+      "stayUpdated": "Håll dig uppdaterad",
+      "newsletterText": "Prenumerera på vårt nyhetsbrev för de senaste uppdateringarna.",
+      "emailPlaceholder": "Din e-post",
+      "subscribe": "Prenumerera",
+      "aboutShort": "En plattform för ungdomslag som samlar mental hälsa, motivation och laghantering på ett ställe."
+    }
+  }
+
+}

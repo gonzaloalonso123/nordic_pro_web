@@ -1,7 +1,12 @@
 "use client";
+
 import Image from "next/image";
-import content from "@/data/content.json";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useAnimation,
+} from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import {
   ChevronLeft,
@@ -13,12 +18,26 @@ import {
   Clock,
   Stars,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function Mission() {
-  const { title, subtitle, features } = content.mission;
+  const t = useTranslations("mission"); // Access 'mission' section
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const label = t("label");
+  const features = t.raw("features") as {
+    title: string;
+    description: string;
+    image: string;
+  }[]; // Type the features array
+  const stats = t.raw("stats") as {
+    icon: string;
+    value: string;
+    label: string;
+  }[]; // Type the stats array
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: false, margin: "100px" });
   const mobileCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   // Handle navigation
@@ -131,7 +150,7 @@ export default function Mission() {
                 <Stars className="text-primary h-5 w-5" />
               </motion.div>
               <span className="text-sm font-semibold text-primary">
-                OUR MISSION
+                {label}
               </span>
             </div>
           </motion.div>
@@ -160,7 +179,7 @@ export default function Mission() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {features.map((feature, index) => (
+            {features.map((feature: any, index: any) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
@@ -263,15 +282,15 @@ export default function Mission() {
             </motion.div>
 
             {/* Pagination indicators */}
-            <div className="flex justify-center items-center mt-6 gap-3">
-              {features.map((_, index) => (
+            <div className="flex justify-center items-center mt-6 gap-2">
+              {features.map((_: any, index: any) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`h-3 rounded-full transition-all duration-300 ${
-                    currentIndex === index
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    index === currentIndex
                       ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
-                      : "w-3 bg-gray-300 hover:bg-gray-400"
+                      : "w-2 bg-gray-300"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -283,7 +302,7 @@ export default function Mission() {
           <div className="md:hidden mt-8">
             {/* All mobile cards visible */}
             <div className="space-y-6">
-              {features.map((feature, index) => (
+              {features.map((feature: any, index: any) => (
                 <motion.div
                   key={index}
                   id={`mission-card-${index}`}
@@ -321,62 +340,43 @@ export default function Mission() {
           </div>
         </div>
 
-        {/* Statistics section - enhanced with better responsive design and animations */}
-        <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-        >
-          {[
-            {
-              icon: <Star className="w-5 h-5 sm:w-6 sm:h-6" />,
-              value: "10+",
-              label: "Years Experience",
-              color: "from-primary/20 to-primary/5",
-            },
-            {
-              icon: <Award className="w-5 h-5 sm:w-6 sm:h-6" />,
-              value: "3+",
-              label: "Pilot teams",
-              color: "from-primary/20 to-primary/5",
-            },
-            {
-              icon: <Users className="w-5 h-5 sm:w-6 sm:h-6" />,
-              value: "5+",
-              label: "Team Members",
-              color: "from-primary/20 to-primary/5",
-            },
-            {
-              icon: <Clock className="w-5 h-5 sm:w-6 sm:h-6" />,
-              value: "100%",
-              label: "Client Satisfaction",
-              color: "from-primary/20 to-primary/5",
-            },
-          ].map((stat, index) => (
-            <div
-              key={index}
-              className="relative overflow-hidden rounded-2xl hover:translate-y-[-5px] transition-all duration-300"
-            >
-              <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br border border-primary/10 h-full flex flex-col items-center text-center relative z-10">
-                <div
-                  className={`text-primary w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br ${stat.color} flex items-center justify-center mb-4`}
-                >
-                  {stat.icon}
-                </div>
-                <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
-                  {stat.value}
-                </div>
-                <div className="text-sm sm:text-base text-foreground/70">
-                  {stat.label}
-                </div>
-              </div>
+        {/* 
+        {stats && (
+          <motion.div
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+          >
+            {stats.map((stat: any, index: any) => {
+              const Icon = {
+                Star,
+                Award,
+                Users,
+                Clock,
+              }[stat.icon];
 
-              {/* Subtle hover effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
-            </div>
-          ))}
-        </motion.div>
+              return (
+                <div
+                  key={index}
+                  className="relative overflow-hidden rounded-2xl hover:translate-y-[-5px] transition-all duration-300"
+                >
+                  <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br border border-primary/10 h-full flex flex-col items-center text-center relative z-10">
+                    <div className="text-primary w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4">
+                    </div>
+                    <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
+                      {stat.value}
+                    </div>
+                    <div className="text-sm sm:text-base text-foreground/70">
+                      {stat.label}
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        )} */}
       </div>
 
       {/* Enhanced animated background gradient */}

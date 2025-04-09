@@ -1,12 +1,17 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import content from "@/data/content.json";
+import { useTranslations } from "next-intl";
 
 export default function Partnership() {
-  const { title, subtitle, cta } = content.partnership;
+  const t = useTranslations("partnership"); // Access 'partnership' section
+  const title = t("title");
+  const subtitle = t("subtitle");
+  const cta = t("cta");
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-12 my-24 relative overflow-hidden">
       <div className="absolute inset-0 -z-10 bg-gradient-to-tr from-primary to-[#005BBD]  opacity-90"></div>
       <div className="absolute inset-0 -z-10 bg-[url('/images/pattern.png')] opacity-10 mix-blend-overlay"></div>
 

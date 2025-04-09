@@ -3,9 +3,9 @@ import { Inter, Montserrat } from "next/font/google";
 import "../globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import CookieConsent from "@/components/cookie-consent";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
+import CookieConsent from "@/components/cookie-consent";
 
 const inter = Inter({
   subsets: ["latin"],

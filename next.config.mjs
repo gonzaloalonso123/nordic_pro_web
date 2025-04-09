@@ -1,8 +1,12 @@
-let userConfig = undefined
+import createNextIntlPlugin from "next-intl/plugin";
+
+// Try to import user config if it exists
+let userConfig = {};
 try {
-  userConfig = await import('./v0-user-next.config')
+  const importedConfig = await import("./v0-user-next.config");
+  userConfig = importedConfig.default || importedConfig;
 } catch (e) {
-  // ignore error
+  // ignore error if file doesn't exist
 }
 
 /** @type {import('next').NextConfig} */
@@ -21,28 +25,40 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
-}
+};
 
-mergeConfig(nextConfig, userConfig)
+// Merge user config with default config
+const mergedConfig = mergeConfigs(nextConfig, userConfig);
 
-function mergeConfig(nextConfig, userConfig) {
-  if (!userConfig) {
-    return
+// Create the next-intl plugin
+const withNextIntl = createNextIntlPlugin("./i18n/request.ts");
+
+// Export the final config with next-intl applied
+export default withNextIntl(mergedConfig);
+
+// Helper function to properly merge configurations
+function mergeConfigs(baseConfig, userConfig) {
+  if (!userConfig || Object.keys(userConfig).length === 0) {
+    return baseConfig;
   }
+
+  const result = { ...baseConfig };
 
   for (const key in userConfig) {
     if (
-      typeof nextConfig[key] === 'object' &&
-      !Array.isArray(nextConfig[key])
+      typeof result[key] === "object" &&
+      !Array.isArray(result[key]) &&
+      typeof userConfig[key] === "object" &&
+      !Array.isArray(userConfig[key])
     ) {
-      nextConfig[key] = {
-        ...nextConfig[key],
+      result[key] = {
+        ...result[key],
         ...userConfig[key],
-      }
+      };
     } else {
-      nextConfig[key] = userConfig[key]
+      result[key] = userConfig[key];
     }
   }
-}
 
-export default nextConfig
+  return result;
+}
