@@ -1,91 +1,91 @@
-import { Calendar, Clock, MapPin, Users } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+"use client";
 
-const events = [
+import { Button } from "@/components/ui/button";
+import { Video, MapPin, Clock } from "lucide-react";
+import { format, addHours, addDays, isToday } from "date-fns";
+
+// Sample data
+const now = new Date();
+const allMeetings = [
   {
     id: 1,
-    title: "Team Practice",
-    date: "Today",
-    time: "4:00 PM - 5:30 PM",
-    location: "Main Field",
-    type: "practice",
+    title: "Team Strategy Meeting",
+    startTime: addHours(now, 1),
+    duration: 30,
+    type: "video",
   },
   {
     id: 2,
-    title: "Team Meeting",
-    date: "Tomorrow",
-    time: "6:00 PM - 7:00 PM",
-    location: "Club House",
-    type: "meeting",
+    title: "Individual Performance Review",
+    startTime: addDays(now, 1),
+    duration: 45,
+    type: "video",
   },
   {
     id: 3,
-    title: "Game vs Eagles",
-    date: "Sat, May 4",
-    time: "2:00 PM - 4:00 PM",
-    location: "City Stadium",
-    type: "game",
+    title: "Team Building Workshop",
+    startTime: addDays(now, 2),
+    duration: 120,
+    type: "in-person",
+    location: "Training Center",
   },
   {
     id: 4,
-    title: "Skills Training",
-    date: "Mon, May 6",
-    time: "4:00 PM - 5:30 PM",
-    location: "Training Center",
-    type: "practice",
+    title: "Pre-Game Briefing",
+    startTime: addHours(now, 4),
+    duration: 60,
+    type: "hybrid",
+    location: "Conference Room A",
   },
-]
+  {
+    id: 5,
+    title: "Nutrition Workshop",
+    startTime: addDays(now, 5),
+    duration: 90,
+    type: "video",
+  },
+];
 
-export default function UpcomingEvents() {
+export default function UpcomingMeetings({ today = false }) {
+  // Filter meetings based on the 'today' prop
+  const meetings = today ? allMeetings.filter((meeting) => isToday(meeting.startTime)) : allMeetings.slice(0, 3);
+
   return (
     <div className="space-y-4">
-      {events.map((event) => (
-        <div key={event.id} className="flex items-start gap-3 pb-4 border-b last:border-0 last:pb-0">
-          <div
-            className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${
-              event.type === "practice"
-                ? "bg-green/10 text-green"
-                : event.type === "game"
-                  ? "bg-accent/10 text-accent"
-                  : "bg-primary/10 text-primary"
-            }`}
-          >
-            {event.type === "practice" && <Users className="h-5 w-5" />}
-            {event.type === "game" && <Calendar className="h-5 w-5" />}
-            {event.type === "meeting" && <Users className="h-5 w-5" />}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center justify-between mb-1">
-              <h4 className="font-medium truncate">{event.title}</h4>
-              <Badge
-                variant="outline"
-                className={`ml-2 flex-shrink-0 ${
-                  event.type === "practice"
-                    ? "border-green/20 bg-green/10 text-green"
-                    : event.type === "game"
-                      ? "border-accent/20 bg-accent/10 text-accent"
-                      : "border-primary/20 bg-primary/10 text-primary"
-                }`}
-              >
-                {event.type}
-              </Badge>
-            </div>
-            <div className="text-sm text-gray-500 space-y-1">
-              <div className="flex items-center">
-                <Clock className="h-3 w-3 mr-1 flex-shrink-0" />
-                <span className="truncate">
-                  {event.date} • {event.time}
-                </span>
-              </div>
-              <div className="flex items-center">
-                <MapPin className="h-3 w-3 mr-1 flex-shrink-0" />
-                <span className="truncate">{event.location}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  )
-}
+      {meetings.length > 0 ? (
+        meetings.map((meeting) => (
+          <div key={meeting.id} className="border rounded-lg p-3">
+            <h3 className="font-medium">{meeting.title}</h3>
 
+            <div className="flex items-center text-sm text-gray-500 mt-2">
+              <Clock className="h-4 w-4 mr-1" />
+              <span>
+                {format(meeting.startTime, "h:mm a")} ({meeting.duration} min)
+              </span>
+            </div>
+
+            {meeting.location && (
+              <div className="flex items-center text-sm text-gray-500 mt-1">
+                <MapPin className="h-4 w-4 mr-1" />
+                <span>{meeting.location}</span>
+              </div>
+            )}
+
+            <div className="mt-3">
+              {meeting.type !== "in-person" && (
+                <Button size="sm" className="w-full flex items-center justify-center gap-1">
+                  <Video className="h-4 w-4" />
+                  <span>Join Meeting</span>
+                </Button>
+              )}
+            </div>
+          </div>
+        ))
+      ) : (
+        <div className="text-center py-6 text-gray-500">
+          <p>No meetings scheduled for today</p>
+        </div>
+      )}
+    </div>
+  );
+}
