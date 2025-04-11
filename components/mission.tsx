@@ -96,6 +96,14 @@ export default function Mission() {
       },
     },
   };
+  type IconName = "Star" | "Award" | "Users" | "Clock";
+
+  const icons: Record<IconName, React.ElementType> = {
+    Star,
+    Award,
+    Users,
+    Clock,
+  };
 
   return (
     <section
@@ -156,7 +164,10 @@ export default function Mission() {
             {title}
           </motion.h2>
 
-          <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
+          <motion.p
+            variants={fadeIn}
+            className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto"
+          >
             {subtitle}
           </motion.p>
         </motion.div>
@@ -237,7 +248,9 @@ export default function Mission() {
                     {/* Content section - takes 2/5 of the space */}
                     <div className="col-span-2 bg-white dark:bg-gray-900 p-6 flex flex-col">
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold text-primary mb-2">{features[currentIndex].title}</h3>
+                        <h3 className="text-xl font-bold text-primary mb-2">
+                          {features[currentIndex].title}
+                        </h3>
                         <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full"></div>
                       </div>
 
@@ -250,7 +263,9 @@ export default function Mission() {
                           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                             <Star className="w-4 h-4 text-primary" />
                           </div>
-                          <span className="text-xs text-foreground/60">Key mission initiative</span>
+                          <span className="text-xs text-foreground/60">
+                            Key mission initiative
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -305,8 +320,12 @@ export default function Mission() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-primary mb-2">{feature.title}</h3>
-                    <p className="text-sm text-foreground/70">{feature.description}</p>
+                    <h3 className="text-xl font-bold text-primary mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm text-foreground/70">
+                      {feature.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -314,7 +333,6 @@ export default function Mission() {
           </div>
         </div>
 
-        {/* 
         {stats && (
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
@@ -323,12 +341,7 @@ export default function Mission() {
             transition={{ duration: 0.5 }}
           >
             {stats.map((stat: any, index: any) => {
-              const Icon = {
-                Star,
-                Award,
-                Users,
-                Clock,
-              }[stat.icon];
+              const Icon = icons[stat.icon as IconName];
 
               return (
                 <div
@@ -337,6 +350,7 @@ export default function Mission() {
                 >
                   <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br border border-primary/10 h-full flex flex-col items-center text-center relative z-10">
                     <div className="text-primary w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4">
+                      {Icon && <Icon className="w-6 h-6 sm:w-7 sm:h-7" />}
                     </div>
                     <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                       {stat.value}
@@ -350,7 +364,7 @@ export default function Mission() {
               );
             })}
           </motion.div>
-        )} */}
+        )}
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
         <motion.div
