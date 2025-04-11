@@ -81,6 +81,14 @@ export default function Mission() {
       },
     },
   };
+  type IconName = "Star" | "Award" | "Users" | "Clock";
+
+  const icons: Record<IconName, React.ElementType> = {
+    Star,
+    Award,
+    Users,
+    Clock,
+  };
 
   return (
     <section
@@ -281,7 +289,9 @@ export default function Mission() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">{feature.title}</h3>
+                    <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">
+                      {feature.title}
+                    </h3>
                     <p className="text-sm text-foreground/70 text-center md:text-left">{feature.description}</p>
                   </div>
                 </motion.div>
@@ -290,7 +300,6 @@ export default function Mission() {
           </div>
         </div>
 
-        {/* 
         {stats && (
           <motion.div
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto"
@@ -299,12 +308,7 @@ export default function Mission() {
             transition={{ duration: 0.5 }}
           >
             {stats.map((stat: any, index: any) => {
-              const Icon = {
-                Star,
-                Award,
-                Users,
-                Clock,
-              }[stat.icon];
+              const Icon = icons[stat.icon as IconName];
 
               return (
                 <div
@@ -313,20 +317,19 @@ export default function Mission() {
                 >
                   <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br border border-primary/10 h-full flex flex-col items-center text-center relative z-10">
                     <div className="text-primary w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4">
+                      {Icon && <Icon className="w-6 h-6 sm:w-7 sm:h-7" />}
                     </div>
                     <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                       {stat.value}
                     </div>
-                    <div className="text-sm sm:text-base text-foreground/70">
-                      {stat.label}
-                    </div>
+                    <div className="text-sm sm:text-base text-foreground/70">{stat.label}</div>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                   </div>
                 </div>
               );
             })}
           </motion.div>
-        )} */}
+        )}
       </div>
       <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
         <motion.div
