@@ -7,17 +7,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle, Loader2 } from "lucide-react";
-import { sendPartnerEmail } from "@/lib/email-service";
+import emailjs from "@emailjs/browser";
+import { addCollaborator } from "@/lib/firebase";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
+
+const EMAILJS_USER_ID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+const EMAILJS_WAITLIST_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_PARTNER_TEMPLATE_ID;
+
+emailjs.init(EMAILJS_USER_ID);
 
 export default function PartnerForm() {
   const [formData, setFormData] = useState({
@@ -54,13 +55,7 @@ export default function PartnerForm() {
     setStatus("loading");
 
     try {
-      // Basic validation
-      if (
-        !formData.contactName ||
-        !formData.email ||
-        !formData.organizationName ||
-        !formData.organizationType
-      ) {
+      if (!formData.contactName || !formData.email || !formData.organizationName || !formData.organizationType) {
         throw new Error("Please fill out all required fields");
       }
 
@@ -70,17 +65,28 @@ export default function PartnerForm() {
         throw new Error("Please enter a valid email address");
       }
 
-      // Send email using EmailJS
-      await sendPartnerEmail(formData);
+      const templateParams = {
+        to_name: formData.contactName,
+        to_email: formData.email,
+        from_name: "NordicPro Team",
+        phone: formData.phone,
+        organization_name: formData.organizationName,
+        organization_type: formData.organizationType,
+        website: formData.website,
+        team_count: formData.teamCount,
+        player_count: formData.playerCount,
+        partnership_goals: formData.partnershipGoals.join(", "),
+        message: formData.message,
+        reply_to: "support@nordicpro.com",
+      };
 
+      emailjs
+        .send(EMAILJS_SERVICE_ID, EMAILJS_WAITLIST_TEMPLATE_ID, templateParams)
+        .then((_) => addCollaborator(formData));
       setStatus("success");
     } catch (error) {
       setStatus("error");
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
-      );
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
     }
   };
 
@@ -92,17 +98,13 @@ export default function PartnerForm() {
             <CheckCircle className="h-8 w-8 text-green" />
           </div>
         </div>
-        <h3 className="text-2xl font-bold mb-4">
-          Partnership Request Received!
-        </h3>
+        <h3 className="text-2xl font-bold mb-4">Partnership Request Received!</h3>
         <p className="text-foreground/70 mb-6">
-          Thank you for your interest in partnering with NordicPro. We've
-          received your information and a member of our team will be in touch
-          within 2 business days to discuss next steps.
+          Thank you for your interest in partnering with NordicPro. We've received your information and a member of our
+          team will be in touch within 2 business days to discuss next steps.
         </p>
         <p className="text-foreground/70 mb-6">
-          We're excited about the possibility of working together to support
-          youth athletes and teams.
+          We're excited about the possibility of working together to support youth athletes and teams.
         </p>
         <Button
           className="bg-primary hover:bg-primary/90 text-white font-medium rounded-full px-8 py-3"
@@ -115,13 +117,8 @@ export default function PartnerForm() {
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="bg-white rounded-3xl p-8 md:p-12 shadow-lg"
-    >
-      <h3 className="text-2xl font-bold mb-6 text-primary">
-        Partner Application
-      </h3>
+    <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 md:p-12 shadow-lg">
+      <h3 className="text-2xl font-bold mb-6 text-primary">Partner Application</h3>
 
       {status === "error" && (
         <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600">
@@ -142,9 +139,7 @@ export default function PartnerForm() {
                 id="contactName"
                 placeholder="Your full name"
                 value={formData.contactName}
-                onChange={(e) =>
-                  setFormData({ ...formData, contactName: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
                 required
                 className="rounded-lg"
               />
@@ -159,9 +154,7 @@ export default function PartnerForm() {
                 type="email"
                 placeholder="you@example.com"
                 value={formData.email}
-                onChange={(e) =>
-                  setFormData({ ...formData, email: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 required
                 className="rounded-lg"
               />
@@ -176,9 +169,7 @@ export default function PartnerForm() {
                 type="tel"
                 placeholder="+1 (555) 123-4567"
                 value={formData.phone}
-                onChange={(e) =>
-                  setFormData({ ...formData, phone: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="rounded-lg"
               />
             </div>
@@ -197,9 +188,7 @@ export default function PartnerForm() {
                 id="organizationName"
                 placeholder="Your organization's name"
                 value={formData.organizationName}
-                onChange={(e) =>
-                  setFormData({ ...formData, organizationName: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, organizationName: e.target.value })}
                 required
                 className="rounded-lg"
               />
@@ -211,26 +200,18 @@ export default function PartnerForm() {
               </Label>
               <Select
                 value={formData.organizationType}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, organizationType: value })
-                }
+                onValueChange={(value) => setFormData({ ...formData, organizationType: value })}
                 required
               >
                 <SelectTrigger id="organizationType" className="rounded-lg">
                   <SelectValue placeholder="Select organization type" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="sports-club">Sports Club</SelectItem>
                   <SelectItem value="school">School</SelectItem>
-                  <SelectItem value="youth-organization">
-                    Youth Organization
-                  </SelectItem>
-                  <SelectItem value="sports-association">
-                    Sports Association
-                  </SelectItem>
-                  <SelectItem value="community-center">
-                    Community Center
-                  </SelectItem>
+                  <SelectItem value="youth-organization">Youth Organization</SelectItem>
+                  <SelectItem value="sports-association">Sports Association</SelectItem>
+                  <SelectItem value="community-center">Community Center</SelectItem>
                   <SelectItem value="other">Other</SelectItem>
                 </SelectContent>
               </Select>
@@ -245,9 +226,7 @@ export default function PartnerForm() {
                 type="url"
                 placeholder="https://your-organization.com"
                 value={formData.website}
-                onChange={(e) =>
-                  setFormData({ ...formData, website: e.target.value })
-                }
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                 className="rounded-lg"
               />
             </div>
@@ -264,14 +243,12 @@ export default function PartnerForm() {
               </Label>
               <Select
                 value={formData.teamCount}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, teamCount: value })
-                }
+                onValueChange={(value) => setFormData({ ...formData, teamCount: value })}
               >
                 <SelectTrigger id="teamCount" className="rounded-lg">
                   <SelectValue placeholder="Select number of teams" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="1-5">1-5 teams</SelectItem>
                   <SelectItem value="6-10">6-10 teams</SelectItem>
                   <SelectItem value="11-20">11-20 teams</SelectItem>
@@ -287,14 +264,12 @@ export default function PartnerForm() {
               </Label>
               <Select
                 value={formData.playerCount}
-                onValueChange={(value) =>
-                  setFormData({ ...formData, playerCount: value })
-                }
+                onValueChange={(value) => setFormData({ ...formData, playerCount: value })}
               >
                 <SelectTrigger id="playerCount" className="rounded-lg">
                   <SelectValue placeholder="Select number of players" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="1-50">1-50 players</SelectItem>
                   <SelectItem value="51-100">51-100 players</SelectItem>
                   <SelectItem value="101-250">101-250 players</SelectItem>
@@ -347,9 +322,7 @@ export default function PartnerForm() {
             id="message"
             placeholder="Tell us more about your organization and how you envision partnering with NordicPro..."
             value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="rounded-lg min-h-[120px]"
           />
         </div>
@@ -370,8 +343,7 @@ export default function PartnerForm() {
         </Button>
 
         <p className="text-sm text-foreground/60 text-center">
-          By submitting this form, you agree to be contacted by the NordicPro
-          team regarding partnership opportunities.
+          By submitting this form, you agree to be contacted by the NordicPro team regarding partnership opportunities.
         </p>
       </div>
     </form>
