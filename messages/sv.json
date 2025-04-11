@@ -3,7 +3,7 @@
     "logo": "NordicPro",
     "navigation": [
       {
-        "label": "Vårt uppdrag",
+        "label": "Vår målsättning",
         "href": "#mission"
       },
       {
@@ -35,33 +35,33 @@
         "delay": 0.8
       },
       {
-        "label": "Behålla idrottare",
+        "label": "Få spelare att stanna",
         "delay": 1.0
       }
     ]
   },
   "mission": {
     "label": "VÅRT UPPDRAG",
-    "title": "Varför bygger vi NordicPro?",
-    "subtitle": "Talang är inte problemet. Att känna sig osedd är det. NordicPro är lösningen.",
+    "title": "Varför valde vi att bygga NordicPro?",
+    "subtitle": "Talang är inte problemet - känslan att inte få stöd som spelare är. NordicPro är lösningen.",
     "features": [
       {
-        "title": "Driva motivation",
+        "title": "Öka motivation",
         "description": "Spelifierade mål, lagutmaningar och feedback som håller spelare engagerade och motiverade.",
         "image": "/images/motivation.webp"
       },
       {
         "title": "Mental hälsa",
-        "description": "Snabba check-ins, reflektionsfrågor och tillgång till hjälp — eftersom välbefinnande driver långsiktig framgång.",
+        "description": "Enkla humörincheckningar, reflektionsformulär och tillgång till hjälp - för att välmående är vägen till långsiktig framgång.",
         "image": "/images/mental-health.webp"
       },
       {
         "title": "Laghantering",
-        "description": "Schemaläggning, kommunikation och laghantering behöver inte vara komplicerat. Nu är det inte det.",
+        "description": "Schemaläggning, kommunikation och laghantering behöver inte vara komplicerat. Med NordicPro är det inte det.",
         "image": "/images/team-management.webp"
       },
       {
-        "title": "Byggd för att behålla",
+        "title": "NordicPro finns där för er.",
         "description": "När spelare känner sig delaktiga stannar de kvar. Vi hjälper klubbar att behålla sina talanger säsong efter säsong.",
         "image": "/images/retention.webp"
       }
@@ -91,7 +91,7 @@
   },
   "features": {
     "label": "FUNKTIONER",
-    "title": "Allt du redan gör — fast bättre.",
+    "title": "Allt ni redan gör — fast änny bättre.",
     "subtitle": "En komplett plattform för idrottares välbefinnande, motivation och laghantering.",
     "list": [
       {
@@ -99,15 +99,15 @@
         "icon": "Heart",
         "items": [
           {
-            "text": "Snabb humörspårning",
-            "description": "Följ framsteg och fira prestationer"
+            "text": "Enkel humörspårning",
+            "description": "Säkerställ att era spelare mår bra"
           },
           {
-            "text": "Veckovisa välmåendereflektioner",
-            "description": "Bygg starkare band inom ditt lag"
+            "text": "Veckovisa uppföljningar på spelares välmående",
+            "description": "Få bättre sammanhörighet inom laget"
           },
           {
-            "text": "Privata varningar för tränare",
+            "text": "Särskilda notiser till tränare",
             "description": "Förbättra prestationer genom positiv förstärkning"
           }
         ]
@@ -118,15 +118,15 @@
         "items": [
           {
             "text": "Sätt personliga och lagmål",
-            "description": "Följ framsteg och fira prestationer"
+            "description": "När spelaren utvecklas, utvecklas laget, och när laget utvecklas, utvecklas spelarna"
           },
           {
             "text": "Spelifierat belöningssystem",
-            "description": "Bygg starkare band inom ditt lag"
+            "description": "Öka motivationen genom spelliknande belöningar""
           },
           {
             "text": "Utmaningar och evenemang",
-            "description": "Förbättra prestationer genom positiv förstärkning"
+            "description": "Förbättra prestationer genom att ha givande belöningar från utmaningar"
           }
         ]
       },
@@ -136,15 +136,15 @@
         "items": [
           {
             "text": "Tillgång till resurser för mental hälsa",
-            "description": "Följ framsteg och fira prestationer"
+            "description": "Hjälp era spelare att må bra"
           },
           {
             "text": "Tränare får vägledning för att stödja idrottare",
-            "description": "Bygg starkare band inom ditt lag"
+            "description": "När tränarna vet mer, kan de hjälpa mer"
           },
           {
             "text": "Integrerad chatt med certifierad supportpersonal",
-            "description": "Förbättra prestationer genom positiv förstärkning"
+            "description": "Vi finns där om ni behöver hjälp"
           }
         ]
       },
@@ -154,15 +154,15 @@
         "items": [
           {
             "text": "Schemalägg träningar och matcher",
-            "description": "Följ framsteg och fira prestationer"
+            "description": "Följ enkelt upp när nästa träning eller match är"
           },
           {
             "text": "Skicka individuella, grupp- och lagmeddelanden",
-            "description": "Bygg starkare band inom ditt lag"
+            "description": "Kommunciera lättare med spelare och föräldrar på ett och samma ställe"
           },
           {
             "text": "Spåra betalningar och närvaro",
-            "description": "Förbättra prestationer genom positiv förstärkning"
+            "description": "Håll koll på vilka som är där på träningarna, och vilka som inte är där"
           }
         ]
       }
@@ -184,8 +184,8 @@
         "image": "/images/app-screens/screen-2.png"
       },
       {
-        "title": "Mental hälsa check-in",
-        "description": "Snabb humörspårning och välmåendeverktyg för att stödja spelarnas välbefinnande.",
+        "title": "Enkel spårning över mental hälsa",
+        "description": "Enkel humörspårning och välmåendeverktyg för att stödja spelarnas välbefinnande.",
         "image": "/images/app-screens/screen-3.png"
       },
       {
@@ -197,8 +197,8 @@
   },
   "partnership": {
     "title": "Är ni en organisation som delar vår vision?",
-    "subtitle": "Låt oss samarbeta.",
-    "cta": "Bli en partner"
+    "subtitle": "Kom och samarbeta med oss!",
+    "cta": "Bli en samarbetspartner"
   },
   "platform": {
     "title": "En komplett plattform för idrottares välbefinnande",
@@ -207,22 +207,10 @@
       "Vårt tillvägagångssätt fokuserar på hela idrottaren - stödjer deras mentala välbefinnande samtidigt som vi ger tränare de verktyg de behöver för att bygga starkare, mer motståndskraftiga lag."
     ],
     "stats": [
-      {
-        "value": "85%",
-        "label": "Ökning i spelarbevarande"
-      },
-      {
-        "value": "92%",
-        "label": "Av tränare rapporterar förbättrad lagdynamik"
-      },
-      {
-        "value": "3.5x",
-        "label": "Ökning i spelarengagemang"
-      },
-      {
-        "value": "78%",
-        "label": "Minskning i administrativ tid"
-      }
+      { "value": "85%", "label": "Ökning i spelare som stannar kvar" },
+      { "value": "92%", "label": "Av tränare rapporterar förbättrad lagdynamik" },
+      { "value": "3.5x", "label": "Ökning i spelarengagemang" },
+      { "value": "78%", "label": "Minskning i administrativ tid" }
     ]
   },
   "cta": {
@@ -239,11 +227,11 @@
       },
       {
         "question": "Vem bör använda NordicPro?",
-        "answer": "NordicPro är idealisk för ungdomsidrottsklubbar, tränare och organisationer som vill förbättra spelarbevarande, lagdynamik och idrottares övergripande välbefinnande. Vår plattform är designad för fotbollslag men kan anpassas för olika ungdomsidrotter."
+        "answer": "NordicPro är perfekt för ungdomsidrottsklubbar, tränare och organisationer som vill göra det enklare att behålla spelare samt förbättra lagdynamik och idrottares övergripande välbefinnande. Vår plattform är initialt designad för fotbollslag men kan anpassas för flera olika ungdomsidrotter."
       },
       {
-        "question": "Kan den ersätta våra nuvarande lagverktyg?",
-        "answer": "Ja! NordicPro är designad för att vara en omfattande lösning som kan ersätta flera verktyg du kanske använder för närvarande. Den inkluderar schemaläggning, kommunikation, betalningsspårning och närvarofunktioner, tillsammans med våra unika verktyg för mental hälsa och motivation."
+        "question": "Kan NordicPro ersätta våra nuvarande lagverktyg?",
+        "answer": "Ja! NordicPro är designad för att vara en omfattande lösning som kan ersätta flera verktyg ni kanske använder för närvarande. Den inkluderar schemaläggning, kommunikation, betalningsspårning och närvarofunktioner, tillsammans med våra unika verktyg för mental hälsa och motivation."
       },
       {
         "question": "När kommer NordicPro att vara tillgänglig?",
@@ -251,7 +239,7 @@
       }
     ],
     "contact": {
-      "text": "Om du har fler frågor, vänligen ring oss eller kontakta oss!",
+      "text": "Om ni har fler frågor, vänligen ring oss eller kontakta oss!",
       "cta": "Kontakta oss"
     }
   },
@@ -302,7 +290,7 @@
   },
   "cookies": {
     "title": "Vi använder cookies för att förbättra din upplevelse.",
-    "description": "Du kan hantera dina cookie-inställningar när som helst.",
+    "description": "Du kan när som helst ändra dina dina cookie-inställningar.",
     "learnMore": "Läs mer",
     "acceptAll": "Acceptera alla",
     "essentialOnly": "Endast nödvändiga",
@@ -319,9 +307,9 @@
     "reset": "Återställ",
     "saved": "Inställningar sparade!",
     "metaTitle": "Cookie-policy | NordicPro",
-    "metaDescription": "Läs om hur NordicPro använder cookies och hur du kan hantera dina inställningar.",
+    "metaDescription": "Läs om hur NordicPro använder cookies och hur ni kan hantera dina inställningar.",
     "pageTitle": "Cookie-policy",
-    "pageDescription": "Denna cookie-policy förklarar hur NordicPro använder cookies och liknande tekniker för att känna igen dig när du besöker vår webbplats.",
+    "pageDescription": "Denna cookie-policy förklarar hur NordicPro använder cookies och liknande tekniker för att känna igen dig när ni besöker vår webbplats.",
     "cookieTypes": {
       "title": "Cookie-typer",
       "essential": {
@@ -341,7 +329,7 @@
         "cookies": [
           {
             "name": "session",
-            "purpose": "Upprätthåller din session medan du surfar på vår webbplats",
+            "purpose": "Upprätthåller din session medan ni surfar på vår webbplats",
             "duration": "Session"
           },
           {
@@ -353,7 +341,7 @@
       },
       {
         "name": "Analys-cookies",
-        "description": "Dessa cookies låter oss räkna besök och trafikkällor så att vi kan mäta och förbättra prestandan på vår webbplats.",
+        "description": "Dessa cookies låter oss hålla koll på hur många som besöker vår sida, och hur dem besöker vår sida, så att vi kan mäta och förbättra prestandan på vår webbplats.",
         "required": false,
         "cookies": [
           {
@@ -370,9 +358,9 @@
       }
     ],
     "howToManage": {
-      "title": "Hur du hanterar cookies",
-      "description": "De flesta webbläsare låter dig kontrollera cookies genom dina inställningar. Om du begränsar webbplatsers möjlighet att använda cookies kan det dock försämra din övergripande användarupplevelse.",
-      "learnMore": "Hur du hanterar cookies"
+      "title": "Hur ni hanterar cookies",
+      "description": "De flesta webbläsare låter dig kontrollera cookies genom dina inställningar. Om ni begränsar webbplatsers möjlighet att använda cookies kan det dock försämra din övergripande användarupplevelse.",
+      "learnMore": "Hur ni hanterar cookies"
     },
     "browsers": [
       {
@@ -401,22 +389,22 @@
     "metaTitle": "Användarvillkor | NordicPro",
     "metaDescription": "Läs villkoren för användning av NordicPros plattform och tjänster.",
     "title": "Användarvillkor",
-    "subtitle": "Vänligen läs dessa villkor noggrant innan du använder vår plattform.",
+    "subtitle": "Vänligen läs dessa villkor noggrant innan ni använder vår plattform.",
     "lastUpdated": "Senast uppdaterad",
     "lastUpdatedDate": "1 april 2025",
-    "contactInfo": "Om du har några frågor om dessa villkor, kontakta oss på legal@nordicpro.com",
+    "contactInfo": "Om ni har några frågor om dessa villkor, kontakta oss på legal@nordicpro.com",
     "sections": [
       {
         "title": "1. Godkännande av villkor",
         "content": [
-          "Genom att använda NordicPros plattform godkänner du att du är bunden av dessa användarvillkor och alla tillämpliga lagar och förordningar. Om du inte godkänner något av dessa villkor får du inte använda eller komma åt denna webbplats.",
+          "Genom att använda NordicPros plattform godkänner ni dessa användarvillkor och alla tillämpliga lagar och förordningar. Om ni inte godkänner något av dessa villkor får ni inte använda eller komma åt denna webbplats.",
           "Vi förbehåller oss rätten att ändra dessa villkor när som helst, och sådana ändringar träder i kraft omedelbart efter publicering av de ändrade villkoren. Din fortsatta användning av plattformen efter eventuella ändringar indikerar ditt godkännande av de ändrade villkoren."
         ]
       },
       {
         "title": "2. Användarlicens",
         "content": [
-          "Tillstånd ges för tillfällig användning av plattformen endast för personligt, icke-kommersiellt bruk. Detta är beviljande av en licens, inte en överlåtelse av äganderätt, och enligt denna licens får du inte:",
+          "Tillstånd ges för tillfällig användning av plattformen endast för personligt, icke-kommersiellt bruk. Detta är beviljande av en licens, inte en överlåtelse av äganderätt, och enligt denna licens får ni inte:",
           "- ändra eller kopiera materialen;",
           "- använda materialen för något kommersiellt syfte;",
           "- försöka dekompilera eller bakåtutveckla någon programvara som finns på NordicPros plattform;",
@@ -427,15 +415,15 @@
       {
         "title": "3. Användarkonton",
         "content": [
-          "För att få tillgång till vissa funktioner på plattformen kan du behöva skapa ett konto. Du ansvarar för att upprätthålla sekretessen för din kontoinformation, inklusive ditt lösenord, och för all aktivitet som sker under ditt konto.",
-          "Du samtycker till att omedelbart meddela oss om all obehörig användning av ditt konto eller annat säkerhetsbrott. Vi kommer inte att vara ansvariga för någon förlust som du kan drabbas av till följd av att någon annan använder ditt lösenord eller konto, med eller utan din vetskap."
+          "För att få tillgång till vissa funktioner på plattformen kan ni behöva skapa ett konto. Du ansvarar för att upprätthålla sekretessen för din kontoinformation, inklusive ditt lösenord, och för all aktivitet som sker under ditt konto.",
+          "Du samtycker till att omedelbart meddela oss om all obehörig användning av ditt konto eller annat säkerhetsbrott. Vi kommer inte att vara ansvariga för någon förlust som ni kan drabbas av till följd av att någon annan använder ditt lösenord eller konto, med eller utan din vetskap."
         ]
       },
       {
         "title": "4. Integritetspolicy",
         "content": [
           "Din användning av NordicPros plattform styrs också av vår integritetspolicy. Vänligen granska vår integritetspolicy, som också styr plattformen och informerar användare om vår datainsamlingspraxis.",
-          "Genom att använda vår plattform samtycker du till vår insamling och användning av din information enligt beskrivningen i integritetspolicyn."
+          "Genom att använda vår plattform samtycker ni till vår insamling och användning av din information enligt beskrivningen i integritetspolicyn."
         ]
       },
       {
@@ -460,16 +448,16 @@
     "subtitle": "Din integritet är viktig för oss. Denna integritetspolicy förklarar hur vi samlar in, använder, delar och skyddar din information.",
     "lastUpdated": "Senast uppdaterad",
     "lastUpdatedDate": "1 april 2025",
-    "contactInfo": "Om du har några frågor om vår integritetspolicy, vänligen kontakta oss på privacy@nordicpro.com",
+    "contactInfo": "Om ni har några frågor om vår integritetspolicy, vänligen kontakta oss på privacy@nordicpro.com",
     "sections": [
       {
         "title": "1. Information vi samlar in",
         "content": [
           "Vi samlar in flera typer av information från och om användare av vår plattform, inklusive:",
-          "- Personlig information som namn, e-postadress och telefonnummer när du registrerar ett konto",
-          "- Användningsdata om hur du interagerar med vår plattform",
+          "- Personlig information som namn, e-postadress och telefonnummer när ni registrerar ett konto",
+          "- Användningsdata om hur ni interagerar med vår plattform",
           "- Enhetsinformation inklusive din IP-adress, webbläsartyp och operativsystem",
-          "- Platsdata om du ger oss tillstånd att komma åt din enhets plats"
+          "- Platsdata om ni ger oss tillstånd att komma åt din enhets plats"
         ]
       },
       {
@@ -504,7 +492,7 @@
       {
         "title": "5. Dina rättigheter",
         "content": [
-          "Beroende på var du befinner dig kan du ha vissa rättigheter gällande din personliga information, såsom:",
+          "Beroende på var ni befinner dig kan ni ha vissa rättigheter gällande din personliga information, såsom:",
           "- Rätten att få tillgång till och ta emot en kopia av din personliga information",
           "- Rätten att korrigera eller uppdatera din personliga information",
           "- Rätten att radera din personliga information",
@@ -515,7 +503,7 @@
       {
         "title": "6. Barns integritet",
         "content": [
-          "Vår plattform är inte avsedd för barn under 13 års ålder. Vi samlar inte medvetet in personlig information från barn under 13 år. Om du är förälder eller vårdnadshavare och tror att vi kan ha samlat in information om ett barn, vänligen kontakta oss."
+          "Vår plattform är inte avsedd för barn under 13 års ålder. Vi samlar inte medvetet in personlig information från barn under 13 år. Om ni är förälder eller vårdnadshavare och tror att vi kan ha samlat in information om ett barn, vänligen kontakta oss."
         ]
       }
     ]
