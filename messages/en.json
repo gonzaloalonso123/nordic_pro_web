@@ -2,36 +2,46 @@
   "header": {
     "logo": "NordicPro",
     "navigation": [
-      { "label": "Our mission", "href": "#mission" },
-      { "label": "Features", "href": "#features" },
-      { "label": "Platform", "href": "#app-showcase" },
-      { "label": "FAQ", "href": "#faq" }
-
+      {
+        "label": "Our mission",
+        "href": "#mission"
+      },
+      {
+        "label": "Features",
+        "href": "#features"
+      },
+      {
+        "label": "Platform",
+        "href": "#app-showcase"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      }
     ],
     "cta": "Join Waitlist"
   },
-"hero": {
-  "title": "Where performance meets well-being",
-  "description": "A platform for youth teams that puts mental health, motivation, and team management in one place.",
-  "cta": "Join Waitlist",
-  "tags": [
-    {
-      "label": "Mental Health",
-      "delay": 0.6
-    },
-    {
-      "label": "Team Management",
-
-      "delay": 0.8
-    },
-    {
-      "label": "Athlete retention",
-      "delay": 1.0
-    }
-  ]
-},
+  "hero": {
+    "title": "Where performance meets well-being",
+    "description": "A platform for youth teams that puts mental health, motivation, and team management in one place.",
+    "cta": "Join Waitlist",
+    "tags": [
+      {
+        "label": "Mental Health",
+        "delay": 0.6
+      },
+      {
+        "label": "Team Management",
+        "delay": 0.8
+      },
+      {
+        "label": "Athlete retention",
+        "delay": 1.0
+      }
+    ]
+  },
   "mission": {
-      "label": "OUR MISSION",
+    "label": "OUR MISSION",
     "title": "Why are we building NordicPro?",
     "subtitle": "Talent isn't the problem. Feeling unsupported is. NordicPro is the solution.",
     "features": [
@@ -56,119 +66,135 @@
         "image": "/images/retention.webp"
       }
     ],
-  "stats": [
-    { "icon": "Star", "value": "10+", "label": "Years Experience" },
-    { "icon": "Award", "value": "3+", "label": "Pilot teams" },
-    { "icon": "Users", "value": "5+", "label": "Team Members" },
-    { "icon": "Clock", "value": "100%", "label": "Client Satisfaction" }
-  ]
+    "stats": [
+      {
+        "icon": "Star",
+        "value": "10+",
+        "label": "Years Experience"
+      },
+      {
+        "icon": "Award",
+        "value": "3+",
+        "label": "Pilot teams"
+      },
+      {
+        "icon": "Users",
+        "value": "5+",
+        "label": "Team Members"
+      },
+      {
+        "icon": "Clock",
+        "value": "100%",
+        "label": "Client Satisfaction"
+      }
+    ]
   },
-"features": {
-  "label": "FEATURES",
-  "title": "Everything you're already doing — just better.",
-  "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
-  "list": [
-    {
-      "title": "Mental Health Support",
-      "icon": "Heart",
-      "items": [
-        {
-          "text": "Quick mood tracking",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Weekly wellness reflections",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Private alerts for coaches",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Motivation and Engagement",
-      "icon": "Trophy",
-      "items": [
-        {
-          "text": "Set personal and team goals",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Gamified rewards system",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Challenges and events",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Built-in Support System",
-      "icon": "LineChart",
-      "items": [
-        {
-          "text": "Access to mental health resources",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Coaches get guidance to support athletes",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Integrated chat with certified support staff",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Admin Tools",
-      "icon": "Users",
-      "items": [
-        {
-          "text": "Schedule practices and matches",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Send individual, group and team messages",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Track payments and attendance",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    }
-  ]
-},
-"appShowcase": {
-  "title": "Experience NordicPro",
-  "subtitle": "Get a glimpse of our innovative platform designed to transform youth sports teams.",
-  "label": "Platform",
-  "screens": [
-    {
-      "title": "Team Calendar",
-      "description": "Schedule practices, games, and events with an intuitive team calendar.",
-      "image": "/images/app-screens/screen-1.png"
-    },
-    {
-      "title": "Player Motivation",
-      "description": "Gamified challenges and rewards to keep players engaged and motivated.",
-      "image": "/images/app-screens/screen-2.png"
-    },
-    {
-      "title": "Mental Health Check-in",
-      "description": "Quick mood tracking and wellness tools to support player well-being.",
-      "image": "/images/app-screens/screen-3.png"
-    },
-    {
-      "title": "Team Management",
-      "description": "Streamlined tools for coaches to manage rosters, attendance, and communication.",
-      "image": "/images/app-screens/screen-4.png"
-    }
-  ]
-},
+  "features": {
+    "label": "FEATURES",
+    "title": "Everything you're already doing — just better.",
+    "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
+    "list": [
+      {
+        "title": "Mental Health Support",
+        "icon": "Heart",
+        "items": [
+          {
+            "text": "Quick mood tracking",
+            "description": "Track progress and celebrate achievements"
+          },
+          {
+            "text": "Weekly wellness reflections",
+            "description": "Build stronger connections within your team"
+          },
+          {
+            "text": "Private alerts for coaches",
+            "description": "Improve performance through positive reinforcement"
+          }
+        ]
+      },
+      {
+        "title": "Motivation and Engagement",
+        "icon": "Trophy",
+        "items": [
+          {
+            "text": "Set personal and team goals",
+            "description": "Track progress and celebrate achievements"
+          },
+          {
+            "text": "Gamified rewards system",
+            "description": "Build stronger connections within your team"
+          },
+          {
+            "text": "Challenges and events",
+            "description": "Improve performance through positive reinforcement"
+          }
+        ]
+      },
+      {
+        "title": "Built-in Support System",
+        "icon": "LineChart",
+        "items": [
+          {
+            "text": "Access to mental health resources",
+            "description": "Track progress and celebrate achievements"
+          },
+          {
+            "text": "Coaches get guidance to support athletes",
+            "description": "Build stronger connections within your team"
+          },
+          {
+            "text": "Integrated chat with certified support staff",
+            "description": "Improve performance through positive reinforcement"
+          }
+        ]
+      },
+      {
+        "title": "Admin Tools",
+        "icon": "Users",
+        "items": [
+          {
+            "text": "Schedule practices and matches",
+            "description": "Track progress and celebrate achievements"
+          },
+          {
+            "text": "Send individual, group and team messages",
+            "description": "Build stronger connections within your team"
+          },
+          {
+            "text": "Track payments and attendance",
+            "description": "Improve performance through positive reinforcement"
+          }
+        ]
+      }
+    ]
+  },
+  "appShowcase": {
+    "title": "Experience NordicPro",
+    "subtitle": "Get a glimpse of our innovative platform designed to transform youth sports teams.",
+    "label": "Platform",
+    "screens": [
+      {
+        "title": "Team Calendar",
+        "description": "Schedule practices, games, and events with an intuitive team calendar.",
+        "image": "/images/app-screens/screen-1.png"
+      },
+      {
+        "title": "Player Motivation",
+        "description": "Gamified challenges and rewards to keep players engaged and motivated.",
+        "image": "/images/app-screens/screen-2.png"
+      },
+      {
+        "title": "Mental Health Check-in",
+        "description": "Quick mood tracking and wellness tools to support player well-being.",
+        "image": "/images/app-screens/screen-3.png"
+      },
+      {
+        "title": "Team Management",
+        "description": "Streamlined tools for coaches to manage rosters, attendance, and communication.",
+        "image": "/images/app-screens/screen-4.png"
+      }
+    ]
+  },
   "partnership": {
     "title": "Are you an organization that shares our vision?",
     "subtitle": "Let's team up.",
@@ -181,10 +207,22 @@
       "Our approach focuses on the whole athlete - supporting their mental well-being while providing the tools coaches need to build stronger, more resilient teams."
     ],
     "stats": [
-      { "value": "85%", "label": "Increase in player retention" },
-      { "value": "92%", "label": "Of coaches report improved team dynamics" },
-      { "value": "3.5x", "label": "Increase in player engagement" },
-      { "value": "78%", "label": "Reduction in administrative time" }
+      {
+        "value": "85%",
+        "label": "Increase in player retention"
+      },
+      {
+        "value": "92%",
+        "label": "Of coaches report improved team dynamics"
+      },
+      {
+        "value": "3.5x",
+        "label": "Increase in player engagement"
+      },
+      {
+        "value": "78%",
+        "label": "Reduction in administrative time"
+      }
     ]
   },
   "cta": {
@@ -220,13 +258,34 @@
   "footer": {
     "copyright": "© 2025 NordicPro. All rights reserved.",
     "links": [
-      { "label": "Our mission", "href": "#mission" },
-      { "label": "Features", "href": "#features" },
-      { "label": "Platform", "href": "#app-showcase" },
-      { "label": "FAQ", "href": "#faq" },
-      { "label": "Terms", "href": "/terms" },
-      { "label": "Privacy", "href": "/privacy" },
-      { "label": "Cookies", "href": "/cookies" }
+      {
+        "label": "Our mission",
+        "href": "#mission"
+      },
+      {
+        "label": "Features",
+        "href": "#features"
+      },
+      {
+        "label": "Platform",
+        "href": "#app-showcase"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      },
+      {
+        "label": "Terms",
+        "href": "/terms"
+      },
+      {
+        "label": "Privacy",
+        "href": "/privacy"
+      },
+      {
+        "label": "Cookies",
+        "href": "/cookies"
+      }
     ],
     "ui": {
       "quickLinks": "Quick Links",
@@ -242,23 +301,23 @@
     }
   },
   "cookies": {
-  "title": "We use cookies to improve your experience.",
-  "description": "You can manage your cookie preferences anytime.",
-  "learnMore": "Learn more",
-  "acceptAll": "Accept All",
-  "essentialOnly": "Essential Only",
-  "managePreferences": "Manage Preferences",
-  "savePreferences": "Save Preferences",
-  "manageCookies": "Manage Cookie Preferences",
-  "back": "Back",
-  "close": "Close",
-  "essential": "Essential",
-  "statistics": "Statistics",
-  "marketing": "Marketing",
-  "functional": "Functional",
-  "updatePreferencesTitle": "Update your cookie preferences",
-"reset": "Reset",
-"saved": "Preferences saved!",
+    "title": "We use cookies to improve your experience.",
+    "description": "You can manage your cookie preferences anytime.",
+    "learnMore": "Learn more",
+    "acceptAll": "Accept All",
+    "essentialOnly": "Essential Only",
+    "managePreferences": "Manage Preferences",
+    "savePreferences": "Save Preferences",
+    "manageCookies": "Manage Cookie Preferences",
+    "back": "Back",
+    "close": "Close",
+    "essential": "Essential",
+    "statistics": "Statistics",
+    "marketing": "Marketing",
+    "functional": "Functional",
+    "updatePreferencesTitle": "Update your cookie preferences",
+    "reset": "Reset",
+    "saved": "Preferences saved!",
     "metaTitle": "Cookie Policy | NordicPro",
     "metaDescription": "Learn about how NordicPro uses cookies and how you can manage your preferences.",
     "pageTitle": "Cookie Policy",
@@ -462,5 +521,3 @@
     ]
   }
 }
-
-
