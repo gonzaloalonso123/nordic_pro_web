@@ -2,10 +2,22 @@
   "header": {
     "logo": "NordicPro",
     "navigation": [
-      { "label": "Vårt uppdrag", "href": "#mission" },
-      { "label": "Funktioner", "href": "#features" },
-      { "label": "Plattform", "href": "#app-showcase" },
-      { "label": "Vanliga frågor", "href": "#faq" }
+      {
+        "label": "Vårt uppdrag",
+        "href": "#mission"
+      },
+      {
+        "label": "Funktioner",
+        "href": "#features"
+      },
+      {
+        "label": "Plattform",
+        "href": "#app-showcase"
+      },
+      {
+        "label": "Vanliga frågor",
+        "href": "#faq"
+      }
     ],
     "cta": "Gå med i väntelistan"
   },
@@ -55,10 +67,26 @@
       }
     ],
     "stats": [
-      { "icon": "Star", "value": "10+", "label": "Års erfarenhet" },
-      { "icon": "Award", "value": "3+", "label": "Pilotlag" },
-      { "icon": "Users", "value": "5+", "label": "Teammedlemmar" },
-      { "icon": "Clock", "value": "100%", "label": "Kundnöjdhet" }
+      {
+        "icon": "Star",
+        "value": "10+",
+        "label": "Års erfarenhet"
+      },
+      {
+        "icon": "Award",
+        "value": "3+",
+        "label": "Pilotlag"
+      },
+      {
+        "icon": "Users",
+        "value": "5+",
+        "label": "Teammedlemmar"
+      },
+      {
+        "icon": "Clock",
+        "value": "100%",
+        "label": "Kundnöjdhet"
+      }
     ]
   },
   "features": {
@@ -179,10 +207,22 @@
       "Vårt tillvägagångssätt fokuserar på hela idrottaren - stödjer deras mentala välbefinnande samtidigt som vi ger tränare de verktyg de behöver för att bygga starkare, mer motståndskraftiga lag."
     ],
     "stats": [
-      { "value": "85%", "label": "Ökning i spelarbevarande" },
-      { "value": "92%", "label": "Av tränare rapporterar förbättrad lagdynamik" },
-      { "value": "3.5x", "label": "Ökning i spelarengagemang" },
-      { "value": "78%", "label": "Minskning i administrativ tid" }
+      {
+        "value": "85%",
+        "label": "Ökning i spelarbevarande"
+      },
+      {
+        "value": "92%",
+        "label": "Av tränare rapporterar förbättrad lagdynamik"
+      },
+      {
+        "value": "3.5x",
+        "label": "Ökning i spelarengagemang"
+      },
+      {
+        "value": "78%",
+        "label": "Minskning i administrativ tid"
+      }
     ]
   },
   "cta": {
@@ -218,13 +258,34 @@
   "footer": {
     "copyright": "© 2025 NordicPro. Alla rättigheter förbehållna.",
     "links": [
-      { "label": "Vårt uppdrag", "href": "#mission" },
-      { "label": "Funktioner", "href": "#features" },
-      { "label": "Plattform", "href": "#app-showcase" },
-      { "label": "Vanliga frågor", "href": "#faq" },
-      { "label": "Villkor", "href": "#" },
-      { "label": "Integritet", "href": "#" },
-      { "label": "Cookies", "href": "#" }
+      {
+        "label": "Vårt uppdrag",
+        "href": "#mission"
+      },
+      {
+        "label": "Funktioner",
+        "href": "#features"
+      },
+      {
+        "label": "Plattform",
+        "href": "#app-showcase"
+      },
+      {
+        "label": "Vanliga frågor",
+        "href": "#faq"
+      },
+      {
+        "label": "Villkor",
+        "href": "#"
+      },
+      {
+        "label": "Integritet",
+        "href": "#"
+      },
+      {
+        "label": "Cookies",
+        "href": "#"
+      }
     ],
     "ui": {
       "quickLinks": "Snabblänkar",
@@ -238,6 +299,225 @@
       "subscribe": "Prenumerera",
       "aboutShort": "En plattform för ungdomslag som samlar mental hälsa, motivation och laghantering på ett ställe."
     }
+  },
+  "cookies": {
+    "title": "Vi använder cookies för att förbättra din upplevelse.",
+    "description": "Du kan hantera dina cookie-inställningar när som helst.",
+    "learnMore": "Läs mer",
+    "acceptAll": "Acceptera alla",
+    "essentialOnly": "Endast nödvändiga",
+    "managePreferences": "Hantera inställningar",
+    "savePreferences": "Spara inställningar",
+    "manageCookies": "Hantera cookie-inställningar",
+    "back": "Tillbaka",
+    "close": "Stäng",
+    "essential": "Nödvändiga",
+    "statistics": "Statistik",
+    "marketing": "Marknadsföring",
+    "functional": "Funktionella",
+    "updatePreferencesTitle": "Uppdatera dina cookie-inställningar",
+    "reset": "Återställ",
+    "saved": "Inställningar sparade!",
+    "metaTitle": "Cookie-policy | NordicPro",
+    "metaDescription": "Läs om hur NordicPro använder cookies och hur du kan hantera dina inställningar.",
+    "pageTitle": "Cookie-policy",
+    "pageDescription": "Denna cookie-policy förklarar hur NordicPro använder cookies och liknande tekniker för att känna igen dig när du besöker vår webbplats.",
+    "cookieTypes": {
+      "title": "Cookie-typer",
+      "essential": {
+        "title": "Nödvändiga",
+        "description": "Krävs för att webbplatsen ska fungera korrekt."
+      },
+      "analytics": {
+        "title": "Analys",
+        "description": "Hjälper oss att förbättra vår webbplats genom att samla in anonym data."
+      }
+    },
+    "cookieCategories": [
+      {
+        "name": "Nödvändiga cookies",
+        "description": "Dessa cookies är nödvändiga för att webbplatsen ska fungera och kan inte stängas av i våra system.",
+        "required": true,
+        "cookies": [
+          {
+            "name": "session",
+            "purpose": "Upprätthåller din session medan du surfar på vår webbplats",
+            "duration": "Session"
+          },
+          {
+            "name": "cookiesAccepted",
+            "purpose": "Kommer ihåg dina cookie-inställningar",
+            "duration": "1 år"
+          }
+        ]
+      },
+      {
+        "name": "Analys-cookies",
+        "description": "Dessa cookies låter oss räkna besök och trafikkällor så att vi kan mäta och förbättra prestandan på vår webbplats.",
+        "required": false,
+        "cookies": [
+          {
+            "name": "_ga",
+            "purpose": "Används för att särskilja användare i Google Analytics",
+            "duration": "2 år"
+          },
+          {
+            "name": "_gid",
+            "purpose": "Används för att särskilja användare i Google Analytics",
+            "duration": "24 timmar"
+          }
+        ]
+      }
+    ],
+    "howToManage": {
+      "title": "Hur du hanterar cookies",
+      "description": "De flesta webbläsare låter dig kontrollera cookies genom dina inställningar. Om du begränsar webbplatsers möjlighet att använda cookies kan det dock försämra din övergripande användarupplevelse.",
+      "learnMore": "Hur du hanterar cookies"
+    },
+    "browsers": [
+      {
+        "name": "Google Chrome",
+        "link": "https://support.google.com/chrome/answer/95647"
+      },
+      {
+        "name": "Mozilla Firefox",
+        "link": "https://support.mozilla.org/en-US/kb/cookies-information-websites-store-on-your-computer"
+      },
+      {
+        "name": "Safari",
+        "link": "https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac"
+      },
+      {
+        "name": "Microsoft Edge",
+        "link": "https://support.microsoft.com/en-us/microsoft-edge/delete-cookies-in-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
+      }
+    ],
+    "cookiesUsed": "Cookies som används",
+    "duration": "Varaktighet",
+    "lastUpdated": "Senast uppdaterad",
+    "lastUpdatedDate": "1 april 2025"
+  },
+  "terms": {
+    "metaTitle": "Användarvillkor | NordicPro",
+    "metaDescription": "Läs villkoren för användning av NordicPros plattform och tjänster.",
+    "title": "Användarvillkor",
+    "subtitle": "Vänligen läs dessa villkor noggrant innan du använder vår plattform.",
+    "lastUpdated": "Senast uppdaterad",
+    "lastUpdatedDate": "1 april 2025",
+    "contactInfo": "Om du har några frågor om dessa villkor, kontakta oss på legal@nordicpro.com",
+    "sections": [
+      {
+        "title": "1. Godkännande av villkor",
+        "content": [
+          "Genom att använda NordicPros plattform godkänner du att du är bunden av dessa användarvillkor och alla tillämpliga lagar och förordningar. Om du inte godkänner något av dessa villkor får du inte använda eller komma åt denna webbplats.",
+          "Vi förbehåller oss rätten att ändra dessa villkor när som helst, och sådana ändringar träder i kraft omedelbart efter publicering av de ändrade villkoren. Din fortsatta användning av plattformen efter eventuella ändringar indikerar ditt godkännande av de ändrade villkoren."
+        ]
+      },
+      {
+        "title": "2. Användarlicens",
+        "content": [
+          "Tillstånd ges för tillfällig användning av plattformen endast för personligt, icke-kommersiellt bruk. Detta är beviljande av en licens, inte en överlåtelse av äganderätt, och enligt denna licens får du inte:",
+          "- ändra eller kopiera materialen;",
+          "- använda materialen för något kommersiellt syfte;",
+          "- försöka dekompilera eller bakåtutveckla någon programvara som finns på NordicPros plattform;",
+          "- ta bort upphovsrätts- eller andra äganderättsanmärkningar från materialen; eller",
+          "- överföra materialen till en annan person eller 'spegla' materialen på någon annan server."
+        ]
+      },
+      {
+        "title": "3. Användarkonton",
+        "content": [
+          "För att få tillgång till vissa funktioner på plattformen kan du behöva skapa ett konto. Du ansvarar för att upprätthålla sekretessen för din kontoinformation, inklusive ditt lösenord, och för all aktivitet som sker under ditt konto.",
+          "Du samtycker till att omedelbart meddela oss om all obehörig användning av ditt konto eller annat säkerhetsbrott. Vi kommer inte att vara ansvariga för någon förlust som du kan drabbas av till följd av att någon annan använder ditt lösenord eller konto, med eller utan din vetskap."
+        ]
+      },
+      {
+        "title": "4. Integritetspolicy",
+        "content": [
+          "Din användning av NordicPros plattform styrs också av vår integritetspolicy. Vänligen granska vår integritetspolicy, som också styr plattformen och informerar användare om vår datainsamlingspraxis.",
+          "Genom att använda vår plattform samtycker du till vår insamling och användning av din information enligt beskrivningen i integritetspolicyn."
+        ]
+      },
+      {
+        "title": "5. Ansvarsfriskrivning",
+        "content": [
+          "Materialen på NordicPros plattform tillhandahålls 'i befintligt skick'. NordicPro lämnar inga garantier, uttryckta eller underförstådda, och frånsäger sig härmed alla andra garantier inklusive, utan begränsning, underförstådda garantier eller villkor för säljbarhet, lämplighet för ett särskilt ändamål, eller icke-intrång i immateriella rättigheter eller annan kränkning av rättigheter.",
+          "Vidare garanterar eller representerar NordicPro inte riktigheten, sannolika resultat eller tillförlitligheten av användningen av materialen på sin plattform eller på annat sätt relaterade till sådant material eller på några webbplatser länkade till denna webbplats."
+        ]
+      },
+      {
+        "title": "6. Begränsningar",
+        "content": [
+          "Under inga omständigheter ska NordicPro eller dess leverantörer vara ansvariga för några skador (inklusive, utan begränsning, skador för förlust av data eller vinst, eller på grund av verksamhetsavbrott) som uppstår från användningen eller oförmågan att använda materialen på NordicPros plattform, även om NordicPro eller en auktoriserad representant för NordicPro har meddelats muntligen eller skriftligen om möjligheten till sådan skada."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "metaTitle": "Integritetspolicy | NordicPro",
+    "metaDescription": "Läs om hur NordicPro samlar in, använder och skyddar din personliga information.",
+    "title": "Integritetspolicy",
+    "subtitle": "Din integritet är viktig för oss. Denna integritetspolicy förklarar hur vi samlar in, använder, delar och skyddar din information.",
+    "lastUpdated": "Senast uppdaterad",
+    "lastUpdatedDate": "1 april 2025",
+    "contactInfo": "Om du har några frågor om vår integritetspolicy, vänligen kontakta oss på privacy@nordicpro.com",
+    "sections": [
+      {
+        "title": "1. Information vi samlar in",
+        "content": [
+          "Vi samlar in flera typer av information från och om användare av vår plattform, inklusive:",
+          "- Personlig information som namn, e-postadress och telefonnummer när du registrerar ett konto",
+          "- Användningsdata om hur du interagerar med vår plattform",
+          "- Enhetsinformation inklusive din IP-adress, webbläsartyp och operativsystem",
+          "- Platsdata om du ger oss tillstånd att komma åt din enhets plats"
+        ]
+      },
+      {
+        "title": "2. Hur vi använder din information",
+        "content": [
+          "Vi använder den information vi samlar in om dig för olika ändamål, inklusive att:",
+          "- Tillhandahålla, underhålla och förbättra vår plattform",
+          "- Behandla och slutföra transaktioner",
+          "- Skicka tekniska meddelanden, uppdateringar och supportmeddelanden",
+          "- Svara på dina kommentarer, frågor och förfrågningar",
+          "- Övervaka och analysera trender, användning och aktiviteter i samband med vår plattform",
+          "- Upptäcka, utreda och förhindra bedrägliga transaktioner och andra olagliga aktiviteter"
+        ]
+      },
+      {
+        "title": "3. Delning av din information",
+        "content": [
+          "Vi kan dela din personliga information med:",
+          "- Tjänsteleverantörer som utför tjänster på våra vägnar",
+          "- Partners med vilka vi erbjuder samprofilerade tjänster eller produkter",
+          "- Brottsbekämpande eller andra statliga tjänstemän, om det krävs enligt lag",
+          "Vi kommer inte att sälja din personliga information till tredje part."
+        ]
+      },
+      {
+        "title": "4. Datasäkerhet",
+        "content": [
+          "Vi har implementerat åtgärder som är utformade för att säkra din personliga information från oavsiktlig förlust och från obehörig åtkomst, användning, ändring och avslöjande.",
+          "Tyvärr är överföringen av information via internet inte helt säker. Även om vi gör vårt bästa för att skydda din personliga information kan vi inte garantera säkerheten för din personliga information som överförs till vår plattform."
+        ]
+      },
+      {
+        "title": "5. Dina rättigheter",
+        "content": [
+          "Beroende på var du befinner dig kan du ha vissa rättigheter gällande din personliga information, såsom:",
+          "- Rätten att få tillgång till och ta emot en kopia av din personliga information",
+          "- Rätten att korrigera eller uppdatera din personliga information",
+          "- Rätten att radera din personliga information",
+          "- Rätten att begränsa eller invända mot vår behandling av din personliga information",
+          "För att utöva dessa rättigheter, vänligen kontakta oss med hjälp av informationen som tillhandahålls i slutet av denna policy."
+        ]
+      },
+      {
+        "title": "6. Barns integritet",
+        "content": [
+          "Vår plattform är inte avsedd för barn under 13 års ålder. Vi samlar inte medvetet in personlig information från barn under 13 år. Om du är förälder eller vårdnadshavare och tror att vi kan ha samlat in information om ett barn, vänligen kontakta oss."
+        ]
+      }
+    ]
   }
-
 }
