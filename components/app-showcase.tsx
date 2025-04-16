@@ -33,19 +33,20 @@ export default function AppShowcase() {
     "from-green-50 to-green-100",
     "from-amber-50 to-amber-100",
   ];
+  const popoutText = t.raw("popouts") as string[][];
 
   // Define pop-out elements for each screen
   const popoutElements = [
     [
       {
         type: "event",
-        content: "Game tomorrow",
+        content: popoutText[0][0],
         position: { top: "10%", right: "-20%" },
         rotation: "5deg",
       },
       {
         type: "notification",
-        content: "New practice added",
+        content: popoutText[0][1],
         position: { bottom: "12%", left: "-20%" },
         rotation: "-3deg",
       },
@@ -53,13 +54,13 @@ export default function AppShowcase() {
     [
       {
         type: "badge",
-        content: "Achievement unlocked",
+        content: popoutText[1][0],
         position: { top: "15%", left: "-15%" },
         rotation: "-5deg",
       },
       {
         type: "progress",
-        content: "Level up!",
+        content: popoutText[1][1],
         position: { bottom: "10%", right: "0%" },
         rotation: "3deg",
       },
@@ -67,13 +68,13 @@ export default function AppShowcase() {
     [
       {
         type: "mood",
-        content: "Feeling great today",
+        content: popoutText[2][0],
         position: { top: "10%", right: "-20%" },
         rotation: "4deg",
       },
       {
         type: "insight",
-        content: "Weekly wellness report",
+        content: popoutText[2][1],
         position: { bottom: "15%", left: "-15%" },
         rotation: "-4deg",
       },
@@ -81,13 +82,13 @@ export default function AppShowcase() {
     [
       {
         type: "message",
-        content: "Coach: Great job team!",
+        content: popoutText[3][0],
         position: { top: "15%", left: "-20%" },
         rotation: "-3deg",
       },
       {
         type: "stats",
-        content: "Performance improved",
+        content: popoutText[3][1],
         position: { bottom: "10%", right: "-15%" },
         rotation: "5deg",
       },

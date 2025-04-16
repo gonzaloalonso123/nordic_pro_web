@@ -6,6 +6,7 @@ import Footer from "@/components/footer";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import CookieConsent from "@/components/cookie-consent";
+import LayoutWrapper from "./LayoutWrapper";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,12 +43,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
-          <div className="flex flex-col min-h-screen">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <CookieConsent />
-            <Footer />
-          </div>
+          <LayoutWrapper>{children}</LayoutWrapper>
         </NextIntlClientProvider>
       </body>
     </html>

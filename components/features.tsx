@@ -111,7 +111,7 @@ export default function Features() {
             {title.split("—")[0]}
           </h2>
           <h2 className="text-3xl md:text-5xl font-bold font-montserrat pb-6  bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
-            {title.split("—")[1].replace(".", "")}
+            {title.split("—")[1]}
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
             {subtitle}

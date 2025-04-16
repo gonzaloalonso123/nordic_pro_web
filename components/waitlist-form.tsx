@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { sendWaitlistEmail } from "@/lib/email-service";
+import { useTranslations } from "next-intl";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -30,8 +31,13 @@ export default function WaitlistForm() {
     message: "",
   });
 
+  const t = useTranslations("waitlistForm");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const teamSizeOptions = t.raw("teamSize.options") as {
+    value: string;
+    label: string;
+  }[];
 
   const handleInterestToggle = (interest: string) => {
     setFormData((prev) => {
@@ -51,27 +57,21 @@ export default function WaitlistForm() {
     setStatus("loading");
 
     try {
-      // Basic validation
       if (!formData.name || !formData.email || !formData.role) {
-        throw new Error("Please fill out all required fields");
+        throw new Error(t("error.missingFields"));
       }
 
-      // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        throw new Error("Please enter a valid email address");
+        throw new Error(t("error.invalidEmail"));
       }
 
-      // Send email using EmailJS
       await sendWaitlistEmail(formData);
-
       setStatus("success");
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
+        error instanceof Error ? error.message : t("error.generic")
       );
     }
   };
@@ -84,14 +84,10 @@ export default function WaitlistForm() {
             <CheckCircle className="h-8 w-8 text-green" />
           </div>
         </div>
-        <h3 className="text-2xl font-bold mb-4">You're on the list!</h3>
-        <p className="text-foreground/70 mb-6">
-          Thank you for joining our waitlist. We've sent a confirmation to your
-          email. We'll keep you updated on our launch and may reach out for
-          early access opportunities.
-        </p>
+        <h3 className="text-2xl font-bold mb-4"> {t("confirmation.title")}</h3>
+        <p className="text-foreground/70 mb-6">{t("confirmation.body")}</p>
         <div className="space-y-4">
-          <p className="font-medium">Share NordicPro with others:</p>
+          <p className="font-medium">{t("confirmation.share")}</p>
           <div className="flex justify-center gap-4">
             {["twitter", "facebook", "linkedin"].map((platform) => (
               <Button
@@ -147,9 +143,7 @@ export default function WaitlistForm() {
       onSubmit={handleSubmit}
       className="bg-white rounded-3xl p-8 md:p-12 shadow-lg"
     >
-      <h3 className="text-2xl font-bold mb-6 text-primary">
-        Join the Waitlist
-      </h3>
+      <h3 className="text-2xl font-bold mb-6 text-primary">{t("title")}</h3>
 
       {status === "error" && (
         <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-600">
@@ -161,11 +155,11 @@ export default function WaitlistForm() {
         <div className="grid md:grid-cols-2 gap-6">
           <div className="space-y-2">
             <Label htmlFor="name" className="text-foreground">
-              Full Name <span className="text-red-500">*</span>
+              {t("name.label")} <span className="text-red-500">*</span>
             </Label>
             <Input
               id="name"
-              placeholder="Your name"
+              placeholder={t("name.placeholder")}
               value={formData.name}
               onChange={(e) =>
                 setFormData({ ...formData, name: e.target.value })
@@ -177,12 +171,12 @@ export default function WaitlistForm() {
 
           <div className="space-y-2">
             <Label htmlFor="email" className="text-foreground">
-              Email <span className="text-red-500">*</span>
+              {t("email.label")} <span className="text-red-500">*</span>
             </Label>
             <Input
               id="email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={t("email.placeholder")}
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -195,7 +189,7 @@ export default function WaitlistForm() {
 
         <div className="space-y-2">
           <Label className="text-foreground">
-            Your Role <span className="text-red-500">*</span>
+            {t("role.label")} <span className="text-red-500">*</span>
           </Label>
           <RadioGroup
             value={formData.role}
@@ -203,7 +197,7 @@ export default function WaitlistForm() {
             className="flex flex-wrap gap-4"
             required
           >
-            {["Coach", "Club Administrator"].map((role) => (
+            {t.raw("role.options").map((role: string) => (
               <div key={role} className="flex items-center space-x-2">
                 <RadioGroupItem value={role} id={`role-${role}`} />
                 <Label htmlFor={`role-${role}`} className="cursor-pointer">
@@ -216,7 +210,7 @@ export default function WaitlistForm() {
 
         <div className="space-y-2">
           <Label htmlFor="teamSize" className="text-foreground">
-            Team Size
+            {t("teamSize.label")}
           </Label>
           <Select
             value={formData.teamSize}
@@ -225,31 +219,22 @@ export default function WaitlistForm() {
             }
           >
             <SelectTrigger id="teamSize" className="rounded-lg">
-              <SelectValue placeholder="Select team size" />
+              <SelectValue placeholder={t("teamSize.placeholder")} />
             </SelectTrigger>
             <SelectContent className="bg-white">
-              <SelectItem value="1-10">1-10 players</SelectItem>
-              <SelectItem value="11-20">11-20 players</SelectItem>
-              <SelectItem value="21-50">21-50 players</SelectItem>
-              <SelectItem value="51-100">51-100 players</SelectItem>
-              <SelectItem value="100+">100+ players</SelectItem>
+              {teamSizeOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
             </SelectContent>
           </Select>
         </div>
 
         <div className="space-y-2">
-          <Label className="text-foreground">
-            What interests you most about NordicPro?
-          </Label>
+          <Label className="text-foreground">{t("interests.label")}</Label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {[
-              "Mental Health Support",
-              "Team Management",
-              "Player Motivation",
-              "Communication Tools",
-              "Performance Analytics",
-              "Early Access",
-            ].map((interest) => (
+            {t.raw("interests.options").map((interest: string) => (
               <div key={interest} className="flex items-center space-x-2">
                 <input
                   type="checkbox"
@@ -271,11 +256,11 @@ export default function WaitlistForm() {
 
         <div className="space-y-2">
           <Label htmlFor="message" className="text-foreground">
-            Additional Information
+            {t("message.label")}
           </Label>
           <Textarea
             id="message"
-            placeholder="Tell us more about your team and what you're looking for..."
+            placeholder={t("message.placeholder")}
             value={formData.message}
             onChange={(e) =>
               setFormData({ ...formData, message: e.target.value })
@@ -292,16 +277,15 @@ export default function WaitlistForm() {
           {status === "loading" ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Processing...
+              {t("submit.loading")}
             </>
           ) : (
-            "Join Waitlist"
+            t("submit.button")
           )}
         </Button>
 
         <p className="text-sm text-foreground/60 text-center">
-          By joining, you agree to receive updates about NordicPro. We respect
-          your privacy and will never share your information.
+          {t("disclaimer")}
         </p>
       </div>
     </form>

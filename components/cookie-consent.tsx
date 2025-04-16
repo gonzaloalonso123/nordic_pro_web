@@ -69,9 +69,9 @@ export default function CookieConsent() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
           transition={{ type: "spring", stiffness: 250, damping: 24 }}
-          className="fixed bottom-6 left-6 right-6 z-50"
+          className="fixed bottom-6 left-6 right-6 max-w-3xl z-50 mx-auto"
         >
-          <div className=" mx-auto max-w-3xl">
+          <div className="  ">
             <div className="relative overflow-hidden rounded-3xl border border-gray-200/60 bg-white/80 backdrop-blur-md p-6 shadow-xl transition-all">
               <button
                 onClick={() => setIsVisible(false)}

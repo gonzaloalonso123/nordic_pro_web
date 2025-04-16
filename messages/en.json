@@ -65,7 +65,7 @@
   },
 "features": {
   "label": "FEATURES",
-  "title": "Everything you're already doing — just better.",
+  "title": "Everything you're already doing — just better",
   "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
   "list": [
     {
@@ -167,6 +167,12 @@
       "description": "Streamlined tools for coaches to manage rosters, attendance, and communication.",
       "image": "/images/app-screens/screen-4.png"
     }
+  ],
+   "popouts": [
+    ["Game tomorrow", "New practice added"],
+    ["Achievement unlocked", "Level up!"],
+    ["Feeling great today", "Weekly wellness report"],
+    ["Coach: Great job team!", "Performance improved"]
   ]
 },
   "partnership": {
@@ -460,7 +466,160 @@
         ]
       }
     ]
+  },
+  "waitlist":
+  {
+  "title": "Join the NordicPro Waitlist",
+  "description": "Are you a club, coach, or team interested in improving player wellbeing, motivation, and retention? Sign up to get early access to NordicPro and help shape the platform through real-world feedback.",
+  "subtitle": "Why Join the Waitlist",
+  "benefits": [
+    "Use NordicPro before public launch",
+    "Access exclusive beta features",
+    "Give feedback that shapes the platform",
+    "Receive personal onboarding and support",
+    "Get discounted pricing as an early adopter",
+    "Be recognized as a pioneer club or team"
+  ],
+  "contact": {
+    "text": "Have questions? Contact us at",
+    "cta": "info@nordicpro.com"
   }
+},
+"partners":
+{
+  "title": "Partner With NordicPro",
+  "description": "We're looking to collaborate with mental health organizations, sponsors, researchers, and community leaders who share our mission to improve youth athlete wellbeing through innovation and impact.",
+  "subtitle": "Why Collaborate With Us",
+  "benefits": [
+    "Contribute to building tools that support mental health in sports",
+    "Collaborate on youth-focused content and early detection systems",
+    "Sponsor access for underserved clubs and teams",
+    "Gain visibility and impact reports for your organization",
+    "Be part of long-term strategy and innovation workshops",
+    "Be recognized as a founding partner in our mission"
+  ],
+  "contact": {
+    "text": "Questions about partnerships? Reach our team at",
+    "cta": "partnerships@nordicpro.com"
+  }
+},
+"waitlistForm":
+{
+  "title": "Join the Waitlist",
+  "name": {
+    "label": "Full Name",
+    "placeholder": "Your name"
+  },
+  "email": {
+    "label": "Email",
+    "placeholder": "you@example.com"
+  },
+  "role": {
+    "label": "Your Role",
+    "options": ["Coach", "Club Administrator"]
+  },
+ "teamSize": {
+    "label": "Team Size",
+    "placeholder": "Select team size",
+    "options": [
+      { "value": "1-20", "label": "1–20 players" },
+      { "value": "20-100", "label": "20–100 players" },
+      { "value": "100-300", "label": "100–300 players" },
+      { "value": "300+", "label": "300+ players" }
+    ]
+  },
+  "interests": {
+    "label": "What interests you most about NordicPro?",
+    "options": [
+      "Mental Health Support",
+      "Team Management",
+      "Player Motivation",
+      "Communication Tools",
+      "Performance Analytics",
+      "Early Access"
+    ]
+  },
+  "message": {
+    "label": "Additional Information",
+    "placeholder": "Tell us more about your team and what you're looking for..."
+  },
+  "submit": {
+    "button": "Join Waitlist",
+    "loading": "Processing..."
+  },
+  "confirmation": {
+    "title": "You're on the list!",
+    "body": "Thank you for joining our waitlist. We've sent a confirmation to your email. We'll keep you updated on our launch and may reach out for early access opportunities.",
+    "share": "Share NordicPro with others:"
+  },
+  "error": {
+    "title": "Error",
+    "missingFields": "Please fill out all required fields",
+    "invalidEmail": "Please enter a valid email address"
+  },
+  "disclaimer": "By joining, you agree to receive updates about NordicPro. We respect your privacy and will never share your information."
+},
+"partnerForm":
+ {
+      "title": "Partner Application",
+      "sections": {
+        "contactInfo": "Contact Information",
+        "organizationDetails": "Organization Details",
+        "partnershipGoals": "Partnership Goals"
+      },
+      "fields": {
+        "contactName": "Contact Name",
+        "email": "Email",
+        "phone": "Phone Number",
+        "organizationName": "Organization Name",
+        "organizationType": "Organization Type",
+        "website": "Website",
+        "additionalInfo": "Additional Information"
+      },
+      "placeholders": {
+        "contactName": "Your full name",
+        "email": "you@example.com",
+        "phone": "+1 (555) 123-4567",
+        "organizationName": "Your organization's name",
+        "organizationType": "Select organization type",
+        "website": "https://your-organization.com",
+        "additionalInfo": "Tell us more about your organization and how you envision partnering with NordicPro..."
+      },
+      "organizationTypes": {
+        "sportsClub": "Sports Club",
+        "school": "School",
+        "youthOrganization": "Youth Organization",
+        "sportsAssociation": "Sports Association",
+        "communityCenter": "Community Center",
+        "other": "Other"
+      },
+      "partnershipGoalsDescription": "What are you hoping to achieve through a partnership with NordicPro?",
+      "partnershipGoals": {
+        "Improveplayerretention": "Improve player retention",
+        "Supportmentalhealth": "Support mental health",
+        "Enhanceteammanagement": "Enhance team management",
+        "Increaseplayerengagement": "Increase player engagement",
+        "Reduceadministrativework": "Reduce administrative work",
+        "Accesstoanalyticsandinsights": "Access to analytics and insights",
+        "Earlyplatformaccess": "Early platform access",
+        "Customfeaturesforourorganization": "Custom features for our organization"
+      },
+      "submitButton": {
+        "default": "Submit Partnership Request",
+        "loading": "Processing..."
+      },
+      "agreement": "By submitting this form, you agree to be contacted by the NordicPro team regarding partnership opportunities.",
+      "errors": {
+        "errorPrefix": "Error:",
+        "requiredFields": "Please fill out all required fields",
+        "invalidEmail": "Please enter a valid email address",
+        "generic": "Something went wrong. Please try again."
+      },
+      "success": {
+        "title": "Partnership Request Received!",
+        "message1": "Thank you for your interest in partnering with NordicPro. We've received your information and a member of our team will be in touch within 2 business days to discuss next steps.",
+        "message2": "We're excited about the possibility of working together to support youth athletes and teams.",
+        "returnButton": "Return to Homepage"
+      }
+    }
 }
-
-

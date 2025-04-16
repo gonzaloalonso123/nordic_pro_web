@@ -70,7 +70,7 @@ export default function Hero() {
         />
       </div>
 
-      <div className="container px-4 md:px-6 relative">
+      <div className="container px-4 md:px-8 relative">
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Text Section */}
           <motion.div
