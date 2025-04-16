@@ -91,11 +91,10 @@ const messages: MockMessage[] = [
 ];
 
 export default function ChatInterface() {
-  const messagesEndRef = useRef(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
-    // @ts-expect-error This is just a mock view so we'll ignore this for now
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   useEffect(() => {
