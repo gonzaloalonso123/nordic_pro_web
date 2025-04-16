@@ -70,13 +70,13 @@ const meetings = [
 ];
 
 export default function MeetingsList() {
-  const [expandedMeeting, setExpandedMeeting] = useState(null);
+  const [expandedMeeting, setExpandedMeeting] = useState<number | null>(null);
 
-  const toggleExpand = (id) => {
+  const toggleExpand = (id: number) => {
     setExpandedMeeting(expandedMeeting === id ? null : id);
   };
 
-  const getTypeColor = (type) => {
+  const getTypeColor = (type: string) => {
     switch (type) {
       case "video":
         return "bg-primary/10 text-primary";
