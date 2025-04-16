@@ -43,20 +43,23 @@ export default function PlayerProgressChart() {
             content={({ active, payload, label }) => {
               if (active && payload && payload.length) {
                 return (
-                  <ChartTooltip>
-                    <ChartTooltipContent>
-                      <div className="font-medium">{label}</div>
-                      {payload.map((entry, index) => (
-                        <div key={`item-${index}`} className="flex items-center justify-between gap-2">
-                          <div className="flex items-center gap-1">
-                            <div className="h-2 w-2 rounded-full" style={{ backgroundColor: entry.color }} />
-                            <span className="text-sm text-muted-foreground">{entry.name}:</span>
+                  <>
+                    {/* @ts-expect-error This is just mocked */}
+                    <ChartTooltip>
+                      <ChartTooltipContent>
+                        <div className="font-medium">{label}</div>
+                        {payload.map((entry, index) => (
+                          <div key={`item-${index}`} className="flex items-center justify-between gap-2">
+                            <div className="flex items-center gap-1">
+                              <div className="h-2 w-2 rounded-full" style={{ backgroundColor: entry.color }} />
+                              <span className="text-sm text-muted-foreground">{entry.name}:</span>
+                            </div>
+                            <span className="font-medium">{entry.value}</span>
                           </div>
-                          <span className="font-medium">{entry.value}</span>
-                        </div>
-                      ))}
-                    </ChartTooltipContent>
-                  </ChartTooltip>
+                        ))}
+                      </ChartTooltipContent>
+                    </ChartTooltip>
+                  </>
                 );
               }
               return null;

@@ -4,7 +4,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recha
 import { ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 
 // Sample data
-const data = [
+const data: { name: string, value: number }[] = [
   { name: "Present", value: 85 },
   { name: "Excused", value: 10 },
   { name: "Absent", value: 5 },
@@ -18,7 +18,7 @@ export default function AttendanceRateChart() {
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie data={data} cx="50%" cy="50%" labelLine={false} outerRadius={80} fill="#8884d8" dataKey="value">
-            {data.map((entry, index) => (
+            {data.map((_entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
@@ -26,15 +26,18 @@ export default function AttendanceRateChart() {
             content={({ active, payload }) => {
               if (active && payload && payload.length) {
                 return (
-                  <ChartTooltip>
-                    <ChartTooltipContent>
-                      <div className="flex items-center gap-2">
-                        <div className="h-3 w-3 rounded-full" style={{ backgroundColor: payload[0].payload.fill }} />
-                        <span className="font-medium">{payload[0].name}</span>
-                      </div>
-                      <div className="font-bold text-lg">{payload[0].value}%</div>
-                    </ChartTooltipContent>
-                  </ChartTooltip>
+                  <>
+                    {/* @ts-expect-error This is just mocked */}
+                    <ChartTooltip>
+                      <ChartTooltipContent>
+                        <div className="flex items-center gap-2">
+                          <div className="h-3 w-3 rounded-full" style={{ backgroundColor: payload[0].payload.fill }} />
+                          <span className="font-medium">{payload[0].name}</span>
+                        </div>
+                        <div className="font-bold text-lg">{payload[0].value}%</div>
+                      </ChartTooltipContent>
+                    </ChartTooltip>
+                  </>
                 );
               }
               return null;
@@ -44,7 +47,7 @@ export default function AttendanceRateChart() {
             layout="horizontal"
             verticalAlign="bottom"
             align="center"
-            formatter={(value, entry, index) => <span className="text-sm font-medium">{value}</span>}
+            formatter={(value, _entry, _index) => <span className="text-sm font-medium">{value}</span>}
           />
         </PieChart>
       </ResponsiveContainer>

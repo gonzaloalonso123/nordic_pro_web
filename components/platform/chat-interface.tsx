@@ -4,9 +4,18 @@ import { useRef, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { format } from "date-fns";
 
+
+type MockMessage = {
+  id: number;
+  sender: string;
+  avatar: string;
+  content: string;
+  timestamp: Date;
+  isMe: boolean;
+}
 // Sample data
-const messages = [
-  {
+const messages: MockMessage[] = [
+ {
     id: 1,
     sender: "Coach Sarah",
     avatar: "/placeholder.svg?height=40&width=40",
@@ -85,6 +94,7 @@ export default function ChatInterface() {
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
+    // @ts-expect-error This is just a mock view so we'll ignore this for now
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -100,7 +110,7 @@ export default function ChatInterface() {
     }
     groups[date].push(message);
     return groups;
-  }, {});
+  }, {} as Record<string, MockMessage[]>);
 
   return (
     <div className="flex-grow overflow-y-auto p-4">
@@ -128,9 +138,8 @@ export default function ChatInterface() {
                 {!message.isMe && <p className="text-xs text-gray-500 mb-1">{message.sender}</p>}
 
                 <div
-                  className={`p-3 rounded-lg ${
-                    message.isMe ? "bg-primary text-white rounded-tr-none" : "bg-gray-100 rounded-tl-none"
-                  }`}
+                  className={`p-3 rounded-lg ${message.isMe ? "bg-primary text-white rounded-tr-none" : "bg-gray-100 rounded-tl-none"
+                    }`}
                 >
                   <p className="text-sm">{message.content}</p>
                 </div>
