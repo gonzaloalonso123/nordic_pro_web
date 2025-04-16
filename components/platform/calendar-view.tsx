@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { format, addDays, startOfWeek, endOfWeek, eachDayOfInterval, isSameDay } from "date-fns"
 
 // Generate calendar data
@@ -261,7 +260,6 @@ const dayData = generateDayData()
 const listData = generateListData()
 
 export default function CalendarView({ view = "month" }) {
-  const [selectedDate, setSelectedDate] = useState(new Date())
   const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 
   // Month View
@@ -445,7 +443,7 @@ export default function CalendarView({ view = "month" }) {
       }
       groups[dateKey].events.push(event)
       return groups
-    }, {})
+    }, {} as Record<string, { date: Date; events: typeof listData }>)
 
     return (
       <div className="border rounded-md overflow-hidden">

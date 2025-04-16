@@ -55,10 +55,26 @@
       }
     ],
     "stats": [
-      { "icon": "Star", "value": "10+", "label": "Års erfarenhet" },
-      { "icon": "Award", "value": "3+", "label": "Pilotlag" },
-      { "icon": "Users", "value": "5+", "label": "Teammedlemmar" },
-      { "icon": "Clock", "value": "100%", "label": "Kundnöjdhet" }
+      {
+        "icon": "Star",
+        "value": "10+",
+        "label": "Års erfarenhet"
+      },
+      {
+        "icon": "Award",
+        "value": "3+",
+        "label": "Pilotlag"
+      },
+      {
+        "icon": "Users",
+        "value": "5+",
+        "label": "Teammedlemmar"
+      },
+      {
+        "icon": "Clock",
+        "value": "100%",
+        "label": "Kundnöjdhet"
+      }
     ]
   },
   "features": {
@@ -71,15 +87,15 @@
         "icon": "Heart",
         "items": [
           {
-            "text": "Snabb humörspårning",
-            "description": "Följ framsteg och fira prestationer"
+            "text": "Enkel humörspårning",
+            "description": "Säkerställ att era spelare mår bra"
           },
           {
             "text": "Veckovisa reflektioner om välbefinnande",
             "description": "Bygg starkare band inom laget"
           },
           {
-            "text": "Privata varningar för tränare",
+            "text": "Särskilda notiser till tränare",
             "description": "Förbättra prestationer genom positiv förstärkning"
           }
         ]
@@ -98,7 +114,7 @@
           },
           {
             "text": "Utmaningar och evenemang",
-            "description": "Förbättra prestationer genom positiv förstärkning"
+            "description": "Förbättra prestationer genom att ha givande belöningar från utmaningar"
           }
         ]
       },
@@ -108,7 +124,7 @@
         "items": [
           {
             "text": "Tillgång till resurser för mental hälsa",
-            "description": "Följ framsteg och fira prestationer"
+            "description": "Hjälp era spelare att må bra"
           },
           {
             "text": "Tränare får vägledning för att stödja idrottare",
@@ -116,7 +132,7 @@
           },
           {
             "text": "Integrerad chatt med certifierad supportpersonal",
-            "description": "Förbättra prestationer genom positiv förstärkning"
+            "description": "Vi finns där om ni behöver hjälp"
           }
         ]
       },
@@ -126,7 +142,7 @@
         "items": [
           {
             "text": "Schemalägg träningar och matcher",
-            "description": "Följ framsteg och fira prestationer"
+            "description": "Följ enkelt upp när nästa träning eller match är"
           },
           {
             "text": "Skicka individuella, grupp- och lagmeddelanden",

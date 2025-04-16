@@ -63,22 +63,20 @@ export default function Footer() {
               <div className="inline-flex items-center rounded-full border border-gray-200 bg-white p-1 shadow-sm">
                 <button
                   onClick={() => handleLanguageChange("en")}
-                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-                    currentLocale === "en"
-                      ? "bg-primary text-white"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${currentLocale === "en"
+                    ? "bg-primary text-white"
+                    : "text-gray-600 hover:bg-gray-100"
+                    }`}
                 >
                   <span className="flex-shrink-0">🇬🇧</span>
                   <span>English</span>
                 </button>
                 <button
                   onClick={() => handleLanguageChange("sv")}
-                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-                    currentLocale === "sv"
-                      ? "bg-primary text-white"
-                      : "text-gray-600 hover:bg-gray-100"
-                  }`}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${currentLocale === "sv"
+                    ? "bg-primary text-white"
+                    : "text-gray-600 hover:bg-gray-100"
+                    }`}
                 >
                   <span className="flex-shrink-0">🇸🇪</span>
                   <span>Svenska</span>
@@ -135,14 +133,13 @@ export default function Footer() {
                 "Subscribe to our newsletter for the latest updates."}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-2">
+            <div className="flex flex-col gap-2">
               <input
                 type="email"
                 placeholder={t("ui.emailPlaceholder") || "Your email"}
                 className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
               />
               <Button
-                size="sm"
                 className="bg-primary hover:bg-primary/90 text-white"
               >
                 {t("ui.subscribe") || "Subscribe"}

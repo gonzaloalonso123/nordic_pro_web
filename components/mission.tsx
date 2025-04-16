@@ -1,23 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-  useAnimation,
-} from "framer-motion";
+import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  CheckCircle,
-  Star,
-  Users,
-  Award,
-  Clock,
-  Stars,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle, Star, Users, Award, Clock, Stars } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function Mission() {
@@ -78,7 +64,6 @@ export default function Mission() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
@@ -113,11 +98,9 @@ export default function Mission() {
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
-      {/* Background elements with improved animation */}
       <div className="absolute inset-0 -z-10 overflow-hidden"></div>
 
       <div className="container px-4 md:px-6 mx-auto">
-        {/* Section header - centered with improved responsive typography */}
         <motion.div
           className="text-center mb-8 md:mb-12 max-w-6xl mx-auto"
           initial="hidden"
@@ -151,9 +134,7 @@ export default function Mission() {
               >
                 <Stars className="text-primary h-5 w-5" />
               </motion.div>
-              <span className="text-sm font-semibold text-primary">
-                {label}
-              </span>
+              <span className="text-sm font-semibold text-primary">{label}</span>
             </div>
           </motion.div>
 
@@ -164,10 +145,7 @@ export default function Mission() {
             {title}
           </motion.h2>
 
-          <motion.p
-            variants={fadeIn}
-            className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto"
-          >
+          <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
             {subtitle}
           </motion.p>
         </motion.div>
@@ -245,13 +223,12 @@ export default function Mission() {
                       </div>
                     </div>
 
-                    {/* Content section - takes 2/5 of the space */}
                     <div className="col-span-2 bg-white dark:bg-gray-900 p-6 flex flex-col">
                       <div className="mb-4">
-                        <h3 className="text-xl font-bold text-primary mb-2">
+                        <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">
                           {features[currentIndex].title}
                         </h3>
-                        <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full"></div>
+                        <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full text-center md:text-left"></div>
                       </div>
 
                       <p className="text-foreground/80 text-sm leading-relaxed flex-grow">
@@ -263,9 +240,7 @@ export default function Mission() {
                           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                             <Star className="w-4 h-4 text-primary" />
                           </div>
-                          <span className="text-xs text-foreground/60">
-                            Key mission initiative
-                          </span>
+                          <span className="text-xs text-foreground/60">Key mission initiative</span>
                         </div>
                       </div>
                     </div>
@@ -273,17 +248,13 @@ export default function Mission() {
                 </motion.div>
               </AnimatePresence>
             </motion.div>
-
-            {/* Pagination indicators */}
             <div className="flex justify-center items-center mt-6 gap-2">
               {features.map((_: any, index: any) => (
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex
-                      ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
-                      : "w-2 bg-gray-300"
+                    index === currentIndex ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]" : "w-2 bg-gray-300"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -291,9 +262,7 @@ export default function Mission() {
             </div>
           </div>
 
-          {/* Mobile card view - all cards visible stacked vertically */}
           <div className="md:hidden mt-8">
-            {/* All mobile cards visible */}
             <div className="space-y-6">
               {features.map((feature: any, index: any) => (
                 <motion.div
@@ -320,12 +289,10 @@ export default function Mission() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="text-xl font-bold text-primary mb-2">
+                    <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-foreground/70">
-                      {feature.description}
-                    </p>
+                    <p className="text-sm text-foreground/70 text-center md:text-left">{feature.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -355,9 +322,7 @@ export default function Mission() {
                     <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                       {stat.value}
                     </div>
-                    <div className="text-sm sm:text-base text-foreground/70">
-                      {stat.label}
-                    </div>
+                    <div className="text-sm sm:text-base text-foreground/70">{stat.label}</div>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                   </div>
                 </div>

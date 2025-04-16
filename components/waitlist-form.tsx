@@ -8,16 +8,19 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { sendWaitlistEmail } from "@/lib/email-service";
 import { useTranslations } from "next-intl";
+import emailjs from "@emailjs/browser";
+import { addWaiter } from "@/lib/firebase";
+
+const EMAILJS_USER_ID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID ?? "";
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
+const EMAILJS_WAITLIST_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_WAITLIST_TEMPLATE_ID ?? "";
+
+// Initialize EmailJS
+emailjs.init(EMAILJS_USER_ID);
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
@@ -42,10 +45,7 @@ export default function WaitlistForm() {
   const handleInterestToggle = (interest: string) => {
     setFormData((prev) => {
       if (prev.interests.includes(interest)) {
-        return {
-          ...prev,
-          interests: prev.interests.filter((i) => i !== interest),
-        };
+        return { ...prev, interests: prev.interests.filter((i) => i !== interest) };
       } else {
         return { ...prev, interests: [...prev.interests, interest] };
       }
@@ -66,10 +66,26 @@ export default function WaitlistForm() {
         throw new Error(t("error.invalidEmail"));
       }
 
+      // Prepare the template parameters
+      const templateParams = {
+        to_name: formData.name,
+        to_email: formData.email,
+        from_name: "NordicPro Team",
+        role: formData.role,
+        team_size: formData.teamSize || "Not specified",
+        interests: formData.interests.join(", ") || "None specified",
+        message: formData.message || "No additional information provided",
+        reply_to: "support@nordicpro.com",
+      };
+      await emailjs
+        .send(EMAILJS_SERVICE_ID, EMAILJS_WAITLIST_TEMPLATE_ID, templateParams)
+        .then((_) => addWaiter(formData));
+
       await sendWaitlistEmail(formData);
       setStatus("success");
     } catch (error) {
       setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "Something went wrong. Please try again.");
       setErrorMessage(
         error instanceof Error ? error.message : t("error.generic")
       );
@@ -84,6 +100,11 @@ export default function WaitlistForm() {
             <CheckCircle className="h-8 w-8 text-green" />
           </div>
         </div>
+        <h3 className="text-2xl font-bold mb-4">You're on the list!</h3>
+        <p className="text-foreground/70 mb-6">
+          Thank you for joining our waitlist. We've sent a confirmation to your email. We'll keep you updated on our
+          launch and may reach out for early access opportunities.
+        </p>
         <h3 className="text-2xl font-bold mb-4"> {t("confirmation.title")}</h3>
         <p className="text-foreground/70 mb-6">{t("confirmation.body")}</p>
         <div className="space-y-4">
@@ -97,9 +118,7 @@ export default function WaitlistForm() {
                 onClick={() => {
                   // Share URLs would be implemented here
                   window.open(
-                    `https://${platform}.com/share?url=${encodeURIComponent(
-                      window.location.href
-                    )}`,
+                    `https://${platform}.com/share?url=${encodeURIComponent(window.location.href)}`,
                     "_blank"
                   );
                 }}
@@ -161,9 +180,7 @@ export default function WaitlistForm() {
               id="name"
               placeholder={t("name.placeholder")}
               value={formData.name}
-              onChange={(e) =>
-                setFormData({ ...formData, name: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
               required
               className="rounded-lg"
             />
@@ -178,9 +195,7 @@ export default function WaitlistForm() {
               type="email"
               placeholder={t("email.placeholder")}
               value={formData.email}
-              onChange={(e) =>
-                setFormData({ ...formData, email: e.target.value })
-              }
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               required
               className="rounded-lg"
             />
@@ -212,12 +227,7 @@ export default function WaitlistForm() {
           <Label htmlFor="teamSize" className="text-foreground">
             {t("teamSize.label")}
           </Label>
-          <Select
-            value={formData.teamSize}
-            onValueChange={(value) =>
-              setFormData({ ...formData, teamSize: value })
-            }
-          >
+          <Select value={formData.teamSize} onValueChange={(value) => setFormData({ ...formData, teamSize: value })}>
             <SelectTrigger id="teamSize" className="rounded-lg">
               <SelectValue placeholder={t("teamSize.placeholder")} />
             </SelectTrigger>
@@ -227,11 +237,27 @@ export default function WaitlistForm() {
                   {option.label}
                 </SelectItem>
               ))}
+              <SelectItem className="hover:text-white" value="1-10">
+                1-10 players
+              </SelectItem>
+              <SelectItem className="hover:text-white" value="11-20">
+                11-20 players
+              </SelectItem>
+              <SelectItem className="hover:text-white" value="21-50">
+                21-50 players
+              </SelectItem>
+              <SelectItem className="hover:text-white" value="51-100">
+                51-100 players
+              </SelectItem>
+              <SelectItem className="hover:text-white" value="100+">
+                100+ players
+              </SelectItem>
             </SelectContent>
           </Select>
         </div>
 
         <div className="space-y-2">
+          <Label className="text-foreground">What interests you most about NordicPro?</Label>
           <Label className="text-foreground">{t("interests.label")}</Label>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {t.raw("interests.options").map((interest: string) => (
@@ -243,10 +269,7 @@ export default function WaitlistForm() {
                   onChange={() => handleInterestToggle(interest)}
                   className="rounded text-primary focus:ring-primary"
                 />
-                <Label
-                  htmlFor={`interest-${interest}`}
-                  className="cursor-pointer"
-                >
+                <Label htmlFor={`interest-${interest}`} className="cursor-pointer">
                   {interest}
                 </Label>
               </div>
@@ -262,9 +285,7 @@ export default function WaitlistForm() {
             id="message"
             placeholder={t("message.placeholder")}
             value={formData.message}
-            onChange={(e) =>
-              setFormData({ ...formData, message: e.target.value })
-            }
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="rounded-lg min-h-[100px]"
           />
         </div>
@@ -286,6 +307,8 @@ export default function WaitlistForm() {
 
         <p className="text-sm text-foreground/60 text-center">
           {t("disclaimer")}
+          By joining, you agree to receive updates about NordicPro. We respect your privacy and will never share your
+          information.
         </p>
       </div>
     </form>

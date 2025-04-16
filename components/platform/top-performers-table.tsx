@@ -69,7 +69,7 @@ export default function TopPerformersTable() {
   const [data, setData] = useState(initialData);
   const [sortConfig, setSortConfig] = useState({ key: "performance", direction: "desc" });
 
-  const handleSort = (key) => {
+  const handleSort = (key: keyof typeof initialData[number]) => {
     let direction = "asc";
     if (sortConfig.key === key && sortConfig.direction === "asc") {
       direction = "desc";
@@ -85,7 +85,7 @@ export default function TopPerformersTable() {
     setSortConfig({ key, direction });
   };
 
-  const getSortIcon = (key) => {
+  const getSortIcon = (key: keyof typeof initialData[number]) => {
     if (sortConfig.key !== key) return <ArrowUpDown className="ml-2 h-4 w-4" />;
     return sortConfig.direction === "asc" ? (
       <ChevronUp className="ml-2 h-4 w-4" />
