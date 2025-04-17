@@ -158,14 +158,14 @@ export default function AppShowcase() {
           <h2 className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
             {title}
           </h2>
-          <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
+          <p className="text-xl text-foreground/70 max-w-4xl mx-auto">
             {subtitle}
           </p>
         </div>
 
         <div
           ref={containerRef}
-          className="relative max-w-5xl mx-auto perspective-1000"
+          className="relative max-w-6xl mx-auto perspective-1000"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}

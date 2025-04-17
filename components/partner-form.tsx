@@ -16,10 +16,18 @@ import {
 } from "@/components/ui/select";
 import { CheckCircle, Loader2 } from "lucide-react";
 import { sendPartnerEmail } from "@/lib/email-service";
+import emailjs from "@emailjs/browser";
+import { addCollaborator } from "@/lib/firebase";
 
-type FormStatus = "idle" | "loading" | "success" | "error";
+export type FormStatus = "idle" | "loading" | "success" | "error";
 
-export default function PartnerForm() {
+export default function PartnerForm({
+  status,
+  setStatus,
+}: {
+  status: FormStatus;
+  setStatus: (s: FormStatus) => void;
+}) {
   const t = useTranslations("partnerForm");
   const [formData, setFormData] = useState({
     contactName: "",
@@ -34,8 +42,16 @@ export default function PartnerForm() {
     message: "",
   });
 
-  const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const EMAILJS_USER_ID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID;
+  const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+  const EMAILJS_PARTNER_TEMPLATE_ID =
+    process.env.NEXT_PUBLIC_EMAILJS_PARTNER_TEMPLATE_ID;
+
+  if (!EMAILJS_USER_ID || !EMAILJS_SERVICE_ID || !EMAILJS_PARTNER_TEMPLATE_ID) {
+    throw new Error("Missing EmailJS configuration");
+  }
+  emailjs.init(EMAILJS_USER_ID);
 
   const handleGoalToggle = (goal: string) => {
     setFormData((prev) => {
@@ -53,7 +69,6 @@ export default function PartnerForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-
     try {
       if (
         !formData.contactName ||
@@ -61,21 +76,37 @@ export default function PartnerForm() {
         !formData.organizationName ||
         !formData.organizationType
       ) {
-        throw new Error(t("errors.requiredFields"));
+        throw new Error("Please fill out all required fields");
       }
-
+      // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(formData.email)) {
-        throw new Error(t("errors.invalidEmail"));
+        throw new Error("Please enter a valid email address");
       }
-
-      await sendPartnerEmail(formData);
-
+      const templateParams = {
+        to_name: formData.contactName,
+        to_email: formData.email,
+        from_name: "NordicPro Team",
+        phone: formData.phone,
+        organization_name: formData.organizationName,
+        organization_type: formData.organizationType,
+        website: formData.website,
+        team_count: formData.teamCount,
+        player_count: formData.playerCount,
+        partnership_goals: formData.partnershipGoals.join(", "),
+        message: formData.message,
+        reply_to: "support@nordicpro.com",
+      };
+      await emailjs
+        .send(EMAILJS_SERVICE_ID, EMAILJS_PARTNER_TEMPLATE_ID, templateParams)
+        .then((_) => addCollaborator(formData));
       setStatus("success");
     } catch (error) {
       setStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : t("errors.generic")
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
       );
     }
   };

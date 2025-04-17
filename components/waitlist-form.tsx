@@ -20,6 +20,7 @@ import { sendWaitlistEmail } from "@/lib/email-service";
 import { useTranslations } from "next-intl";
 import emailjs from "@emailjs/browser";
 import { addWaiter } from "@/lib/firebase";
+import { FormStatus } from "@/app/[locale]/join-waitlist/page";
 
 const EMAILJS_USER_ID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID ?? "";
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
@@ -29,9 +30,13 @@ const EMAILJS_WAITLIST_TEMPLATE_ID =
 // Initialize EmailJS
 emailjs.init(EMAILJS_USER_ID);
 
-type FormStatus = "idle" | "loading" | "success" | "error";
-
-export default function WaitlistForm() {
+export default function WaitlistForm({
+  status,
+  setStatus,
+}: {
+  status: FormStatus;
+  setStatus: (s: FormStatus) => void;
+}) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,7 +47,6 @@ export default function WaitlistForm() {
   });
 
   const t = useTranslations("waitlistForm");
-  const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const teamSizeOptions = t.raw("teamSize.options") as {
     value: string;
@@ -100,8 +104,9 @@ export default function WaitlistForm() {
           ? error.message
           : "Something went wrong. Please try again."
       );
+      console.log(error);
       setErrorMessage(
-        error instanceof Error ? error.message : t("error.generic")
+        error instanceof Error ? error.message : t("errors.generic")
       );
     }
   };
@@ -114,62 +119,14 @@ export default function WaitlistForm() {
             <CheckCircle className="h-8 w-8 text-green" />
           </div>
         </div>
-        <h3 className="text-2xl font-bold mb-4">You're on the list!</h3>
-        <p className="text-foreground/70 mb-6">
-          Thank you for joining our waitlist. We've sent a confirmation to your
-          email. We'll keep you updated on our launch and may reach out for
-          early access opportunities.
-        </p>
         <h3 className="text-2xl font-bold mb-4"> {t("confirmation.title")}</h3>
         <p className="text-foreground/70 mb-6">{t("confirmation.body")}</p>
-        <div className="space-y-4">
-          <p className="font-medium">{t("confirmation.share")}</p>
-          <div className="flex justify-center gap-4">
-            {["twitter", "facebook", "linkedin"].map((platform) => (
-              <Button
-                key={platform}
-                variant="outline"
-                className="rounded-full h-12 w-12 p-0"
-                onClick={() => {
-                  // Share URLs would be implemented here
-                  window.open(
-                    `https://${platform}.com/share?url=${encodeURIComponent(
-                      window.location.href
-                    )}`,
-                    "_blank"
-                  );
-                }}
-              >
-                <span className="sr-only">Share on {platform}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  {platform === "twitter" && (
-                    <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
-                  )}
-                  {platform === "facebook" && (
-                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-                  )}
-                  {platform === "linkedin" && (
-                    <>
-                      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                      <rect width="4" height="12" x="2" y="9" />
-                      <circle cx="4" cy="4" r="2" />
-                    </>
-                  )}
-                </svg>
-              </Button>
-            ))}
-          </div>
-        </div>
+        <Button
+          className="bg-primary hover:bg-primary/90 text-white font-medium rounded-full px-8 py-3"
+          onClick={() => (window.location.href = "/")}
+        >
+          {t("success.returnButton")}
+        </Button>
       </div>
     );
   }

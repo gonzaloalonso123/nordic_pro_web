@@ -21,3 +21,7 @@ export async function addWaiter(waiter: unknown) {
 export async function addCollaborator(collaborator: unknown) {
   const docRef = await addDoc(collection(db, "collaborators"), collaborator);
 }
+
+export async function addSubscriber(subscriber: unknown) {
+  const docRef = await addDoc(collection(db, "subscribers"), subscriber);
+}

@@ -244,13 +244,13 @@ export default function Mission() {
 
                     <div className="col-span-2 bg-white dark:bg-gray-900 p-6 flex flex-col">
                       <div className="mb-4">
-                        <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">
+                        <h3 className="text-2xl md:text-3xl font-bold text-primary mb-2 text-center md:text-left">
                           {features[currentIndex].title}
                         </h3>
                         <div className="w-12 h-1 bg-gradient-to-r from-primary to-[#005BBD] rounded-full text-center md:text-left"></div>
                       </div>
 
-                      <p className="text-foreground/80 text-sm leading-relaxed flex-grow">
+                      <p className="text-foreground/80 text-sm md:text-lg leading-relaxed flex-grow">
                         {features[currentIndex].description}
                       </p>
 

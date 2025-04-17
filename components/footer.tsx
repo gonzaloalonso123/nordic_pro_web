@@ -1,13 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Instagram, Linkedin, Mail, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { usePathname, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { addSubscriber } from "@/lib/firebase";
+import { toast } from "@/hooks/use-toast";
 
 export default function Footer() {
   const t = useTranslations("footer");
@@ -30,6 +32,25 @@ export default function Footer() {
   useEffect(() => {
     console.log(legalLinks);
   });
+
+  const [email, setEmail] = useState("");
+
+  const postSubscriber = () => {
+    if (!email || !email.includes("@")) {
+      toast({
+        title: "Invalid email",
+        description: "Please enter a valid email address",
+      });
+      return;
+    }
+    console.log(email);
+    addSubscriber({ email: email });
+    toast({
+      title: "Success!",
+      description: "You have been subscribed to our newsletter",
+    });
+    setEmail("");
+  };
 
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-white to-gray-50 border-t border-gray-100">
@@ -138,10 +159,13 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder={t("ui.emailPlaceholder") || "Your email"}
                 className="px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
               />
               <Button
+                onClick={postSubscriber}
                 size="lg"
                 className=" text-white font-medium rounded-full px-7 py-3 text-md"
               >

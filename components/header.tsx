@@ -39,9 +39,10 @@ export default function Header() {
     // Check if the user is on mobile or desktop
     const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
     const headerHeight = isMobile ? 50 : 0; // Set header height based on device type
+    console.log(pathname.split("/"));
 
     // If we're not on the home page and the link is to a section
-    if (pathname !== "/" && href.startsWith("/#")) {
+    if (pathname.split("/").length > 2) {
       // Navigate to home page first
       router.push("/");
 

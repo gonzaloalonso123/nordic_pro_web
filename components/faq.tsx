@@ -22,7 +22,10 @@ export default function Faq() {
   const contact = t.raw("contact") as { text: string; cta: string };
 
   return (
-    <section id="faq" className="py-10 md:py-24 relative overflow-hidden">
+    <section
+      id="faq"
+      className="py-10 md:py-24 relative overflow-hidden w-full"
+    >
       <div className="container px-4 md:px-6">
         <div className="text-center mb-10">
           <h2 className="drop-shadow-sm  text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
@@ -30,7 +33,7 @@ export default function Faq() {
           </h2>
         </div>
 
-        <div className="max-w-3xl mx-auto glass rounded-3xl p-8">
+        <div className="max-w-4xl mx-auto glass rounded-3xl p-8">
           <Accordion type="single" collapsible className="w-full">
             {questions.map((item: any, index: any) => (
               <AccordionItem
