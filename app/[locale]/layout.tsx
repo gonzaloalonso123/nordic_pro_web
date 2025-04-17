@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   title: "NordicPro - Where Performance Meets Well-being",
   description:
     "A platform for youth teams that puts mental health, motivation, and team management in one place.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default async function RootLayout({
@@ -40,7 +43,7 @@ export default async function RootLayout({
   return (
     <html lang={locale}>
       <body
-        className={`${inter.variable} ${montserrat.variable} font-sans antialiased`}
+        className={`${inter.variable} ${montserrat.variable} font-sans antialiased `}
       >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <LayoutWrapper>{children}</LayoutWrapper>

@@ -4,16 +4,13 @@ import Link from "next/link";
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto px-4 py-16 max-w-7xl">
+    <div className="container mx-auto px-4 max-w-7xl py-32 ">
       {/* Header Section */}
       <div className="text-center mb-16">
-        <div className="inline-flex items-center justify-center px-4 py-1.5 mb-4 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary">
-          <span className="text-sm font-medium">Get in Touch</span>
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold font-montserrat mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-5xl font-bold font-montserrat pb-6  bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
           Contact Us
         </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
           Have questions about NordicPro? We're here to help. Reach out to our
           team and we'll get back to you as soon as possible.
         </p>
@@ -27,7 +24,7 @@ export default function ContactPage() {
               Contact Information
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-6 ">
               <div className="flex items-start">
                 <div className="flex-shrink-0 h-10 w-10 rounded-full bg-gradient-to-r from-primary/20 to-secondary/20 flex items-center justify-center mr-4">
                   <Mail className="h-5 w-5 text-primary" />
@@ -90,7 +87,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-primary to-secondary rounded-xl shadow-md p-8 text-white">
+          {/* <div className="bg-gradient-to-r from-primary to-secondary rounded-xl shadow-md p-8 text-white">
             <h3 className="text-xl font-bold mb-4">Join Our Community</h3>
             <p className="mb-6">
               Stay updated with the latest news, features, and community events.
@@ -102,7 +99,7 @@ export default function ContactPage() {
               Join our waitlist
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Link>
-          </div>
+          </div> */}
         </div>
 
         {/* Contact Form */}
@@ -117,7 +114,7 @@ export default function ContactPage() {
       </div>
 
       {/* Map Section */}
-      <div className="mt-16 rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
+      {/* <div className="mt-16 rounded-xl overflow-hidden shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300">
         <div className="aspect-video w-full">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.9769670419195!2d10.7661!3d59.9436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTnCsDU2JzM3LjAiTiAxMMKwNDUnNTguMCJF!5e0!3m2!1sen!2sno!4v1617289157271!5m2!1sen!2sno"
@@ -130,10 +127,10 @@ export default function ContactPage() {
             className="w-full h-full"
           ></iframe>
         </div>
-      </div>
+      </div> */}
 
       {/* FAQ Link */}
-      <div className="mt-16 text-center">
+      {/* <div className="mt-16 text-center">
         <p className="text-gray-600 mb-4">Have more questions?</p>
         <Link
           href="/faq"
@@ -142,7 +139,7 @@ export default function ContactPage() {
           Visit our FAQ page
           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

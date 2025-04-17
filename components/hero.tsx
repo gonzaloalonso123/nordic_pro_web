@@ -36,22 +36,6 @@ export default function Hero() {
     },
   };
 
-  const tagVariants = {
-    hidden: { opacity: 0, scale: 0.3, x: -100, rotate: -30 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      x: 0,
-      rotate: [0, 15, -15, 0],
-      transition: {
-        duration: 1.2,
-        ease: "easeOut",
-        delayChildren: 0.4,
-        staggerChildren: 0.3,
-        bounce: 0.4,
-      },
-    },
-  };
   return (
     <section className="relative pt-32 pb-28 md:pt-40 md:pb-0 overflow-hidden">
       {/* Background elements */}

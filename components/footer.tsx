@@ -63,20 +63,22 @@ export default function Footer() {
               <div className="inline-flex items-center rounded-full border border-gray-200 bg-white p-1 shadow-sm">
                 <button
                   onClick={() => handleLanguageChange("en")}
-                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${currentLocale === "en"
-                    ? "bg-primary text-white"
-                    : "text-gray-600 hover:bg-gray-100"
-                    }`}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    currentLocale === "en"
+                      ? "bg-primary text-white"
+                      : "text-gray-600 hover:bg-primary/10"
+                  }`}
                 >
                   <span className="flex-shrink-0">🇬🇧</span>
                   <span>English</span>
                 </button>
                 <button
                   onClick={() => handleLanguageChange("sv")}
-                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${currentLocale === "sv"
-                    ? "bg-primary text-white"
-                    : "text-gray-600 hover:bg-gray-100"
-                    }`}
+                  className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
+                    currentLocale === "sv"
+                      ? "bg-primary text-white"
+                      : "text-gray-600 hover:bg-primary/10"
+                  }`}
                 >
                   <span className="flex-shrink-0">🇸🇪</span>
                   <span>Svenska</span>
@@ -137,10 +139,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder={t("ui.emailPlaceholder") || "Your email"}
-                className="px-4 py-2 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
+                className="px-4 py-2 border border-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-sm"
               />
               <Button
-                className="bg-primary hover:bg-primary/90 text-white"
+                size="lg"
+                className=" text-white font-medium rounded-full px-7 py-3 text-md"
               >
                 {t("ui.subscribe") || "Subscribe"}
               </Button>
@@ -179,7 +182,7 @@ export default function Footer() {
 
         {/* Bottom section */}
         <div className="pt-8 relative">
-          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+          <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-primary to-transparent"></div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-gray-500">{copyright}</p>
             <p className="text-sm text-gray-500 flex items-center gap-1">

@@ -12,10 +12,10 @@ export default function CTA() {
   const button = t("button");
 
   return (
-    <section className="py-24 overflow-hidden">
+    <section className=" py-10 md:py-24 overflow-hidden relative">
       <div className="container px-4 md:px-6">
         <div className="max-w-4xl mx-auto glass rounded-3xl p-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+          <h2 className="drop-shadow-sm text-3xl sm:text-3xl md:text-2xl lg:text-3xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
             {title}
           </h2>
           <p className="text-xl mb-10 text-foreground/70 max-w-2xl mx-auto">

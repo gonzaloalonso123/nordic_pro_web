@@ -1,9 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import { motion, AnimatePresence, useInView, useAnimation } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useAnimation,
+} from "framer-motion";
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, CheckCircle, Star, Users, Award, Clock, Stars } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  CheckCircle,
+  Star,
+  Users,
+  Award,
+  Clock,
+  Stars,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 
 export default function Mission() {
@@ -134,18 +148,23 @@ export default function Mission() {
               >
                 <Stars className="text-primary h-5 w-5" />
               </motion.div>
-              <span className="text-sm font-semibold text-primary">{label}</span>
+              <span className="text-sm font-semibold text-primary">
+                {label}
+              </span>
             </div>
           </motion.div>
 
           <motion.h2
             variants={fadeIn}
-            className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
+            className="drop-shadow-sm  text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
           >
             {title}
           </motion.h2>
 
-          <motion.p variants={fadeIn} className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto">
+          <motion.p
+            variants={fadeIn}
+            className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-3xl mx-auto"
+          >
             {subtitle}
           </motion.p>
         </motion.div>
@@ -240,7 +259,9 @@ export default function Mission() {
                           <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                             <Star className="w-4 h-4 text-primary" />
                           </div>
-                          <span className="text-xs text-foreground/60">Key mission initiative</span>
+                          <span className="text-xs text-foreground/60">
+                            Key mission initiative
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -254,7 +275,9 @@ export default function Mission() {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`h-2 rounded-full transition-all duration-300 ${
-                    index === currentIndex ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]" : "w-2 bg-gray-300"
+                    index === currentIndex
+                      ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
+                      : "w-2 bg-gray-300"
                   }`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
@@ -292,7 +315,9 @@ export default function Mission() {
                     <h3 className="text-2xl md:text-xl font-bold text-primary mb-2 text-center md:text-left">
                       {feature.title}
                     </h3>
-                    <p className="text-sm text-foreground/70 text-center md:text-left">{feature.description}</p>
+                    <p className="text-sm text-foreground/70 text-center md:text-left">
+                      {feature.description}
+                    </p>
                   </div>
                 </motion.div>
               ))}
@@ -322,7 +347,9 @@ export default function Mission() {
                     <div className="text-3xl sm:text-4xl font-bold mb-2 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent">
                       {stat.value}
                     </div>
-                    <div className="text-sm sm:text-base text-foreground/70">{stat.label}</div>
+                    <div className="text-sm sm:text-base text-foreground/70">
+                      {stat.label}
+                    </div>
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                   </div>
                 </div>

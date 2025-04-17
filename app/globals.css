@@ -74,3 +74,30 @@
     transform: rotateZ(2deg);
   }
 }
+
+/* Webkit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* light gray background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #005bbd; /* your accent or brand color */
+  border-radius: 10px;
+  border: 2px solid #f0f0f0; /* padding effect */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #003f89;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #005bbd #f0f0f0;
+}

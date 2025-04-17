@@ -87,7 +87,7 @@ export default function Features() {
   };
 
   return (
-    <section id="features" className="py-10 lg:py-24 relative overflow-hidden ">
+    <section id="features" className="pt-10 lg:py-24 relative overflow-hidden ">
       <div className="container px-4 md:px-6 max-w-6xl mx-auto">
         <div className="flex items-center space-x-2 justify-center mb-4 px-5 py-2 bg-primary/10 rounded-full w-fit mx-auto">
           <motion.div

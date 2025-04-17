@@ -22,10 +22,10 @@ export default function Faq() {
   const contact = t.raw("contact") as { text: string; cta: string };
 
   return (
-    <section id="faq" className="py-24 relative overflow-hidden">
+    <section id="faq" className="py-10 md:py-24 relative overflow-hidden">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold font-montserrat mb-4 text-primary">
+        <div className="text-center mb-10">
+          <h2 className="drop-shadow-sm  text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
             {title}
           </h2>
         </div>
@@ -52,9 +52,12 @@ export default function Faq() {
             <p className="mb-6 text-foreground/70">{contact.text}</p>
             <Button
               asChild
-              className="bg-accent hover:bg-accent/90 text-white font-medium rounded-full px-8"
+              size="lg"
+              className=" text-white font-medium rounded-full px-10 py-3 text-lg"
             >
-              <Link href="#">{contact.cta}</Link>
+              <a href="mailto:info@nordicpro.se" className="">
+                {contact.cta}
+              </a>
             </Button>
           </div>
         </div>

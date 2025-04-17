@@ -134,7 +134,7 @@ export default function AppShowcase() {
   return (
     <section
       id="app-showcase"
-      className="py-10 lg:py-24 relative overflow-hidden"
+      className="py-10  lg:py-24 relative overflow-hidden"
     >
       <div className="container px-4 md:px-6">
         <div className="text-center mb-16">
@@ -155,7 +155,7 @@ export default function AppShowcase() {
             </motion.div>{" "}
             <span className="text-sm font-bold text-primary">{label}</span>
           </div>
-          <h2 className="drop-shadow-sm text-4xl md:text-5xl font-bold font-montserrat mb-6 text-primary">
+          <h2 className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
             {title}
           </h2>
           <p className="text-xl text-foreground/70 max-w-3xl mx-auto">
