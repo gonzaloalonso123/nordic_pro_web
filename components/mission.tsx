@@ -5,7 +5,6 @@ import {
   motion,
   AnimatePresence,
   useInView,
-  useAnimation,
 } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import {
