@@ -24,8 +24,7 @@ import { FormStatus } from "@/app/[locale]/join-waitlist/page";
 
 const EMAILJS_USER_ID = process.env.NEXT_PUBLIC_EMAILJS_USER_ID ?? "";
 const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
-const EMAILJS_WAITLIST_TEMPLATE_ID =
-  process.env.NEXT_PUBLIC_EMAILJS_WAITLIST_TEMPLATE_ID ?? "";
+const EMAILJS_WAITLIST_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_WAITLIST_TEMPLATE_ID ?? "";
 
 // Initialize EmailJS
 emailjs.init(EMAILJS_USER_ID);
