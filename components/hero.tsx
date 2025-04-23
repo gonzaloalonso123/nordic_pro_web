@@ -37,7 +37,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative pt-32 pb-28 md:pt-40 md:pb-0 overflow-hidden">
+    <section className="relative pt-32 pb-4 md:pt-40 md:pb-0 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <motion.div

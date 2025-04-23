@@ -150,7 +150,16 @@ export default function Header() {
       >
         <div className="container px-4 md:px-8 flex h-20 items-center justify-between">
           <Link
-            href="/"
+            href={"/"}
+            onClick={(e) => {
+              if (pathname === "/en" || pathname === "/sv") {
+                e.preventDefault();
+                setIsMobileMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              } else {
+                router.push("/");
+              }
+            }}
             className="font-montserrat font-bold text-2xl text-primary"
           >
             <Image

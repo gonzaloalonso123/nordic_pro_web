@@ -26,6 +26,46 @@ export default function Footer() {
     router.push(newPath);
   };
 
+  const handleFooterLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string
+  ) => {
+    const isMobile = window.innerWidth <= 768; // Adjust breakpoint as needed
+    const headerHeight = isMobile ? 50 : 0;
+    if (href.startsWith("#") || href.startsWith("/#")) {
+      e.preventDefault();
+
+      const sectionId = href.replace("/#", "").replace("#", "");
+      const section = document.getElementById(sectionId);
+
+      // If already on homepage, scroll smoothly
+      if (pathname === "/en" || pathname === "/sv") {
+        if (section) {
+          const yOffset = -headerHeight;
+          const y =
+            section.getBoundingClientRect().top + window.pageYOffset + yOffset;
+
+          window.scrollTo({
+            top: y,
+            behavior: "smooth",
+          });
+        }
+      } else {
+        // Navigate to homepage and scroll after delay
+        router.push("/");
+        setTimeout(() => {
+          const delayedSection = document.getElementById(sectionId);
+          if (delayedSection) {
+            window.scrollTo({
+              top: delayedSection.offsetTop - 50,
+              behavior: "smooth",
+            });
+          }
+        }, 500);
+      }
+    }
+  };
+
   // Group links for better organization
   const mainLinks = links.slice(0, 4);
   const legalLinks = links.slice(4);
@@ -118,6 +158,7 @@ export default function Footer() {
                 <li key={`main-link-${index}`}>
                   <Link
                     href={`/${currentLocale}${link.href}`}
+                    onClick={(e) => handleFooterLinkClick(e, link.href)}
                     className="text-gray-600 hover:text-primary transition-colors inline-block"
                   >
                     {link.label}
@@ -179,7 +220,7 @@ export default function Footer() {
               </h3>
               <div className="flex items-center gap-3">
                 <motion.a
-                  href="https://instagram.com"
+                  href="https://instagram.com/_nordicpro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-gray-100"
@@ -190,7 +231,7 @@ export default function Footer() {
                 </motion.a>
 
                 <motion.a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/company/nordicpro"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center hover:bg-primary hover:text-white transition-all duration-300 border border-gray-100"

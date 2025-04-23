@@ -2,14 +2,14 @@
 
 import type React from "react";
 import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, ChevronLeft, ChevronRight, Stars } from "lucide-react";
 import Image from "next/image";
 import { useMobile } from "@/hooks/use-mobile";
 import { useTranslations } from "next-intl";
 
 export default function AppShowcase() {
-  const t = useTranslations("appShowcase"); // Access 'appShowcase' section
+  const t = useTranslations("appShowcase");
   const title = t("title");
   const subtitle = t("subtitle");
   const label = t("label");
@@ -18,24 +18,25 @@ export default function AppShowcase() {
     description: string;
     image: string;
   }[];
+  const popoutText = t.raw("popouts") as string[][];
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [direction, setDirection] = useState<"forward" | "backward">("forward");
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useMobile();
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
-  // Define background colors for each screen
+  // Background colors for each screen
   const backgroundColors = [
     "from-purple-50 to-purple-100",
     "from-blue-50 to-blue-100",
     "from-green-50 to-green-100",
     "from-amber-50 to-amber-100",
   ];
-  const popoutText = t.raw("popouts") as string[][];
 
-  // Define pop-out elements for each screen
+  // Pop-out elements for each screen
   const popoutElements = [
     [
       {
@@ -105,10 +106,11 @@ export default function AppShowcase() {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 75) {
+      setDirection("forward");
       handleNext();
     }
-
     if (touchEnd - touchStart > 75) {
+      setDirection("backward");
       handlePrev();
     }
   };
@@ -116,69 +118,122 @@ export default function AppShowcase() {
   const handlePrev = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection("backward");
     setActiveIndex((prev) => (prev === 0 ? screens.length - 1 : prev - 1));
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   const handleNext = () => {
     if (isAnimating) return;
     setIsAnimating(true);
+    setDirection("forward");
     setActiveIndex((prev) => (prev === screens.length - 1 ? 0 : prev + 1));
-    setTimeout(() => setIsAnimating(false), 500);
+    setTimeout(() => setIsAnimating(false), 300);
   };
 
   const activeScreen = screens[activeIndex];
   const activeColor = backgroundColors[activeIndex];
   const activePopouts = popoutElements[activeIndex];
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.2 },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: { duration: 0.5, type: "spring", stiffness: 120 },
+    },
+  };
+
+  const carouselVariants = {
+    hidden: (direction: "forward" | "backward") => ({
+      opacity: 0,
+      x: direction === "forward" ? 50 : -50,
+    }),
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.3 },
+    },
+    exit: (direction: "forward" | "backward") => ({
+      opacity: 0,
+      x: direction === "forward" ? -50 : 50,
+      transition: { duration: 0.3 },
+    }),
+  };
+
   return (
     <section
       id="app-showcase"
-      className="py-10  lg:py-24 relative overflow-hidden"
+      className="py-10 lg:py-24 relative overflow-hidden"
     >
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-          <div className="flex items-center space-x-2 justify-center mb-4 px-5 py-2 bg-primary/10 rounded-full w-fit mx-auto">
-            <motion.div
-              animate={{
-                rotate: [0, 10, -10, 0],
-                scale: [1, 1.1, 1],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatType: "reverse",
-                ease: "easeInOut",
-              }}
-            >
-              <Stars className="text-primary h-5 w-5" />
-            </motion.div>{" "}
+        <motion.div
+          className="text-center mb-16"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.div
+            variants={itemVariants}
+            className="flex items-center space-x-2 justify-center mb-4 px-5 py-2 bg-primary/10 rounded-full w-fit mx-auto"
+          >
+            <Stars className="text-primary h-5 w-5" />
             <span className="text-sm font-bold text-primary">{label}</span>
-          </div>
-          <h2 className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight">
+          </motion.div>
+          <motion.h2
+            variants={itemVariants}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
+          >
             {title}
-          </h2>
-          <p className="text-xl text-foreground/70 max-w-4xl mx-auto">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-foreground/70 max-w-4xl mx-auto"
+          >
             {subtitle}
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        <div
+        <motion.div
           ref={containerRef}
           className="relative max-w-6xl mx-auto perspective-1000"
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
-          {/* Main screen display */}
           <div className="relative">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={activeIndex}
-                initial={{ opacity: 0, scale: 0.9, x: 50 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                exit={{ opacity: 0, scale: 0.9, x: -50 }}
-                transition={{ duration: 0.4 }}
+                custom={direction}
+                variants={carouselVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
                 className={`relative bg-gradient-to-b ${activeColor} rounded-3xl p-6 md:p-10 shadow-xl`}
               >
                 <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
@@ -190,11 +245,8 @@ export default function AppShowcase() {
                       {activeScreen.description}
                     </p>
                   </div>
-
                   <div className="w-full md:w-1/2 order-1 md:order-2 relative">
-                    {/* Phone mockup with screen */}
                     <div className="h-[300px] md:h-[400px] w-full overflow-hidden rounded-[30px]">
-                      {/* Display the image from the JSON data */}
                       <Image
                         src={
                           activeScreen.image ||
@@ -206,8 +258,6 @@ export default function AppShowcase() {
                         priority
                       />
                     </div>
-
-                    {/* 3D pop-out elements */}
                     {!isMobile &&
                       activePopouts.map((element, index) => (
                         <motion.div
@@ -332,7 +382,7 @@ export default function AppShowcase() {
                             {element.type === "insight" && (
                               <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white">
                                 <svg
-                                  xmlns="http://www.w3.org/2000/svg"
+                                  xmlns="http://wwww.w3.org/2000/svg"
                                   width="16"
                                   height="16"
                                   viewBox="0 0 24 24"
@@ -378,7 +428,7 @@ export default function AppShowcase() {
                                   strokeLinejoin="round"
                                 >
                                   <path d="M3 3v18h18"></path>
-                                  <path d="m19 9-5 5-4-4-3 3"></path>
+                                  <path d="M19 9-5 5-4-4-3 3"></path>
                                 </svg>
                               </div>
                             )}
@@ -394,21 +444,22 @@ export default function AppShowcase() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation controls */}
           <div className="flex items-center justify-center gap-4 mt-8">
             <button
               onClick={handlePrev}
-              className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-primary/5 transition-colors border border-gray-100"
-              aria-label="Previous screen"
+              className="w-10 h-10 rounded-full bg-primary/50 backdrop-blur-sm shadow-lg hover:bg-primary/90 flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+              aria-label="Previous slide"
             >
-              <ChevronLeft className="h-5 w-5 text-primary" />
+              <ChevronLeft className="h-5 w-5 text-white" />
             </button>
-
             <div className="flex gap-2 items-center">
-              {screens.map((_: any, index: any) => (
+              {screens.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveIndex(index)}
+                  onClick={() => {
+                    setDirection(index > activeIndex ? "forward" : "backward");
+                    setActiveIndex(index);
+                  }}
                   className={`h-2 rounded-full transition-all duration-300 ${
                     index === activeIndex
                       ? "w-8 bg-gradient-to-r from-primary to-[#005BBD]"
@@ -418,17 +469,33 @@ export default function AppShowcase() {
                 />
               ))}
             </div>
-
             <button
               onClick={handleNext}
-              className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center z-10 hover:bg-primary/5 transition-colors border border-gray-100"
-              aria-label="Next screen"
+              className="w-10 h-10 rounded-full bg-primary/50 backdrop-blur-sm shadow-lg hover:bg-primary/90 flex items-center justify-center transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+              aria-label="next screen"
             >
-              <ChevronRight className="h-5 w-5 text-primary" />
+              <ChevronRight className="h-5 w-5 text-white" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
+      <style jsx global>{`
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .glass {
+          background: rgba(255, 255, 255, 0.8);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+        }
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+      `}</style>
     </section>
   );
 }
