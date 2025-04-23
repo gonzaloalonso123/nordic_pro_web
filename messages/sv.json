@@ -7,12 +7,12 @@
       { "label": "Plattform", "href": "#app-showcase" },
       { "label": "FAQ", "href": "#faq" }
     ],
-    "cta": "Ställ er i väntelistan"
+    "cta": "Ställ er på väntelistan"
   },
   "hero": {
     "title": "Där prestation möter välmående",
     "description": "En plattform för ungdomslag som samlar mental hälsa, motivation och laghantering på ett ställe.",
-    "cta": "Ställ er i väntelistan",
+    "cta": "Ställ er på väntelistan",
     "tags": [
       {
         "label": "Mental hälsa",
@@ -30,12 +30,18 @@
   },
   "mission": {
     "label": "VÅRT UPPDRAG",
-    "title": "Varför bygger vi NordicPro?",
-    "subtitle": "Talang är inte problemet. Att inte få ordentligt stöd är. NordicPro är lösningen.",
+    "title": "Varför NordicPro?",
+    "subtitle": "Talang är inte problemet – bristen på stöd är.",
+    "whyParagraphs": [
+      "Många barn kämpar ensamma, utanför eller utan stöd hemifrån. Alltför många lämnar idrotten för tidigt – inte för att viljan saknas, utan för att stödet gör det.",
+      "Vi vill ändra på det.",
+      "Genom enkla avstämningar får tränare, ledare och föräldrar tidiga insikter om barnens mående – så att de kan agera i tid.",
+      "Vi vill att fler barn ska må bra, utvecklas och stanna i sporten längre."
+    ],
     "features": [
       {
         "title": "Öka motivationen",
-        "description": "Spelbaserade mål, lagutmaningar och feedback som håller spelarna engagerade och motiverade.",
+        "description": "Gamifierade mål, lagutmaningar och feedback som håller spelarna engagerade och motiverade.",
         "image": "/images/motivation.webp"
       },
       {
@@ -54,28 +60,30 @@
         "image": "/images/retention.webp"
       }
     ],
-    "stats": [
-      {
-        "icon": "Star",
-        "value": "10+",
-        "label": "Års erfarenhet"
-      },
-      {
-        "icon": "Award",
-        "value": "3+",
-        "label": "Pilotlag"
-      },
-      {
-        "icon": "Users",
-        "value": "5+",
-        "label": "Teammedlemmar"
-      },
-      {
-        "icon": "Clock",
-        "value": "100%",
-        "label": "Kundnöjdhet"
-      }
-    ]
+    
+  "stats": [
+    {
+      "icon": "Lightbulb",
+      "value": "2025",
+      "label": "Grundat"
+    },
+    {
+      "icon": "Users",
+      "value": "5",
+      "label": "Kärnteamets medlemmar"
+    },
+    {
+      "icon": "Rocket",
+      "value": "30+",
+      "label": "Klubbar i kö"
+    },
+    {
+      "icon": "Handshake",
+      "value": "2",
+      "label": "Strategiska partnerskap"
+    }
+  ]
+
   },
   "features": {
     "label": "FUNKTIONER",
@@ -83,78 +91,78 @@
     "subtitle": "En allt-i-ett-plattform för spelares välbefinnande, motivation och laghantering.",
     "list": [
       {
-        "title": "Stöd för mental hälsa",
-        "icon": "Heart",
-        "items": [
-          {
-            "text": "Enkel humörspårning",
-            "description": "Säkerställ att era spelare mår bra"
-          },
-          {
-            "text": "Veckovisa reflektioner om välbefinnande",
-            "description": "Bygg starkare band inom laget"
-          },
-          {
-            "text": "Särskilda notiser till tränare",
-            "description": "Förbättra prestationer genom positiv förstärkning"
-          }
-        ]
-      },
-      {
-        "title": "Motivation och engagemang",
-        "icon": "Trophy",
-        "items": [
-          {
-            "text": "Sätt lagmål och personliga mål",
-            "description": "Följ framsteg och fira prestationer"
-          },
-          {
-            "text": "Spelbaserat belöningssystem",
-            "description": "Bygg starkare band inom laget"
-          },
-          {
-            "text": "Utmaningar och evenemang",
-            "description": "Förbättra prestationer genom att ha givande belöningar från utmaningar"
-          }
-        ]
-      },
-      {
-        "title": "Inbyggt stödsystem",
-        "icon": "LineChart",
-        "items": [
-          {
-            "text": "Tillgång till resurser för mental hälsa",
-            "description": "Hjälp era spelare att må bra"
-          },
-          {
-            "text": "Tränare får vägledning för att stödja spelare",
-            "description": "Bygg starkare band inom laget"
-          },
-          {
-            "text": "Integrerad chatt med certifierad supportpersonal",
-            "description": "Vi finns där om ni behöver hjälp"
-          }
-        ]
-      },
-      {
-        "title": "Admin-verktyg",
-        "icon": "Users",
-        "items": [
-          {
-            "text": "Schemalägg träningar och matcher",
-            "description": "Följ enkelt upp när nästa träning eller match är"
-          },
-          {
-            "text": "Skicka individuella, grupp- och lagmeddelanden",
-            "description": "Bygg starkare band inom laget"
-          },
-          {
-            "text": "Följ betalningar och närvaro",
-            "description": "Förbättra prestationer genom positiv förstärkning"
-          }
-        ]
-      }
-    ]
+      "title": "Verktyg för tränare & admin",
+      "icon": "LayoutDashboard",
+      "items": [
+        {
+          "text": "Coachöversikt",
+          "description": "Följ upp närvaro, engagemang och beteende – allt på ett ställe."
+        },
+        {
+          "text": "Adminverktyg",
+          "description": "Hantera lag, tränare och samlad statistik kring välmående från ett centralt gränssnitt."
+        },
+        {
+          "text": "Statistik",
+          "description": "Få datadrivna insikter om spelarutveckling och lagdynamik."
+        }
+      ]
+    },
+     {
+      "title": "Kommunikation & Schemaläggning",
+      "icon": "MessageCircle",
+      "items": [
+        {
+          "text": "Lagchatt & meddelanden",
+          "description": "Skicka meddelanden till spelare, föräldrar eller tränare med inbyggda säkerhetsfunktioner."
+        },
+        {
+          "text": "Smart schemaläggning",
+          "description": "Planera träningar, matcher och påminnelser med kalenderintegration."
+        },
+        {
+          "text": "Föräldraportal",
+          "description": "Ge insyn i närvaro, feedback och välmående – helt GDPR-säkert."
+        }
+      ]
+    },
+     {
+      "title": "Motivation & Erkännande",
+      "icon": "Trophy",
+      "items": [
+        {
+          "text": "Veckans/Månadens spelare",
+          "description": "Fira prestation, attityd och närvaro med spelifierade utmärkelser."
+        },
+        {
+          "text": "Feedback-loopar",
+          "description": "Veckovis feedback från tränare med enkla strukturerade verktyg."
+        },
+        {
+          "text": "Utveckling och badges",
+          "description": "Spelare låser upp badges och följer sin utveckling inom prestation och beteende."
+        }
+      ]
+    },
+    {
+      "title": "Psykiskt välmående",
+      "icon": "Heart",
+      "items": [
+        {
+          "text": "Stämningsspårning & varningssignaler",
+          "description": "Upptäck tidiga tecken på psykisk ohälsa med veckovisa incheckningar och coachnotiser."
+        },
+        {
+          "text": "Mental Health Index",
+          "description": "Visualisera spelarens och lagets välmående över tid – utvecklat tillsammans med psykologer."
+        },
+        {
+          "text": "Strukturerat åtgardsstöd",
+          "description": "Trestegsmodell: medvetenhet, coachdialog och professionell uppföljning."
+        }
+      ]
+    }
+  ]
   },
   "appShowcase": {
     "title": "Upplev NordicPro",
@@ -168,7 +176,7 @@
       },
       {
         "title": "Spelarmotivation",
-        "description": "Spelbaserade utmaningar och belöningar för att hålla spelarna engagerade och motiverade.",
+        "description": "Gamifierade utmaningar och belöningar för att hålla spelarna engagerade och motiverade.",
         "image": "/images/app-screens/screen-2.png"
       },
       {
@@ -209,8 +217,8 @@
   },
   "cta": {
     "title": "Redo att transformera ditt lags upplevelse?",
-    "description": "Ställ er i väntelistan idag och var bland de första att uppleva NordicPro när vi lanserar.",
-    "button": "Ställ er i väntelistan"
+    "description": "Ställ er på väntelistan idag och var bland de första att uppleva NordicPro när vi lanserar.",
+    "button": "Ställ er på väntelistan"
   },
   "faq": {
     "title": "Vanliga frågor",
@@ -483,7 +491,7 @@
   },
   "waitlist":
   {
-  "title": "Gå med i NordicPro väntelista",
+  "title": "Ställ er på NordicPros väntelista",
   "description": "Är ni en klubb, tränare eller ett lag som vill förbättra spelarvälmående, motivation och sammanhållning? Anmäl er för att få tidig tillgång till NordicPro och påverka utvecklingen genom feedback från verkligheten.",
   "subtitle": "Varför ställa sig i väntelistan",
   "benefits": [
@@ -558,14 +566,19 @@
     "placeholder": "Berätta mer om ert lag och vad ni letar efter..."
   },
   "submit": {
-    "button": "Ställ er i väntelistan",
+    "button": "Ställ er på väntelistan",
     "loading": "Bearbetar..."
   },
   "confirmation": {
     "title": "Ni är med på listan!",
     "body": "Tack för att ni gick med i vår väntelista. Vi har skickat en bekräftelse till den angivna e-posten. Vi håller er uppdaterade om lanseringen och kan kontakta er för tidig åtkomst.",
     "share": "Dela NordicPro med andra:"
+    
   },
+        "success": {
+
+        "returnButton": "Tillbaka till startsidan"
+      },
   "error": {
     "missingFields": "Fyll i alla obligatoriska fält",
     "invalidEmail": "Ange en giltig e-postadress",

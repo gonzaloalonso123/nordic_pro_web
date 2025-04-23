@@ -1,11 +1,9 @@
 "use client";
 
+import type React from "react";
+
 import Image from "next/image";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import {
   ChevronLeft,
@@ -13,9 +11,10 @@ import {
   CheckCircle,
   Star,
   Users,
-  Award,
-  Clock,
   Stars,
+  Lightbulb,
+  Rocket,
+  Handshake,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
@@ -34,6 +33,10 @@ export default function Mission() {
     value: string;
     label: string;
   }[]; // Type the stats array
+
+  // Get the paragraphs from translations
+  const whyParagraphs = t.raw("whyParagraphs") as string[];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: false, margin: "100px" });
@@ -94,13 +97,13 @@ export default function Mission() {
       },
     },
   };
-  type IconName = "Star" | "Award" | "Users" | "Clock";
+  type IconName = "Lightbulb" | "Users" | "Rocket" | "Handshake";
 
   const icons: Record<IconName, React.ElementType> = {
-    Star,
-    Award,
+    Lightbulb,
     Users,
-    Clock,
+    Rocket,
+    Handshake,
   };
 
   return (
@@ -155,7 +158,7 @@ export default function Mission() {
 
           <motion.h2
             variants={fadeIn}
-            className="drop-shadow-sm  text-3xl sm:text-4xl md:text-5xl  font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
+            className="drop-shadow-sm text-3xl sm:text-4xl md:text-5xl font-bold font-montserrat pb-6 bg-gradient-to-t from-[#005BBD] to-primary bg-clip-text text-transparent leading-tight"
           >
             {title}
           </motion.h2>
@@ -166,6 +169,53 @@ export default function Mission() {
           >
             {subtitle}
           </motion.p>
+
+          <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.25 },
+              },
+            }}
+            className="mx-auto my-12 w-full max-w-2xl px-4 sm:px-6 lg:px-8"
+          >
+            {/* Paragraph Blocks */}
+            <div className="space-y-6">
+              {whyParagraphs.map((paragraph, index) => (
+                <motion.div
+                  key={index}
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+                    },
+                  }}
+                  className={`
+          group relative transition-all duration-300 cursor-default
+          ${
+            index === 0
+              ? "text-xl font-semibold text-primary dark:text-blue-300"
+              : "text-base text-zinc-800 dark:text-zinc-200"
+          }
+          ${index === 1 ? "pl-4  font-medium" : ""}
+          ${
+            index === whyParagraphs.length - 1
+              ? "italic text-zinc-600 dark:text-zinc-400"
+              : ""
+          }
+        `}
+                >
+                  <p className="leading-relaxed tracking-tight">{paragraph}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
         </motion.div>
 
         <div className="max-w-6xl mx-auto mb-12 md:mb-16">
@@ -209,7 +259,7 @@ export default function Mission() {
                   className="relative"
                 >
                   <div className="grid grid-cols-5 min-h-[400px]">
-                    <div className="col-span-3 relative">
+                    <div className="col-span-3 relative bg-white/50">
                       <Image
                         src={features[currentIndex].image || "/placeholder.svg"}
                         alt={features[currentIndex].title}

@@ -42,8 +42,14 @@
   },
   "mission": {
     "label": "OUR MISSION",
-    "title": "Why are we building NordicPro?",
-    "subtitle": "Talent isn't the problem. Feeling unsupported is. NordicPro is the solution.",
+    "title": "Why NordicPro?",
+    "subtitle": "Talent is not the problem – lack of support is.",
+    "whyParagraphs": [
+      "Many children struggle alone, feel left out, or lack support at home. Far too many leave sports too early – not because they lack the will, but because they lack the support.",
+      "We want to change that.",
+      "With simple check-ins, coaches, leaders, and parents gain early insights into how the kids are doing – so they can step in before it’s too late.",
+      "We want more children to feel well, grow, and stay in sports for longer."
+    ],
     "features": [
       {
         "title": "Drive motivation",
@@ -66,103 +72,105 @@
         "image": "/images/retention.webp"
       }
     ],
-    "stats": [
-      {
-        "icon": "Star",
-        "value": "10+",
-        "label": "Years Experience"
-      },
-      {
-        "icon": "Award",
-        "value": "3+",
-        "label": "Pilot teams"
-      },
-      {
-        "icon": "Users",
-        "value": "5+",
-        "label": "Team Members"
-      },
-      {
-        "icon": "Clock",
-        "value": "100%",
-        "label": "Client Satisfaction"
-      }
-    ]
+  
+  "stats": [
+    {
+      "icon": "Lightbulb",
+      "value": "2025",
+      "label": "Founded"
+    },
+    {
+      "icon": "Users",
+      "value": "4+",
+      "label": "Team Members"
+    },
+    {
+      "icon": "Rocket",
+      "value": "30+",
+      "label": "Clubs on Waitlist"
+    },
+    {
+      "icon": "Handshake",
+      "value": "2",
+      "label": "Strategic Partnerships"
+    }
+  ]
+
   },
 "features": {
   "label": "FEATURES",
   "title": "Everything you're already doing — just better",
   "subtitle": "All-in-one platform for athlete well-being, motivation, and team management.",
   "list": [
+        {
+      "title": "Coach & Admin Dashboards",
+      "icon": "LayoutDashboard",
+      "items": [
+        {
+          "text": "Coach insights",
+          "description": "Track attendance, behavior, and engagement — all in one view."
+        },
+        {
+          "text": "Admin management tools",
+          "description": "Oversee all teams, coaches, and aggregated wellness data from a central dashboard."
+        },
+        {
+          "text": "Performance analytics",
+          "description": "Get actionable data on player development and team dynamics."
+        }
+      ]
+    },
+        {
+      "title": "Communication & Scheduling",
+      "icon": "MessageCircle",
+      "items": [
+        {
+          "text": "Team chat & announcements",
+          "description": "Send messages to players, parents, or staff with built-in safety controls."
+        },
+        {
+          "text": "Smart scheduling tools",
+          "description": "Set trainings, matches, and reminders with calendar integration."
+        },
+        {
+          "text": "Parental dashboard",
+          "description": "Offer transparency on attendance, feedback, and player wellbeing — GDPR-compliant."
+        }
+      ]
+    },
+    {
+      "title": "Motivation & Recognition",
+      "icon": "Trophy",
+      "items": [
+        {
+          "text": "Player of the Week/Month",
+          "description": "Celebrate performance, attitude, and attendance through gamified awards."
+        },
+        {
+          "text": "Feedback loops",
+          "description": "Weekly coach feedback using simple structured prompts."
+        },
+        {
+          "text": "Progress & badge tracking",
+          "description": "Players unlock badges and monitor growth in performance and behavior."
+        }
+      ]
+    },
     {
       "title": "Mental Health Support",
       "icon": "Heart",
       "items": [
         {
-          "text": "Quick mood tracking",
-          "description": "Track progress and celebrate achievements"
+          "text": "Mood tracking & red flag alerts",
+          "description": "Detect early signs of distress with weekly check-ins and coach alerts."
         },
         {
-          "text": "Weekly wellness reflections",
-          "description": "Build stronger connections within your team"
+          "text": "Mental Health Index",
+          "description": "Visualize player and team wellbeing over time, co-developed with psychologists."
         },
         {
-          "text": "Private alerts for coaches",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Motivation and Engagement",
-      "icon": "Trophy",
-      "items": [
-        {
-          "text": "Set personal and team goals",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Gamified rewards system",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Challenges and events",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Built-in Support System",
-      "icon": "LineChart",
-      "items": [
-        {
-          "text": "Access to mental health resources",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Coaches get guidance to support athletes",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Integrated chat with certified support staff",
-          "description": "Improve performance through positive reinforcement"
-        }
-      ]
-    },
-    {
-      "title": "Admin Tools",
-      "icon": "Users",
-      "items": [
-        {
-          "text": "Schedule practices and matches",
-          "description": "Track progress and celebrate achievements"
-        },
-        {
-          "text": "Send individual, group and team messages",
-          "description": "Build stronger connections within your team"
-        },
-        {
-          "text": "Track payments and attendance",
-          "description": "Improve performance through positive reinforcement"
+          "text": "Structured Intervention System",
+          "description": "Three-stage model: awareness, coach engagement, and professional escalation."
         }
       ]
     }
@@ -575,7 +583,7 @@
   },
   "role": {
     "label": "Your Role",
-    "options": ["Coach", "Club Administrator"]
+    "options": ["Coach", "Team Manager", "Club Administrator"]
   },
  "teamSize": {
     "label": "Team Size",
