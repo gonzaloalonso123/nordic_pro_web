@@ -172,22 +172,22 @@
       {
         "title": "Lagkalender",
         "description": "Schemalägg träningar, matcher och evenemang med en intuitiv lagkalender.",
-        "image": "/images/app-screens/screen-1.png"
+        "image": "/images/app-screens/screen-1.webp"
       },
       {
         "title": "Spelarmotivation",
         "description": "Gamifierade utmaningar och belöningar för att hålla spelarna engagerade och motiverade.",
-        "image": "/images/app-screens/screen-2.png"
+        "image": "/images/app-screens/screen-2.webp"
       },
       {
         "title": "Check-in för mental hälsa",
         "description": "Snabb humörspårning och verktyg för välbefinnande för att stödja spelarnas hälsa.",
-        "image": "/images/app-screens/screen-3.png"
+        "image": "/images/app-screens/screen-3.webp"
       },
       {
         "title": "Lagledning",
         "description": "Strömlinjeformade verktyg för tränare att hantera laguppställningar, närvaro och kommunikation.",
-        "image": "/images/app-screens/screen-4.png"
+        "image": "/images/app-screens/screen-4.webp"
       }
     ],
     "popouts": [

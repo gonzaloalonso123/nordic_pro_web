@@ -1,17 +1,25 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "@/components/ui/button"
-import { AlertTriangle, Download, Filter, Users } from "lucide-react"
-import MentalHealthCheckin from "@/components/platform/mental-health-checkin"
-import PlayerMoodTable from "@/components/platform/player-mood-table"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { AlertTriangle, Download, Filter, Users } from "lucide-react";
+import MentalHealthCheckin from "@/components/platform/mental-health-checkin";
+import PlayerMoodTable from "@/components/platform/player-mood-table";
 
 export default function MentalHealthPage() {
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto  w-screen">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 gap-4">
         <div>
           <h1 className="text-2xl font-bold font-montserrat">Mental Health</h1>
-          <p className="text-gray-500">Monitor and support your team's mental well-being</p>
+          <p className="text-gray-500">
+            Monitor and support your team's mental well-being
+          </p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" className="flex items-center gap-2">
@@ -33,7 +41,9 @@ export default function MentalHealthPage() {
         <Card className="lg:col-span-2">
           <CardHeader>
             <CardTitle>Daily Check-in</CardTitle>
-            <CardDescription>Complete today's check-in to track your mood and well-being</CardDescription>
+            <CardDescription>
+              Complete today's check-in to track your mood and well-being
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <MentalHealthCheckin />
@@ -82,10 +92,10 @@ export default function MentalHealthPage() {
                               mood.label === "Amazing" || mood.label === "Great"
                                 ? "bg-green"
                                 : mood.label === "Good"
-                                  ? "bg-primary"
-                                  : mood.label === "Okay"
-                                    ? "bg-amber-400"
-                                    : "bg-red-500"
+                                ? "bg-primary"
+                                : mood.label === "Okay"
+                                ? "bg-amber-400"
+                                : "bg-red-500"
                             }`}
                             style={{ width: `${mood.percentage}%` }}
                           ></div>
@@ -97,14 +107,21 @@ export default function MentalHealthPage() {
               </div>
 
               <div>
-                <p className="text-sm text-gray-500 mb-2">Check-in Completion</p>
+                <p className="text-sm text-gray-500 mb-2">
+                  Check-in Completion
+                </p>
                 <div className="flex items-center">
                   <div className="w-full bg-gray-100 rounded-full h-2.5 mr-2">
-                    <div className="bg-primary h-2.5 rounded-full" style={{ width: "85%" }}></div>
+                    <div
+                      className="bg-primary h-2.5 rounded-full"
+                      style={{ width: "85%" }}
+                    ></div>
                   </div>
                   <span className="text-sm text-gray-500">85%</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-1">17 of 20 players completed today's check-in</p>
+                <p className="text-xs text-gray-500 mt-1">
+                  17 of 20 players completed today's check-in
+                </p>
               </div>
             </div>
           </CardContent>
@@ -137,11 +154,18 @@ export default function MentalHealthPage() {
                 <AlertTriangle className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-medium text-amber-800 mb-1">Attention Needed</h4>
+                <h4 className="font-medium text-amber-800 mb-1">
+                  Attention Needed
+                </h4>
                 <p className="text-sm text-amber-700 mb-2">
-                  Emma S. has reported low mood scores for 3 consecutive days. Consider checking in with her.
+                  Emma S. has reported low mood scores for 3 consecutive days.
+                  Consider checking in with her.
                 </p>
-                <Button size="sm" variant="outline" className="border-amber-300 bg-amber-100 text-amber-800">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-amber-300 bg-amber-100 text-amber-800"
+                >
                   View Profile
                 </Button>
               </div>
@@ -152,30 +176,44 @@ export default function MentalHealthPage() {
         <Card>
           <CardHeader className="pb-2">
             <CardTitle>Resources</CardTitle>
-            <CardDescription>Mental health resources for your team</CardDescription>
+            <CardDescription>
+              Mental health resources for your team
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-primary hover:underline flex items-center">
+                <a
+                  href="#"
+                  className="text-primary hover:underline flex items-center"
+                >
                   <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                   How to talk to athletes about mental health
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary hover:underline flex items-center">
+                <a
+                  href="#"
+                  className="text-primary hover:underline flex items-center"
+                >
                   <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                   Recognizing signs of anxiety in young athletes
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary hover:underline flex items-center">
+                <a
+                  href="#"
+                  className="text-primary hover:underline flex items-center"
+                >
                   <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                   Building team resilience through mental wellness
                 </a>
               </li>
               <li>
-                <a href="#" className="text-primary hover:underline flex items-center">
+                <a
+                  href="#"
+                  className="text-primary hover:underline flex items-center"
+                >
                   <span className="w-2 h-2 bg-primary rounded-full mr-2"></span>
                   Local mental health resources for youth athletes
                 </a>
@@ -185,6 +223,5 @@ export default function MentalHealthPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
-

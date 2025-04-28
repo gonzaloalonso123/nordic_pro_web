@@ -146,7 +146,7 @@ export default function Header() {
         variants={headerVariants}
         initial="hidden"
         animate="visible"
-        className="fixed top-0 z-40 w-full backdrop-blur-md bg-white/80 shadow-sm "
+        className="hidden top-0 z-40 w-full backdrop-blur-md bg-white/80 shadow-sm "
       >
         <div className="container px-4 md:px-8 flex h-20 items-center justify-between">
           <Link

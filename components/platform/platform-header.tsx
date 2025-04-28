@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { Bell, MessageSquare, Search, Settings, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useState } from "react";
+import Link from "next/link";
+import { Bell, MessageSquare, Search, Settings, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -11,18 +11,28 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 export default function PlatformHeader() {
-  const [notifications, setNotifications] = useState(3)
-  const [messages, setMessages] = useState(2)
+  const [notifications, setNotifications] = useState(3);
+  const [messages, setMessages] = useState(2);
 
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-30">
       <div className="flex h-16 items-center justify-between px-6">
         <div className="flex items-center">
-          <Link href="/platform" className="font-montserrat font-bold text-2xl text-primary mr-8">
-            NordicPro
+          <Link
+            href="/platform"
+            className="font-montserrat font-bold text-2xl text-primary mr-8"
+          >
+            <Image
+              src="/images/nordic-pro-logo.png"
+              alt="Logo"
+              width={190}
+              height={90}
+              priority
+            />{" "}
           </Link>
           <div className="hidden md:flex relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -50,7 +60,13 @@ export default function PlatformHeader() {
             )}
           </Button>
 
-          <Button variant="ghost" size="icon" className="relative" onClick={() => setMessages(0)} aria-label="Messages">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative"
+            onClick={() => setMessages(0)}
+            aria-label="Messages"
+          >
             <MessageSquare className="h-5 w-5 text-gray-600" />
             {messages > 0 && (
               <span className="absolute top-1 right-1 w-4 h-4 bg-accent text-white text-xs rounded-full flex items-center justify-center">
@@ -61,7 +77,12 @@ export default function PlatformHeader() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full" aria-label="User menu">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full"
+                aria-label="User menu"
+              >
                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
                   JD
                 </div>
@@ -94,6 +115,5 @@ export default function PlatformHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
-
