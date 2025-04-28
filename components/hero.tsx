@@ -58,7 +58,7 @@ export default function Hero() {
         <div className="grid gap-12 lg:grid-cols-2 items-center">
           {/* Text Section */}
           <motion.div
-            className="flex flex-col justify-center space-y-8 max-w-2xl"
+            className="flex flex-col justify-center space-y-8 max-w-2xl "
             variants={fadeIn}
             initial="hidden"
             animate="visible"
@@ -96,13 +96,14 @@ export default function Hero() {
             initial="hidden"
             animate="visible"
           >
-            <div className="relative h-[300px] w-full lg:h-[600px] rounded-3xl overflow-hidden">
+            <div className="relative h-auto w-full rounded-3xl overflow-hidden">
               <Image
                 src="/images/hero-image.webp"
                 alt="Young soccer player kicking a ball"
-                fill
+                width={800} // set a width
+                height={600} // and a height
                 sizes="(max-width: 768px) 100vw, 50vw"
-                style={{ objectFit: "cover", objectPosition: "center" }}
+                style={{ objectFit: "contain", objectPosition: "center" }}
                 priority
               />
             </div>

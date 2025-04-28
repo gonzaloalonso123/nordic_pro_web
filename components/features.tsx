@@ -413,6 +413,19 @@ export default function Features() {
             </motion.div>
           </motion.div>
         )}
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-transparent via-primary to-transparent"
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        </div>
       </div>
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar {

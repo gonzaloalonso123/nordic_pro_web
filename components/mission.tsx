@@ -371,7 +371,7 @@ export default function Mission() {
                 <motion.div
                   key={index}
                   variants={cardVariants}
-                  className="relative overflow-hidden rounded-2xl transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+                  className="relative overflow-hidden rounded-2xl transition-transform duration-300 hover:shadow-lg "
                 >
                   <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br border border-primary/10 h-full flex flex-col items-center text-center">
                     <div className="text-primary w-12 h-12 sm:w-16 sm:h-16 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center mb-4">
@@ -389,6 +389,19 @@ export default function Mission() {
             })}
           </motion.div>
         )}
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] overflow-hidden">
+          <motion.div
+            className="h-full bg-gradient-to-r from-transparent via-primary to-transparent"
+            animate={{
+              x: ["-100%", "100%"],
+            }}
+            transition={{
+              duration: 3,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "linear",
+            }}
+          />
+        </div>
       </div>
       <style jsx global>{`
         .hide-scrollbar::-webkit-scrollbar {
